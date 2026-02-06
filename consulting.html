@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulting Services – Alma Intel</title>
+    <meta name="description" content="Custom automation and AI consulting for SMEs. We map your workflows, build tailored solutions, and deliver measurable ROI in weeks.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #3753E5;
+            --deep: #121B60;
+            --accent: #00D4AA;
+            --white: #FFFFFF;
+            --off-white: #F7F8FC;
+            --gray-100: #E8EBF2;
+            --gray-200: #C9CED9;
+            --gray-400: #6B7280;
+            --gray-600: #374151;
+            --dark: #0B0F1A;
+            --gradient-dark: linear-gradient(135deg, #0B0F1A 0%, #121B60 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--gray-600);
+            line-height: 1.6;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            line-height: 1.15;
+            color: var(--deep);
+            letter-spacing: -0.02em;
+        }
+
+        /* Navigation - Same as index */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--deep);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-mark {
+            width: 32px;
+            height: 32px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--deep);
+        }
+
+        .nav-cta {
+            background: var(--deep);
+            color: var(--white) !important;
+            padding: 0.625rem 1.25rem;
+            border-radius: 4px;
+            font-weight: 600 !important;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 10rem 1.5rem 6rem;
+            background: var(--off-white);
+        }
+
+        .hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .breadcrumb {
+            font-size: 0.875rem;
+            color: var(--gray-400);
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            line-height: 1.75;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--deep);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(55, 83, 229, 0.25);
+        }
+
+        /* Content Section */
+        .content {
+            padding: 6rem 1.5rem;
+            background: var(--white);
+        }
+
+        .content-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .content h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin-bottom: 2rem;
+        }
+
+        .content p {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: var(--off-white);
+            border: 1px solid var(--gray-100);
+            border-radius: 8px;
+            padding: 3rem;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(18, 27, 96, 0.1);
+            border-color: var(--primary);
+        }
+
+        .service-number {
+            font-family: 'Sora', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gray-100);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-desc {
+            font-size: 1rem;
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            padding: 0.625rem 0;
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.625rem;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-features li::before {
+            content: '→';
+            color: var(--primary);
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .btn-small {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.875rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            padding: 3rem 1.5rem 2rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-inner p {
+            font-size: 0.875rem;
+        }
+
+        .footer-inner a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 6rem 1.25rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .content {
+                padding: 4rem 1.25rem;
+            }
+
+            .content h2 {
+                font-size: 1.75rem;
+            }
+
+            .content p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .service-card {
+                padding: 1.75rem;
+            }
+
+            .service-number {
+                font-size: 2.5rem;
+            }
+
+            .service-card h3 {
+                font-size: 1.25rem;
+            }
+
+            .service-desc {
+                font-size: 0.9375rem;
+                margin-bottom: 1.25rem;
+            }
+
+            /* Reduce features list on mobile - show only first 4 */
+            .service-features li:nth-child(n+5) {
+                display: none;
+            }
+
+            .service-features li {
+                font-size: 0.8125rem;
+                padding: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <span class="logo-mark">A</span>
+                Alma Intel
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#how">How It Works</a>
+                <a href="products.html">Products</a>
+                <a href="index.html#contact" class="nav-cta">Book a Free Audit</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="breadcrumb"><a href="index.html">Home</a> / Consulting</div>
+            <h1>Custom Automation & AI Consulting</h1>
+            <p class="hero-text">We analyze your specific workflows and build automation tailored to your business—not generic off-the-shelf tools. Every solution is designed to deliver measurable ROI within weeks.</p>
+            <a href="index.html#contact" class="btn btn-primary">Book a Free Audit</a>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="content-inner">
+            <span class="section-label">Our Approach</span>
+            <h2>We don't sell platforms. We automate your operations.</h2>
+            <p>Your operations are unique. Cookie-cutter solutions don't work. We map your specific workflows, identify where time and money are leaking, and build custom automation that layers into your existing tools—CRM, accounting software, spreadsheets, email.</p>
+            <p>No massive platform migrations. No year-long implementations. Just intelligent automation that starts working in weeks and pays for itself within months.</p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-number">01</div>
+                    <h3>Discovery & Diagnosis</h3>
+                    <p class="service-desc">Deep analysis of your current processes to identify the biggest automation opportunities.</p>
+                    <ul class="service-features">
+                        <li>Process mapping workshop</li>
+                        <li>Bottleneck identification</li>
+                        <li>ROI model with projections</li>
+                        <li>Quick wins prioritization</li>
+                        <li>Automation roadmap</li>
+                        <li>2-week engagement</li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-primary btn-small">Start with Audit</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-number">02</div>
+                    <h3>Tactical Implementation</h3>
+                    <p class="service-desc">Specific automation solutions with immediate impact. Systems that work from day one.</p>
+                    <ul class="service-features">
+                        <li>2-3 workflow automations</li>
+                        <li>CRM/ERP integrations</li>
+                        <li>Reporting dashboard</li>
+                        <li>Team training session</li>
+                        <li>30-day support included</li>
+                        <li>4-6 week implementation</li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-primary btn-small">Get Started</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-number">03</div>
+                    <h3>Full Transformation</h3>
+                    <p class="service-desc">Complete operations redesign with AI and automation for the next level.</p>
+                    <ul class="service-features">
+                        <li>Full process audit + redesign</li>
+                        <li>5+ custom automations</li>
+                        <li>AI decision support tools</li>
+                        <li>Real-time dashboards</li>
+                        <li>Documentation + training</li>
+                        <li>90-day optimization period</li>
+                        <li>12-16 week transformation</li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-primary btn-small">Discuss Project</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-number">04</div>
+                    <h3>Ongoing Support</h3>
+                    <p class="service-desc">Maintenance, optimization, and continuous evolution. Your external tech team.</p>
+                    <ul class="service-features">
+                        <li>Weekly check-ins</li>
+                        <li>System monitoring & optimization</li>
+                        <li>New automation builds</li>
+                        <li>Priority support</li>
+                        <li>Quarterly strategy sessions</li>
+                        <li>Monthly retainer basis</li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-primary btn-small">Schedule Call</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <p>© 2025 Alma Intel. A branch of Alma Partners. | <a href="mailto:hello@almaintel.com">hello@almaintel.com</a></p>
+        </div>
+    </footer>
+</body>
+
+</html>

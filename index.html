@@ -1,0 +1,2089 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alma Intel – Turn Operational Chaos Into Competitive Advantage</title>
+    <meta name="description" content="We automate the workflows SME leaders waste hours on: invoice tracking, lead handoff, reporting, system sync. Within your existing tools. Measurable ROI in weeks.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #3753E5;
+            --deep: #121B60;
+            --accent: #00D4AA;
+            --white: #FFFFFF;
+            --off-white: #F7F8FC;
+            --gray-100: #E8EBF2;
+            --gray-200: #C9CED9;
+            --gray-400: #6B7280;
+            --gray-600: #374151;
+            --dark: #0B0F1A;
+            --gradient-dark: linear-gradient(135deg, #0B0F1A 0%, #121B60 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--gray-600);
+            line-height: 1.6;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            line-height: 1.15;
+            color: var(--deep);
+            letter-spacing: -0.02em;
+        }
+
+        /* Utility Classes */
+        .hide-mobile {
+            display: block;
+        }
+
+        .show-mobile {
+            display: none;
+        }
+
+        .mobile-short {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .hide-mobile {
+                display: none !important;
+            }
+
+            .show-mobile {
+                display: block !important;
+            }
+
+            .mobile-short {
+                display: block !important;
+            }
+
+            .desktop-text {
+                display: none !important;
+            }
+        }
+
+        .skip-to-content {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--deep);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            z-index: 2000;
+        }
+
+        .skip-to-content:focus {
+            top: 0;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-100);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 20px rgba(18, 27, 96, 0.06);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--deep);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-mark {
+            width: 32px;
+            height: 32px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            color: var(--deep);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--deep);
+            color: var(--white) !important;
+            padding: 0.625rem 1.25rem;
+            border-radius: 4px;
+            font-weight: 600 !important;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .nav-cta:hover,
+        .nav-cta:focus {
+            background: var(--primary);
+            transform: translateY(-1px);
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1100;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--deep);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 65px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-100);
+            padding: 1rem 1.5rem;
+            box-shadow: 0 4px 20px rgba(18, 27, 96, 0.08);
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 0.75rem 0;
+            color: var(--gray-600);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        /* Better, more creative hovers */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-primary:hover::before {
+            left: 0;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 8rem 1.5rem 5rem;
+            background: var(--off-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(55, 83, 229, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(55, 83, 229, 0.08);
+            border: 1px solid rgba(55, 83, 229, 0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero-text {
+            font-size: 1.125rem;
+            max-width: 700px;
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+            line-height: 1.75;
+        }
+
+        .hero-automation-list {
+            list-style: none;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+        }
+
+        .hero-automation-list li {
+            padding: 0.5rem 0;
+            font-size: 0.9375rem;
+            color: var(--gray-600);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .hero-automation-list li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            align-items: flex-start;
+            margin-bottom: 4rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        .btn-primary {
+            background: var(--deep);
+            color: var(--white);
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(55, 83, 229, 0.25);
+        }
+
+        .btn-arrow {
+            transition: transform 0.2s;
+        }
+
+        .btn:hover .btn-arrow {
+            transform: translateX(3px);
+        }
+
+        .hero-microcopy {
+            font-size: 0.875rem;
+            color: var(--gray-400);
+            font-style: italic;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-value {
+            font-family: 'Sora', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--gray-400);
+            line-height: 1.4;
+        }
+
+        .stat-context {
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Challenge Section */
+        .challenge {
+            padding: 6rem 1.5rem;
+            background: var(--gradient-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .challenge::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to top, rgba(18, 27, 96, 0.5), transparent);
+            pointer-events: none;
+        }
+
+        .challenge-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .challenge-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .challenge-content {
+            max-width: 500px;
+        }
+
+        .challenge .section-label {
+            color: var(--accent);
+        }
+
+        .challenge h2 {
+            color: var(--white);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .challenge-lead {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 1.0625rem;
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+        }
+
+        .challenge-highlight {
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1.125rem;
+            border-left: 3px solid var(--accent);
+            padding-left: 1.25rem;
+        }
+
+        .challenge-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pain-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            max-width: 480px;
+            justify-content: center;
+        }
+
+        .pain-tag {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.625rem 1rem;
+            border-radius: 100px;
+            font-size: 0.8125rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .pain-tag:hover {
+            background: rgba(255, 82, 82, 0.15);
+            border-color: rgba(255, 82, 82, 0.4);
+            color: #ff8a8a;
+            transform: scale(1.05);
+        }
+
+        .pain-tag.pain-lg {
+            font-size: 0.9375rem;
+            padding: 0.75rem 1.25rem;
+            background: rgba(255, 82, 82, 0.1);
+            border-color: rgba(255, 82, 82, 0.25);
+            color: #ff9a9a;
+        }
+
+        .pain-tag.pain-md {
+            font-size: 0.875rem;
+        }
+
+        .pain-tag.pain-sm {
+            font-size: 0.75rem;
+            padding: 0.5rem 0.875rem;
+            opacity: 0.85;
+        }
+
+        /* How It Works - IMPROVED */
+        .how-it-works {
+            padding: 6rem 1.5rem;
+            background: var(--white);
+        }
+
+        .how-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .how-header {
+            max-width: 700px;
+            margin-bottom: 4rem;
+        }
+
+        .how-header h2 {
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            margin-bottom: 1rem;
+        }
+
+        .how-description {
+            font-size: 1.125rem;
+            color: var(--gray-400);
+            line-height: 1.75;
+        }
+
+        .process-timeline {
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 40px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gray-100);
+        }
+
+        .process-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .process-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .process-number-wrapper {
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-number {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Sora', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            box-shadow: 0 8px 24px rgba(55, 83, 229, 0.2);
+        }
+
+        .process-content {
+            flex: 1;
+            padding-top: 0.5rem;
+        }
+
+        .process-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .process-content p {
+            font-size: 1rem;
+            color: var(--gray-400);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .process-output {
+            background: var(--off-white);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.25rem;
+            border-radius: 4px;
+        }
+
+        .process-output-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-output-text {
+            font-size: 0.9375rem;
+            color: var(--deep);
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        /* Services Section - IMPROVED */
+        .services {
+            padding: 6rem 1.5rem;
+            background: var(--off-white);
+        }
+
+        .services-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-header {
+            max-width: 700px;
+            margin-bottom: 4rem;
+        }
+
+        .services-header h2 {
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            margin-bottom: 1rem;
+        }
+
+        .services-description {
+            font-size: 1.125rem;
+            color: var(--gray-400);
+            line-height: 1.75;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .service-package {
+            background: var(--white);
+            border: 1px solid var(--gray-100);
+            border-radius: 8px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-package:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(18, 27, 96, 0.1);
+            border-color: var(--primary);
+        }
+
+        .service-number {
+            font-family: 'Sora', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gray-100);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .service-package h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-package-desc {
+            font-size: 0.9375rem;
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .service-features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .service-features-list li {
+            padding: 0.625rem 0;
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.625rem;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .service-features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .service-features-list li::before {
+            content: '→';
+            color: var(--primary);
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .service-price {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--deep);
+            margin-bottom: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .service-price-note {
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            margin-top: 0.25rem;
+            font-weight: 400;
+        }
+
+        .btn-small {
+            padding: 0.75rem 1.25rem;
+            font-size: 0.875rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Results Section - IMPROVED HIERARCHY */
+        .results {
+            padding: 6rem 1.5rem;
+            background: var(--gradient-dark);
+            color: var(--white);
+        }
+
+        .results-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .results-header {
+            max-width: 800px;
+            margin-bottom: 4rem;
+        }
+
+        .results-header .section-label {
+            color: var(--accent);
+        }
+
+        .results-header h2 {
+            color: var(--white);
+            font-size: clamp(2rem, 5vw, 3.25rem);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .results-description {
+            font-size: 1.1875rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.75;
+        }
+
+        /* Stats - Bigger and bolder */
+        .results-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 5rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .result-stat {
+            text-align: center;
+        }
+
+        .result-stat-value {
+            font-family: 'Sora', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .result-stat-label {
+            font-size: 1.125rem;
+            color: var(--white);
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .result-stat-context {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-style: italic;
+        }
+
+        /* Case studies section header */
+        .case-studies-header {
+            margin-bottom: 3rem;
+        }
+
+        .case-studies-header h3 {
+            font-size: 1.75rem;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+
+        .case-studies-header p {
+            font-size: 1.0625rem;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.7;
+        }
+
+        .case-studies {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .case-study {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 2.5rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .case-study:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .case-industry {
+            font-size: 0.8125rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .case-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .case-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .case-section h4 {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .case-section p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.7;
+        }
+
+        .case-result p {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.0625rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 1.5rem;
+            background: var(--white);
+        }
+
+        .cta-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cta-header {
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
+        .cta-header h2 {
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            margin-bottom: 1rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.125rem;
+            color: var(--gray-400);
+            line-height: 1.75;
+        }
+
+        .cta-form-wrapper {
+            background: var(--off-white);
+            border: 1px solid var(--gray-100);
+            border-radius: 8px;
+            padding: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .form-field {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-field label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--deep);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-field input,
+        .form-field textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--gray-600);
+            background: var(--white);
+            transition: all 0.2s;
+        }
+
+        .form-field input:focus,
+        .form-field textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(55, 83, 229, 0.1);
+        }
+
+        .form-field textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-field-full {
+            grid-column: 1 / -1;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--deep);
+            color: var(--white);
+            padding: 1rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-submit:hover,
+        .btn-submit:focus {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(55, 83, 229, 0.25);
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        .form-success {
+            display: none;
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid var(--accent);
+            color: var(--deep);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        .cta-note {
+            font-size: 0.875rem;
+            color: var(--gray-400);
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .cta-contact {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.9375rem;
+            color: var(--gray-400);
+        }
+
+        .cta-contact a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .cta-contact a:hover,
+        .cta-contact a:focus {
+            text-decoration: underline;
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            padding: 4rem 1.5rem 2rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-brand h3 {
+            font-family: 'Sora', sans-serif;
+            color: var(--white);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        .footer-col h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover,
+        .footer-col a:focus {
+            color: var(--white);
+            outline: 2px solid var(--white);
+            outline-offset: 2px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.875rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .challenge-layout {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .challenge-content {
+                max-width: 600px;
+            }
+
+            .challenge-highlight {
+                border-left: none;
+                padding-left: 0;
+                border-top: 3px solid var(--accent);
+                padding-top: 1rem;
+                display: inline-block;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-stats {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .case-studies {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .process-item {
+                gap: 1.5rem;
+            }
+
+            .process-number {
+                width: 64px;
+                height: 64px;
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .mobile-cta-sticky {
+                display: block;
+            }
+
+            /* HERO MOBILE - Much shorter */
+            .hero {
+                padding: 6rem 1.25rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .hero-text {
+                font-size: 1rem;
+                margin-bottom: 1.25rem;
+            }
+
+            /* Hide automation list and stats on mobile */
+            .hero-automation-list {
+                display: none;
+            }
+
+            .hero-stats {
+                display: none;
+            }
+
+            .hero-actions {
+                width: 100%;
+                margin-bottom: 2rem;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* CHALLENGE MOBILE - Shorter */
+            .challenge {
+                padding: 4rem 1.25rem;
+            }
+
+            .challenge h2 {
+                font-size: 1.75rem;
+            }
+
+            /* Hide challenge-lead on mobile */
+            .challenge-lead {
+                display: none;
+            }
+
+            /* Compact challenge-highlight on mobile */
+            .challenge-highlight {
+                font-size: 1rem;
+                padding-left: 1rem;
+                border-left-width: 2px;
+                margin-top: 1.5rem;
+            }
+
+            /* Pain cloud smaller on mobile */
+            .pain-cloud {
+                max-width: 100%;
+            }
+
+            .pain-tag {
+                font-size: 0.75rem;
+                padding: 0.5rem 0.875rem;
+            }
+
+            .pain-tag.pain-lg {
+                font-size: 0.8125rem;
+                padding: 0.625rem 1rem;
+            }
+
+            .pain-tag.pain-md {
+                font-size: 0.75rem;
+            }
+
+            /* HOW IT WORKS MOBILE */
+            .how-it-works {
+                padding: 4rem 1.25rem;
+            }
+
+            .how-header {
+                margin-bottom: 3rem;
+            }
+
+            .how-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .how-description {
+                font-size: 1rem;
+            }
+
+            .process-timeline::before {
+                left: 16px;
+            }
+
+            .process-item {
+                gap: 1.25rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .process-number {
+                width: 48px;
+                height: 48px;
+                font-size: 1.25rem;
+            }
+
+            .process-content h3 {
+                font-size: 1.25rem;
+            }
+
+            .process-content p {
+                font-size: 0.9375rem;
+            }
+
+            /* Simple "What you get" - no box, just text */
+            .process-output {
+                background: transparent;
+                border: none;
+                padding: 0;
+                margin-top: 0.75rem;
+            }
+
+            .process-output-label {
+                font-size: 0.75rem;
+                color: var(--primary);
+                margin-bottom: 0.25rem;
+            }
+
+            .process-output-text {
+                font-size: 0.875rem;
+                line-height: 1.5;
+                color: var(--gray-600);
+                font-weight: 500;
+            }
+
+            /* SERVICES MOBILE - Show only 2 services */
+            .services {
+                padding: 4rem 1.25rem;
+            }
+
+            .services-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .services-description {
+                font-size: 1rem;
+            }
+
+            /* Compact services - 1 column, hide features list */
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+
+            .service-package {
+                padding: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .service-number {
+                font-size: 1.5rem;
+                margin-bottom: 0;
+            }
+
+            .service-package h3 {
+                font-size: 1.25rem;
+                margin-bottom: 0;
+            }
+
+            .service-package-desc {
+                font-size: 0.875rem;
+                margin-bottom: 0;
+            }
+
+            /* Hide features list on mobile to reduce clutter */
+            .service-features-list {
+                display: none;
+            }
+
+            .btn-small {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.875rem;
+            }
+
+            /* RESULTS MOBILE */
+            .results {
+                padding: 4rem 1.25rem;
+            }
+
+            .results-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .results-description {
+                font-size: 1rem;
+            }
+
+            .results-stats {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin-bottom: 3rem;
+                padding-bottom: 3rem;
+            }
+
+            .result-stat-value {
+                font-size: 3rem;
+            }
+
+            .result-stat-label {
+                font-size: 1rem;
+            }
+
+            /* Show 1 case study compactly on mobile */
+            .case-studies-header h3 {
+                font-size: 1.375rem;
+            }
+
+            .case-studies-header p {
+                font-size: 0.9375rem;
+            }
+
+            .case-studies {
+                grid-template-columns: 1fr;
+            }
+
+            /* Hide second case study only */
+            .case-study:nth-child(2) {
+                display: none;
+            }
+
+            .case-study {
+                padding: 2rem;
+            }
+
+            .case-industry {
+                font-size: 0.75rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .case-section {
+                margin-bottom: 1.25rem;
+            }
+
+            .case-section h4 {
+                font-size: 0.8125rem;
+            }
+
+            .case-section p {
+                font-size: 0.9375rem;
+            }
+
+            .case-result p {
+                font-size: 1rem;
+            }
+
+            /* CTA MOBILE - Simpler form */
+            .cta {
+                padding: 4rem 1.25rem;
+            }
+
+            .cta-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .cta-subtitle {
+                font-size: 1rem;
+            }
+
+            .cta-form-wrapper {
+                padding: 2rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                padding: 3rem 1.25rem 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 5.5rem 1rem 2.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .stat-value {
+                font-size: 1.5rem;
+            }
+
+            .challenge {
+                padding: 3rem 1rem;
+            }
+
+            .how-it-works,
+            .services,
+            .results,
+            .cta {
+                padding: 3rem 1rem;
+            }
+
+            .process-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .service-package {
+                padding: 1.5rem;
+            }
+
+            .result-stat-value {
+                font-size: 2.5rem;
+            }
+
+            .cta-form-wrapper {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+    <nav id="nav">
+        <div class="nav-inner">
+            <a href="#" class="logo">
+                <span class="logo-mark">A</span>
+                Alma Intel
+            </a>
+            <div class="nav-links">
+                <a href="#how">How It Works</a>
+                <a href="#services">Services</a>
+                <a href="#results">Results</a>
+                <a href="#contact" class="nav-cta">Book a Free Audit</a>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#how">How It Works</a>
+            <a href="#services">Services</a>
+            <a href="#results">Results</a>
+            <a href="#contact">Book a Free Audit</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="main-content">
+        <div class="hero-inner">
+            <span class="hero-badge">For SME Leaders</span>
+
+            <!-- Desktop H1 -->
+            <h1 class="desktop-text">Turn Operational Chaos Into <span>Competitive Advantage</span></h1>
+
+            <!-- Mobile H1 -->
+            <h1 class="mobile-short">Turn Chaos Into <span>Advantage</span></h1>
+
+            <!-- Desktop text -->
+            <p class="hero-text desktop-text">We automate the workflows that drain your team's time—within the tools you already use (CRM, accounting software, spreadsheets, email). No platform overhauls. No massive IT projects.</p>
+
+            <!-- Mobile text -->
+            <p class="hero-text mobile-short">We automate repetitive tasks within your existing tools. No platform changes.</p>
+
+            <ul class="hero-automation-list">
+                <li><strong>Invoice tracking & collections:</strong> Auto-follow-ups, payment reminders, reconciliation</li>
+                <li><strong>Lead handoff & nurturing:</strong> CRM updates, task assignment, email sequences</li>
+                <li><strong>Reporting & dashboards:</strong> Real-time data sync, auto-generated reports</li>
+                <li><strong>System synchronization:</strong> Keep CRM, accounting, and operations tools in sync</li>
+                <li><strong>Data cleanup & enrichment:</strong> Dedupe contacts, standardize fields, append missing info</li>
+            </ul>
+
+            <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary">
+                    Book a Free Audit
+                    <span class="btn-arrow">→</span>
+                </a>
+                <p class="hero-microcopy">No pitch. You'll leave with a prioritized ROI roadmap.</p>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-value">30-60%</div>
+                    <div class="stat-label">Cost reduction in 6 months</div>
+                    <div class="stat-context">Average across 12 projects (2025)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">3-6×</div>
+                    <div class="stat-label">First-year ROI</div>
+                    <div class="stat-context">Median return on automation investment</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">97%</div>
+                    <div class="stat-label">Client satisfaction rate</div>
+                    <div class="stat-context">Based on post-project surveys (n=15)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="challenge">
+        <div class="challenge-inner">
+            <div class="challenge-layout">
+                <div class="challenge-content">
+                    <span class="section-label">The Reality</span>
+                    <h2>You already know where the problems are</h2>
+
+                    <!-- Desktop - full paragraph -->
+                    <p class="challenge-lead desktop-text">Invoices get lost in inboxes. Leads sit uncontacted for days. Sales data lives in one system, accounting in another. Reports are rebuilt manually every week, already out of date by the time they're done.</p>
+
+                    <!-- Mobile - short version -->
+                    <p class="challenge-lead mobile-short">Invoices get lost. Leads slip through. Reports are rebuilt manually every week.</p>
+
+                    <p class="challenge-highlight">The problem isn't your team. It's the messy handoffs between systems, and the manual work that fills the gaps.</p>
+                </div>
+                <div class="challenge-visual">
+                    <div class="pain-cloud">
+                        <span class="pain-tag pain-lg">"Where's that invoice?"</span>
+                        <span class="pain-tag pain-md">Manual data entry</span>
+                        <span class="pain-tag pain-sm">Lead tracking gaps</span>
+                        <span class="pain-tag pain-md">Scattered spreadsheets</span>
+                        <span class="pain-tag pain-lg">Missed follow-ups</span>
+                        <span class="pain-tag pain-sm">"Check your email"</span>
+                        <span class="pain-tag pain-md">Accounting chaos</span>
+                        <span class="pain-tag pain-sm">Lost opportunities</span>
+                        <span class="pain-tag pain-md">Report rebuilding</span>
+                        <span class="pain-tag pain-lg">CRM not updated</span>
+                        <span class="pain-tag pain-sm">Integration failures</span>
+                        <span class="pain-tag pain-md">"I forgot to log it"</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS - IMPROVED DESIGN -->
+    <section class="how-it-works" id="how">
+        <div class="how-inner">
+            <div class="how-header">
+                <span class="section-label">Our Methodology</span>
+                <h2>We don't sell tech. We automate the messy handoffs.</h2>
+                <p class="how-description">Every engagement follows the same four phases. Each one produces something tangible—not slides, but working systems.</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-item">
+                    <div class="process-number-wrapper">
+                        <div class="process-number">1</div>
+                    </div>
+                    <div class="process-content">
+                        <h3>Audit</h3>
+
+                        <!-- Desktop description -->
+                        <p class="desktop-text">We map your workflows, identify bottlenecks, and calculate the real cost of manual work. No vague promises—just hard numbers.</p>
+
+                        <!-- Mobile description -->
+                        <p class="mobile-short">We map workflows and calculate the real cost of manual work.</p>
+
+                        <div class="process-output">
+                            <div class="process-output-label">What you get:</div>
+                            <div class="process-output-text">Process map with quick wins + ROI model showing projected savings</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="process-item">
+                    <div class="process-number-wrapper">
+                        <div class="process-number">2</div>
+                    </div>
+                    <div class="process-content">
+                        <h3>Design</h3>
+
+                        <!-- Desktop description -->
+                        <p class="desktop-text">We architect solutions that layer into your existing tools. No rip-and-replace. Just intelligent automation that fits your stack.</p>
+
+                        <!-- Mobile description -->
+                        <p class="mobile-short">Solutions that layer into your existing tools. No rip-and-replace.</p>
+
+                        <div class="process-output">
+                            <div class="process-output-label">What you get:</div>
+                            <div class="process-output-text">Automation blueprint + fixed-scope roadmap with timeline</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="process-item">
+                    <div class="process-number-wrapper">
+                        <div class="process-number">3</div>
+                    </div>
+                    <div class="process-content">
+                        <h3>Build</h3>
+
+                        <!-- Desktop description -->
+                        <p class="desktop-text">We build 2-4 automations in a staging environment. You review and approve before anything goes live.</p>
+
+                        <!-- Mobile description -->
+                        <p class="mobile-short">We build automations in staging. You approve before launch.</p>
+
+                        <div class="process-output">
+                            <div class="process-output-label">What you get:</div>
+                            <div class="process-output-text">Working automations + live operational dashboard + documentation</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="process-item">
+                    <div class="process-number-wrapper">
+                        <div class="process-number">4</div>
+                    </div>
+                    <div class="process-content">
+                        <h3>Evolve</h3>
+
+                        <!-- Desktop description -->
+                        <p class="desktop-text">Weekly check-ins, visible backlog, and continuous optimization. Your systems get smarter over time.</p>
+
+                        <!-- Mobile description -->
+                        <p class="mobile-short">Weekly check-ins and continuous optimization.</p>
+
+                        <div class="process-output">
+                            <div class="process-output-label">What you get:</div>
+                            <div class="process-output-text">Performance reports + system improvements + team training</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES - IMPROVED WITH 4 PACKAGES -->
+    <section class="services" id="services">
+        <div class="services-inner">
+            <div class="services-header">
+                <span class="section-label">Services</span>
+                <h2>Choose your starting point</h2>
+                <p class="services-description">Four engagement models, each designed for a different stage of operational maturity. Start where you are.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Package 1 - Discovery (show on mobile) -->
+                <div class="service-package">
+                    <div class="service-number">01</div>
+                    <h3>Discovery & Diagnosis</h3>
+
+                    <!-- Desktop description -->
+                    <p class="service-package-desc desktop-text">Deep analysis of your current processes to identify the biggest automation opportunities and calculate ROI.</p>
+
+                    <!-- Mobile description -->
+                    <p class="service-package-desc mobile-short">Analysis to identify automation opportunities and calculate ROI.</p>
+
+                    <ul class="service-features-list">
+                        <li>Process mapping workshop</li>
+                        <li>Bottleneck identification</li>
+                        <li>ROI model with projections</li>
+                        <li>Quick wins prioritization</li>
+                        <li>Automation roadmap</li>
+                        <li>2-week engagement</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary btn-small">Start with Audit</a>
+                </div>
+
+                <!-- Package 2 - Tactical (show on mobile) -->
+                <div class="service-package">
+                    <div class="service-number">02</div>
+                    <h3>Tactical Implementation</h3>
+
+                    <!-- Desktop description -->
+                    <p class="service-package-desc desktop-text">Specific automation solutions with immediate impact. Systems that work from day one.</p>
+
+                    <!-- Mobile description -->
+                    <p class="service-package-desc mobile-short">Automation solutions with immediate impact.</p>
+
+                    <ul class="service-features-list">
+                        <li>2-3 workflow automations</li>
+                        <li>CRM/ERP integrations</li>
+                        <li>Reporting dashboard</li>
+                        <li>Team training session</li>
+                        <li>30-day support included</li>
+                        <li>4-6 week implementation</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary btn-small">Get Started</a>
+                </div>
+
+                <!-- Package 3 - Full Transformation (hide on mobile) -->
+                <div class="service-package">
+                    <div class="service-number">03</div>
+                    <h3>Full Transformation</h3>
+                    <p class="service-package-desc">Complete operations redesign with AI and automation for the next level of efficiency.</p>
+                    <ul class="service-features-list">
+                        <li>Full process audit + redesign</li>
+                        <li>5+ custom automations</li>
+                        <li>AI decision support tools</li>
+                        <li>Real-time dashboards</li>
+                        <li>Documentation + training</li>
+                        <li>90-day optimization period</li>
+                        <li>12-16 week transformation</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary btn-small">Discuss Project</a>
+                </div>
+
+                <!-- Package 4 - Ongoing Support (hide on mobile) -->
+                <div class="service-package">
+                    <div class="service-number">04</div>
+                    <h3>Ongoing Support</h3>
+                    <p class="service-package-desc">Maintenance, optimization, and continuous evolution. Your external tech team.</p>
+                    <ul class="service-features-list">
+                        <li>Weekly check-ins</li>
+                        <li>System monitoring & optimization</li>
+                        <li>New automation builds</li>
+                        <li>Priority support</li>
+                        <li>Quarterly strategy sessions</li>
+                        <li>Monthly retainer basis</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary btn-small">Schedule Call</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTS - IMPROVED HIERARCHY -->
+    <section class="results" id="results">
+        <div class="results-inner">
+            <div class="results-header">
+                <span class="section-label">Real Numbers</span>
+                <h2>What clients achieve (with evidence)</h2>
+                <p class="results-description">We track hours saved, costs eliminated, and revenue unlocked. Here are the averages—and two specific examples.</p>
+            </div>
+
+            <div class="results-stats">
+                <div class="result-stat">
+                    <div class="result-stat-value">30-60%</div>
+                    <div class="result-stat-label">Reduction in operational costs</div>
+                    <div class="result-stat-context">Average across 12 projects (2025)</div>
+                </div>
+                <div class="result-stat">
+                    <div class="result-stat-value">580hrs</div>
+                    <div class="result-stat-label">Hours saved per month</div>
+                    <div class="result-stat-context">Median for mid-size client engagements</div>
+                </div>
+                <div class="result-stat">
+                    <div class="result-stat-value">3-6×</div>
+                    <div class="result-stat-label">First-year ROI</div>
+                    <div class="result-stat-context">Median return on automation investment</div>
+                </div>
+            </div>
+
+            <!-- Case studies - hidden on mobile -->
+            <div class="case-studies-header">
+                <h3>Real client outcomes</h3>
+                <p>Specific examples of what we've helped businesses achieve. Names anonymized, numbers verified.</p>
+            </div>
+
+            <div class="case-studies">
+                <div class="case-study">
+                    <div class="case-industry">Professional Services (15-person team)</div>
+                    <div class="case-section case-before">
+                        <h4>Before:</h4>
+                        <p>Admin team spent 20hrs/week manually tracking invoices, chasing late payments, and reconciling accounting systems.</p>
+                    </div>
+                    <div class="case-section case-what">
+                        <h4>What we did:</h4>
+                        <p>Automated invoice tracking, payment reminders, and CRM-to-QuickBooks sync. Built dashboard for overdue invoices.</p>
+                    </div>
+                    <div class="case-section case-result">
+                        <h4>Result:</h4>
+                        <p>18hrs/week saved. DSO dropped from 45 to 28 days. $12K in recovered late payments in first quarter.</p>
+                    </div>
+                </div>
+
+                <div class="case-study">
+                    <div class="case-industry">E-commerce Operations (8-person team)</div>
+                    <div class="case-section case-before">
+                        <h4>Before:</h4>
+                        <p>Sales leads from website, ads, and email lived in different systems. Sales team manually checked 3 places daily. Avg response time: 36 hours.</p>
+                    </div>
+                    <div class="case-section case-what">
+                        <h4>What we did:</h4>
+                        <p>Unified lead intake, auto-routing by territory, instant Slack alerts, CRM auto-update with lead source and score.</p>
+                    </div>
+                    <div class="case-section case-result">
+                        <h4>Result:</h4>
+                        <p>Response time down to 2 hours. Lead-to-opportunity conversion rate increased 34% in 90 days.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="contact">
+        <div class="cta-inner">
+            <div class="cta-header">
+                <span class="section-label">Next Steps</span>
+                <h2>Book a free audit</h2>
+                <p class="cta-subtitle">We'll map your current workflows, identify the biggest time and cost drains, and show you exactly how much you could save. No pitch. You'll leave with a prioritized ROI roadmap.</p>
+            </div>
+
+            <form class="cta-form-wrapper" action="https://formspree.io/f/mjkvddez" method="POST">
+                <div class="form-success" id="formSuccess">
+                    ✓ Thanks! We'll email you within 24 hours to schedule your audit.
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="company">Company *</label>
+                        <input type="text" id="company" name="company" required>
+                    </div>
+                </div>
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="phone">Phone (optional)</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                </div>
+                <div class="form-field form-field-full">
+                    <label for="challenge">What's your biggest operational pain point right now? *</label>
+                    <textarea id="challenge" name="challenge" placeholder="e.g., 'Invoices get lost, leads fall through cracks, team spends 10hrs/week on manual reports'" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Book a Free Audit</button>
+                <p class="cta-note">We'll reply within 24 hours with 2-3 time slots for a 30-minute call.</p>
+            </form>
+
+            <p class="cta-contact">Prefer email? Reach us at <a href="mailto:hello@almaintel.com">hello@almaintel.com</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Alma Intel</h3>
+                    <p>We help SME leaders eliminate operational chaos through automation and AI. Based in Miami, serving businesses across the US.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Discovery & Diagnosis</a></li>
+                        <li><a href="#services">Tactical Implementation</a></li>
+                        <li><a href="#services">Full Transformation</a></li>
+                        <li><a href="#services">Ongoing Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="mailto:hello@almaintel.com">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="mailto:hello@almaintel.com">hello@almaintel.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Alma Intel. A branch of Alma Partners.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        const form = document.querySelector('.cta-form-wrapper');
+        const formSuccess = document.getElementById('formSuccess');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    formSuccess.classList.add('show');
+                    form.reset();
+                    formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    alert('There was an issue submitting the form. Please try emailing us directly at hello@almaintel.com');
+                }
+            } catch (error) {
+                alert('There was an issue submitting the form. Please try emailing us directly at hello@almaintel.com');
+            }
+        });
+    </script>
+</body>
+
+</html>

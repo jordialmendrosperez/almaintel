@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products – Alma Intel</title>
+    <meta name="description" content="Ready-made automation tools built from real client needs. Deploy in days, see results in weeks.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #3753E5;
+            --deep: #121B60;
+            --accent: #00D4AA;
+            --white: #FFFFFF;
+            --off-white: #F7F8FC;
+            --gray-100: #E8EBF2;
+            --gray-200: #C9CED9;
+            --gray-400: #6B7280;
+            --gray-600: #374151;
+            --dark: #0B0F1A;
+            --gradient-dark: linear-gradient(135deg, #0B0F1A 0%, #121B60 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--gray-600);
+            line-height: 1.6;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            line-height: 1.15;
+            color: var(--deep);
+            letter-spacing: -0.02em;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--deep);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-mark {
+            width: 32px;
+            height: 32px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--deep);
+        }
+
+        .nav-cta {
+            background: var(--deep);
+            color: var(--white) !important;
+            padding: 0.625rem 1.25rem;
+            border-radius: 4px;
+            font-weight: 600 !important;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 10rem 1.5rem 6rem;
+            background: var(--off-white);
+        }
+
+        .hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .breadcrumb {
+            font-size: 0.875rem;
+            color: var(--gray-400);
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            line-height: 1.75;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 6rem 1.5rem;
+            background: var(--white);
+        }
+
+        .products-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 6rem;
+            padding-bottom: 6rem;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .product-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .product-item:nth-child(even) .product-info {
+            order: 2;
+        }
+
+        .product-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-info h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-tagline {
+            font-size: 1.125rem;
+            color: var(--deep);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-desc {
+            font-size: 1rem;
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .product-features li {
+            padding: 0.75rem 0;
+            font-size: 0.9375rem;
+            color: var(--gray-600);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .product-features li::before {
+            content: '→';
+            color: var(--primary);
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--deep);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(55, 83, 229, 0.25);
+        }
+
+        .product-visual {
+            background: var(--off-white);
+            border: 1px solid var(--gray-100);
+            border-radius: 8px;
+            padding: 2rem;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .visual-placeholder {
+            text-align: center;
+            color: var(--gray-400);
+        }
+
+        .visual-placeholder svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            padding: 3rem 1.5rem 2rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-inner p {
+            font-size: 0.875rem;
+        }
+
+        .footer-inner a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 6rem 1.25rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text {
+                font-size: 1rem;
+            }
+
+            .products {
+                padding: 4rem 1.25rem;
+            }
+
+            .product-item {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin-bottom: 3rem;
+                padding-bottom: 3rem;
+            }
+
+            .product-item:nth-child(even) .product-info {
+                order: 0;
+            }
+
+            .product-tag {
+                font-size: 0.6875rem;
+                padding: 0.375rem 0.75rem;
+                margin-bottom: 1rem;
+            }
+
+            .product-info h2 {
+                font-size: 1.5rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .product-tagline {
+                font-size: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .product-desc {
+                font-size: 0.9375rem;
+                margin-bottom: 1.5rem;
+            }
+
+            /* Reduce features list on mobile - show only first 3 */
+            .product-features li:nth-child(n+4) {
+                display: none;
+            }
+
+            .product-features li {
+                padding: 0.5rem 0;
+                font-size: 0.8125rem;
+            }
+
+            .product-visual {
+                min-height: 250px;
+                padding: 1.5rem;
+            }
+
+            .visual-placeholder svg {
+                width: 60px;
+                height: 60px;
+            }
+
+            .visual-placeholder p {
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <span class="logo-mark">A</span>
+                Alma Intel
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#how">How It Works</a>
+                <a href="consulting.html">Consulting</a>
+                <a href="index.html#contact" class="nav-cta">Book a Free Audit</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="breadcrumb"><a href="index.html">Home</a> / Products</div>
+            <h1>Ready-Made Automation Tools</h1>
+            <p class="hero-text">Industry-specific products built from real client needs. Deploy in days, see results in weeks. No custom development required.</p>
+        </div>
+    </section>
+
+    <section class="products">
+        <div class="products-inner">
+            <!-- Product 1: Alma Signals -->
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-tag">Real Estate</span>
+                    <h2>Alma Signals</h2>
+                    <p class="product-tagline">Foreclosure intelligence for real estate professionals</p>
+                    <p class="product-desc">Early detection of foreclosure opportunities in Miami-Dade County. Our system monitors court filings, analyzes property data, and delivers high-potential leads directly to your inbox.</p>
+                    <ul class="product-features">
+                        <li>Daily automated monitoring of lis pendens filings</li>
+                        <li>AI-scored leads based on property characteristics</li>
+                        <li>Owner contact information and property history</li>
+                        <li>Market value estimates and equity calculations</li>
+                        <li>Email delivery of qualified opportunities</li>
+                    </ul>
+                    <a href="mailto:hello@almaintel.com?subject=Alma Signals Demo" class="btn btn-primary">See Demo</a>
+                </div>
+                <div class="product-visual">
+                    <div class="visual-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <path d="M3 9h18"/>
+                            <path d="M9 21V9"/>
+                        </svg>
+                        <p>Dashboard Preview</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2: Alma Voice Assistant -->
+            <div class="product-item">
+                <div class="product-info">
+                    <span class="product-tag">Operations</span>
+                    <h2>Alma Voice Assistant</h2>
+                    <p class="product-tagline">Ask your business questions in plain English</p>
+                    <p class="product-desc">Query your CRMs, ERPs, and databases using natural language. Get accurate answers instantly without building reports or hunting through dashboards.</p>
+                    <ul class="product-features">
+                        <li>Natural language queries: "Show me unpaid invoices over $5K"</li>
+                        <li>Direct integration with your data sources</li>
+                        <li>Voice and text interfaces</li>
+                        <li>Workflow triggers: "Create a task for this client"</li>
+                        <li>Works with Salesforce, HubSpot, QuickBooks, and more</li>
+                    </ul>
+                    <a href="mailto:hello@almaintel.com?subject=Voice Assistant Demo" class="btn btn-primary">Try Voice Assistant</a>
+                </div>
+                <div class="product-visual">
+                    <div class="visual-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                        <p>Voice Interface Preview</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <p>© 2025 Alma Intel. A branch of Alma Partners. | <a href="mailto:hello@almaintel.com">hello@almaintel.com</a></p>
+        </div>
+    </footer>
+</body>
+
+</html>
