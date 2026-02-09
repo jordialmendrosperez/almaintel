@@ -260,8 +260,8 @@ git push -u origin main --force
 ```
 
 ### Formspree Setup
-- Form ID: mjkvddez
-- Action: https://formspree.io/f/mjkvddez
+- Form ID: xbdalzld
+- Action: https://formspree.io/f/xbdalzld
 - Campos: name, company, email, phone (optional), challenge
 - Success message con clase `.show`
 
