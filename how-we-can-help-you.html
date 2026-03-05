@@ -541,82 +541,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 600; line-he
 }
 </style>
 </head>
-<script>
-  // ---- URL params helper ----
-  const getParam = (key, fallback = null) => {
-    const v = new URLSearchParams(window.location.search).get(key);
-    if (!v) return fallback;
-    return v.trim();
-  };
 
-  // ---- Defaults (fallbacks) ----
-  const defaults = {
-    company: "ACME Inc.",
-    industry: "your industry",
-    siteText: "almaintel.ai",
-    siteHref: "https://almaintel.ai",
-    email: "hello@almaintel.ai",
-    linkedin: "https://linkedin.com/company/almaintel",
-    cta: "#book"
-  };
-
-  // ---- Read from URL ----
-  const company = getParam("company", defaults.company);
-  const industry = getParam("industry", defaults.industry);
-
-  // site param can be "almaintel.ai" or full URL
-  const siteParam = getParam("site", defaults.siteText);
-  const siteHref = siteParam.startsWith("http") ? siteParam : `https://${siteParam}`;
-  const siteText = siteParam.replace(/^https?:\/\//, "");
-
-  const email = getParam("email", defaults.email);
-  const linkedin = getParam("linkedin", defaults.linkedin);
-  const cta = getParam("cta", defaults.cta);
-
-  // ---- Set text helpers ----
-  const setText = (id, text) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = text;
-  };
-  const setHref = (id, href, text = null) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.setAttribute("href", href);
-    if (text !== null) el.textContent = text;
-  };
-
-  // ---- Apply company everywhere ----
-  setText("companyNameTop", company);
-  setText("companyNameHero", company);
-  setText("companyNameMicro", company);
-  setText("companyNameOpps", company);
-  setText("companyNameDash", company);
-
-  // Title tag
-  const pageTitle = document.getElementById("pageTitle");
-  if (pageTitle) pageTitle.textContent = `Prepared for ${company} — Alma Intel`;
-  else document.title = `Prepared for ${company} — Alma Intel`;
-
-  // ---- Apply industry (optional) ----
-  // If you want to inject industry into the subtext in Opportunities, add an element with id="industryText" and uncomment:
-  // setText("industryText", industry);
-
-  // ---- Apply links ----
-  setHref("siteLinkTop", siteHref, siteText);
-  setHref("siteLinkFinal", siteHref, "Visit Alma Intel");
-  setHref("siteLinkFooter", siteHref, "Website");
-
-  setHref("emailLinkFooter", `mailto:${email}`, email);
-  setHref("linkedinLinkFooter", linkedin, "LinkedIn");
-
-  // CTA buttons (hero already goes to #book; you can also make it external if you want)
-  setHref("ctaBookFinal", cta);
-  setHref("ctaBookSticky", cta);
-
-  // Optional: if you also want the topbar "Book" button to go to external CTA, give it an id and set it:
-  // setHref("ctaBookTop", cta);
-
-</script>
 <body>
 
 <!-- ═══════ TOP BAR ═══════ -->
@@ -1206,7 +1131,82 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 600; line-he
     <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
   </a>
 </div>
+<script>
+  // ---- URL params helper ----
+  const getParam = (key, fallback = null) => {
+    const v = new URLSearchParams(window.location.search).get(key);
+    if (!v) return fallback;
+    return v.trim();
+  };
 
+  // ---- Defaults (fallbacks) ----
+  const defaults = {
+    company: "ACME Inc.",
+    industry: "your industry",
+    siteText: "almaintel.ai",
+    siteHref: "https://almaintel.ai",
+    email: "hello@almaintel.ai",
+    linkedin: "https://linkedin.com/company/almaintel",
+    cta: "#book"
+  };
+
+  // ---- Read from URL ----
+  const company = getParam("company", defaults.company);
+  const industry = getParam("industry", defaults.industry);
+
+  // site param can be "almaintel.ai" or full URL
+  const siteParam = getParam("site", defaults.siteText);
+  const siteHref = siteParam.startsWith("http") ? siteParam : `https://${siteParam}`;
+  const siteText = siteParam.replace(/^https?:\/\//, "");
+
+  const email = getParam("email", defaults.email);
+  const linkedin = getParam("linkedin", defaults.linkedin);
+  const cta = getParam("cta", defaults.cta);
+
+  // ---- Set text helpers ----
+  const setText = (id, text) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+  };
+  const setHref = (id, href, text = null) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.setAttribute("href", href);
+    if (text !== null) el.textContent = text;
+  };
+
+  // ---- Apply company everywhere ----
+  setText("companyNameTop", company);
+  setText("companyNameHero", company);
+  setText("companyNameMicro", company);
+  setText("companyNameOpps", company);
+  setText("companyNameDash", company);
+
+  // Title tag
+  const pageTitle = document.getElementById("pageTitle");
+  if (pageTitle) pageTitle.textContent = `Prepared for ${company} — Alma Intel`;
+  else document.title = `Prepared for ${company} — Alma Intel`;
+
+  // ---- Apply industry (optional) ----
+  // If you want to inject industry into the subtext in Opportunities, add an element with id="industryText" and uncomment:
+  // setText("industryText", industry);
+
+  // ---- Apply links ----
+  setHref("siteLinkTop", siteHref, siteText);
+  setHref("siteLinkFinal", siteHref, "Visit Alma Intel");
+  setHref("siteLinkFooter", siteHref, "Website");
+
+  setHref("emailLinkFooter", `mailto:${email}`, email);
+  setHref("linkedinLinkFooter", linkedin, "LinkedIn");
+
+  // CTA buttons (hero already goes to #book; you can also make it external if you want)
+  setHref("ctaBookFinal", cta);
+  setHref("ctaBookSticky", cta);
+
+  // Optional: if you also want the topbar "Book" button to go to external CTA, give it an id and set it:
+  // setHref("ctaBookTop", cta);
+
+</script>
 <script>
 // Sticky CTA visibility
 const stickyCta = document.getElementById('stickyCta');
