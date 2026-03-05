@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prepared for ACME Inc. — Alma Intel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --primary: #3753E5;
+  --deep: #121B60;
+  --accent: #00D4AA;
+  --white: #FFFFFF;
+  --off-white: #F7F8FC;
+  --gray-100: #E8EBF2;
+  --gray-200: #C9CED9;
+  --gray-400: #6B7280;
+  --gray-600: #374151;
+  --dark: #0B0F1A;
+  --gradient-dark: linear-gradient(135deg, #0B0F1A 0%, #121B60 100%);
+  --font-display: 'Sora', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--font-body); color: var(--gray-600); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 600; line-height: 1.15; color: var(--deep); letter-spacing: -0.02em; }
+
+/* ─── Utility ─── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+/* ─── Animations ─── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+@keyframes barGrow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+.fade-up { animation: fadeUp 0.8s var(--ease) both; }
+.fade-up-1 { animation-delay: 0.1s; }
+.fade-up-2 { animation-delay: 0.2s; }
+.fade-up-3 { animation-delay: 0.3s; }
+.fade-up-4 { animation-delay: 0.45s; }
+.fade-up-5 { animation-delay: 0.6s; }
+
+/* ─── Buttons (matching almaintel.ai) ─── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.875rem 1.5rem; background: var(--deep); color: var(--white);
+  font-family: var(--font-body); font-weight: 600; font-size: 0.9375rem;
+  border: none; border-radius: 4px; cursor: pointer; text-decoration: none;
+  transition: all 0.2s; position: relative;
+}
+.btn-primary:hover { background: var(--primary); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(55,83,229,0.25); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.8125rem 1.375rem; background: transparent; color: var(--gray-600);
+  font-family: var(--font-body); font-weight: 500; font-size: 0.9375rem;
+  border: 1px solid var(--gray-200); border-radius: 4px; cursor: pointer; text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
+
+.btn-sm { padding: 0.625rem 1.25rem; font-size: 0.8125rem; }
+
+/* ─── Top Bar ─── */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-100);
+  animation: fadeIn 0.5s var(--ease) both;
+}
+.topbar-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 56px; font-size: 0.8125rem;
+}
+.topbar-left { display: flex; align-items: center; gap: 1rem; }
+.topbar-badge {
+  display: inline-flex; align-items: center; gap: 0.375rem;
+  padding: 0.25rem 0.75rem; background: rgba(55,83,229,0.08); border: 1px solid rgba(55,83,229,0.15);
+  border-radius: 100px; font-weight: 500; color: var(--primary); font-size: 0.75rem;
+}
+.topbar-badge .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--primary); }
+.topbar-brand {
+  font-family: var(--font-display); font-weight: 700; color: var(--deep); font-size: 1.125rem;
+  display: flex; align-items: center; gap: 0.5rem; text-decoration: none;
+}
+.topbar-logo-mark {
+  width: 28px; height: 28px; border: 2px solid var(--primary); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; color: var(--primary); font-weight: 700;
+}
+.topbar-right { display: flex; align-items: center; gap: 1rem; }
+.topbar-link { color: var(--gray-400); text-decoration: none; font-size: 0.8125rem; font-weight: 500; transition: color 0.2s; }
+.topbar-link:hover { color: var(--deep); }
+.topbar-link::after { content: none; }
+
+/* ─── Hero ─── */
+.hero {
+  padding: 8rem 0 5rem; background: var(--off-white); position: relative; overflow: hidden;
+  min-height: 85vh; display: flex; align-items: center;
+}
+.hero::before {
+  content: ''; position: absolute; top: -50%; right: -20%;
+  width: 80%; height: 200%;
+  background: radial-gradient(ellipse at center, rgba(55,83,229,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.hero-content { position: relative; z-index: 2; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(55,83,229,0.08); border: 1px solid rgba(55,83,229,0.15);
+  padding: 0.5rem 1rem; border-radius: 100px;
+  font-size: 0.8125rem; font-weight: 500; color: var(--primary); margin-bottom: 1.5rem;
+}
+.eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--primary); border-radius: 50%; }
+.eyebrow-line { display: none; }
+
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: 1.5rem;
+}
+.hero h1 em { font-style: normal; color: var(--primary); }
+.hero-sub {
+  font-size: 1.125rem; color: var(--gray-600); line-height: 1.75; max-width: 500px; margin-bottom: 2rem;
+}
+.hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.hero-micro { font-size: 0.875rem; color: var(--gray-400); font-style: italic; }
+
+/* Hero visual */
+.hero-visual { position: relative; z-index: 1; }
+.hv-stack { position: relative; }
+
+.hv-card {
+  background: var(--white); border: 1px solid var(--gray-100); border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(18,27,96,0.06);
+  padding: 1.25rem; position: relative;
+}
+.hv-card + .hv-card { margin-top: 1rem; }
+
+.hv-card-label {
+  font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--gray-400); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.hv-card-label .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+
+/* Mini bar chart */
+.mini-bars { display: flex; align-items: flex-end; gap: 4px; height: 48px; }
+.mini-bar {
+  width: 14px; border-radius: 3px 3px 0 0; background: var(--primary); opacity: 0.8;
+  transform-origin: bottom; animation: barGrow 0.6s var(--ease) both;
+}
+.mini-bar:nth-child(1) { height: 60%; animation-delay: 0.4s; }
+.mini-bar:nth-child(2) { height: 40%; animation-delay: 0.5s; }
+.mini-bar:nth-child(3) { height: 80%; animation-delay: 0.55s; }
+.mini-bar:nth-child(4) { height: 55%; animation-delay: 0.6s; }
+.mini-bar:nth-child(5) { height: 95%; animation-delay: 0.65s; background: var(--accent); }
+.mini-bar:nth-child(6) { height: 70%; animation-delay: 0.7s; }
+.mini-bar:nth-child(7) { height: 85%; animation-delay: 0.75s; }
+
+.hv-metric-row { display: flex; gap: 1rem; margin-top: 0.75rem; }
+.hv-metric { flex: 1; padding: 0.625rem 0.75rem; background: var(--off-white); border-radius: 4px; }
+.hv-metric-val { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--deep); }
+.hv-metric-lbl { font-size: 0.6875rem; color: var(--gray-400); margin-top: 2px; }
+
+/* Flow card */
+.hv-flow { display: flex; align-items: center; gap: 0.375rem; flex-wrap: wrap; }
+.hv-flow-node {
+  padding: 0.375rem 0.75rem; border-radius: 4px; font-size: 0.6875rem; font-weight: 600;
+  border: 1px solid var(--gray-100); color: var(--gray-600); background: var(--white); white-space: nowrap;
+}
+.hv-flow-node.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
+.hv-flow-arrow { color: var(--gray-200); font-size: 0.75rem; }
+
+/* Alert card */
+.hv-alert {
+  display: flex; align-items: center; gap: 0.625rem; padding: 0.625rem 0.875rem;
+  background: rgba(245,166,35,0.06); border: 1px solid rgba(245,166,35,0.15); border-radius: 4px; margin-top: 0.75rem;
+}
+.hv-alert-icon { width: 20px; height: 20px; border-radius: 50%; background: #F5A623; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6875rem; font-weight: 700; flex-shrink: 0; }
+.hv-alert-text { font-size: 0.75rem; color: var(--gray-600); }
+.hv-alert-text strong { color: var(--deep); }
+
+/* ─── Section base ─── */
+.section { padding: 6rem 0; }
+.section-label {
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--primary); margin-bottom: 1rem; display: block;
+}
+.section-title {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  margin-bottom: 1rem;
+}
+.section-sub { font-size: 1.125rem; color: var(--gray-400); max-width: 600px; line-height: 1.75; }
+
+/* ─── What This Is ─── */
+.what-section { background: var(--white); border-top: 1px solid var(--gray-100); border-bottom: none; }
+.what-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
+.what-col h3 {
+  font-family: var(--font-display); font-size: 1.125rem; font-weight: 600;
+  color: var(--deep); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.625rem;
+}
+.what-col h3 .icon-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+.what-col:first-child h3 .icon-dot { background: var(--gray-200); }
+.what-col:last-child h3 .icon-dot { background: var(--primary); }
+
+.what-list { list-style: none; }
+.what-list li {
+  padding: 0.625rem 0; font-size: 0.9375rem; color: var(--gray-600); line-height: 1.55;
+  border-bottom: 1px solid var(--gray-100); display: flex; align-items: baseline; gap: 0.625rem;
+}
+.what-list li:last-child { border-bottom: none; }
+.what-list li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; margin-top: 8px; }
+.what-col:first-child .what-list li::before { background: var(--gray-200); }
+.what-col:last-child .what-list li::before { background: var(--primary); }
+
+.standout {
+  margin-top: 3rem; padding: 2rem 2.5rem;
+  background: var(--deep); border-radius: 8px; color: var(--white);
+  font-family: var(--font-display); font-size: 1.375rem; font-weight: 600;
+  line-height: 1.4; text-align: center; letter-spacing: -0.01em;
+}
+.standout em { color: var(--accent); font-style: normal; }
+
+/* ─── Before/After ─── */
+.ba-section { background: var(--off-white); }
+.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+
+.ba-card { border-radius: 8px; padding: 2.5rem 2rem; position: relative; overflow: hidden; }
+.ba-card.before { background: var(--white); border: 1px solid var(--gray-100); }
+.ba-card.after {
+  background: var(--gradient-dark); color: var(--white);
+}
+.ba-card.after .ba-tag { background: rgba(0,212,170,0.15); color: var(--accent); }
+.ba-card.after .ba-item { border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); }
+.ba-card.after .ba-item svg { color: var(--accent); }
+
+.ba-tag {
+  display: inline-flex; padding: 0.3125rem 0.75rem; border-radius: 100px; font-size: 0.6875rem;
+  font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1.5rem;
+}
+.ba-card.before .ba-tag { background: rgba(255,82,82,0.08); color: #E8564F; }
+.ba-items { list-style: none; }
+.ba-item {
+  padding: 0.75rem 0; border-bottom: 1px solid var(--gray-100); font-size: 0.9375rem;
+  display: flex; align-items: center; gap: 0.75rem; color: var(--gray-600);
+}
+.ba-item:last-child { border-bottom: none; }
+.ba-item svg { width: 16px; height: 16px; flex-shrink: 0; }
+.ba-card.before .ba-item svg { color: #E8564F; }
+
+/* Flow diagram - enhanced */
+.flow-diagram {
+  margin-top: 3rem; padding: 2.5rem; background: var(--white); border-radius: 8px;
+  border: 1px solid var(--gray-100);
+}
+.flow-diagram-title { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--deep); text-align: center; margin-bottom: 0.5rem; }
+.flow-diagram-sub { font-size: 0.8125rem; color: var(--gray-400); text-align: center; margin-bottom: 2rem; }
+
+.flow-lanes {
+  display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 0; align-items: stretch;
+}
+.flow-lane {
+  padding: 1.5rem; border-radius: 8px; position: relative;
+}
+.flow-lane-chaos { background: rgba(232,86,79,0.04); border: 1px solid rgba(232,86,79,0.12); }
+.flow-lane-alma { background: rgba(55,83,229,0.04); border: 1px solid rgba(55,83,229,0.12); }
+.flow-lane-outcome { background: rgba(0,212,170,0.04); border: 1px solid rgba(0,212,170,0.12); }
+
+.flow-lane-header {
+  font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+  margin-bottom: 1rem; display: flex; align-items: center; gap: 0.375rem;
+}
+.flow-lane-chaos .flow-lane-header { color: #E8564F; }
+.flow-lane-alma .flow-lane-header { color: var(--primary); }
+.flow-lane-outcome .flow-lane-header { color: var(--accent); }
+
+.flow-lane-header .lane-dot { width: 6px; height: 6px; border-radius: 50%; }
+.flow-lane-chaos .lane-dot { background: #E8564F; }
+.flow-lane-alma .lane-dot { background: var(--primary); }
+.flow-lane-outcome .lane-dot { background: var(--accent); }
+
+.flow-lane-items { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.flow-lane-item {
+  font-size: 0.8125rem; color: var(--gray-600); padding: 0.5rem 0.75rem;
+  background: var(--white); border-radius: 4px; border: 1px solid var(--gray-100);
+  display: flex; align-items: center; gap: 0.5rem; line-height: 1.4;
+}
+.flow-lane-item .item-icon { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 14px; height: 14px; }
+.flow-lane-item .item-icon svg { width: 14px; height: 14px; }
+.flow-lane-chaos .flow-lane-item .item-icon svg { stroke: #E8564F; }
+.flow-lane-alma .flow-lane-item .item-icon svg { stroke: var(--primary); }
+.flow-lane-outcome .flow-lane-item .item-icon svg { stroke: var(--accent); }
+.flow-lane-chaos .flow-lane-item { border-color: rgba(232,86,79,0.1); }
+.flow-lane-alma .flow-lane-item { border-color: rgba(55,83,229,0.1); }
+.flow-lane-outcome .flow-lane-item { border-color: rgba(0,212,170,0.1); }
+
+.flow-connector {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 0.5rem; color: var(--gray-200);
+}
+.flow-connector svg { flex-shrink: 0; }
+
+@media (max-width: 768px) {
+  .flow-lanes { grid-template-columns: 1fr; gap: 0.75rem; }
+  .flow-connector { transform: rotate(90deg); padding: 0.25rem 0; }
+}
+
+/* ─── Opportunities ─── */
+.opps-section { background: var(--white); border-top: 1px solid var(--gray-100); }
+.opps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+.opp-card {
+  background: var(--white); border: 1px solid var(--gray-100); border-radius: 8px;
+  padding: 2.5rem 2rem; transition: all 0.3s; position: relative;
+}
+.opp-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(18,27,96,0.1); border-color: var(--primary); }
+.opp-num {
+  font-family: var(--font-display); font-size: 3rem; font-weight: 700;
+  color: var(--gray-100); line-height: 1; margin-bottom: 1rem;
+}
+.opp-bottleneck { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #E8564F; margin-bottom: 0.5rem; }
+.opp-title { font-size: 1.125rem; font-weight: 600; color: var(--deep); margin-bottom: 0.75rem; line-height: 1.35; }
+.opp-desc { font-size: 0.9375rem; color: var(--gray-400); line-height: 1.7; margin-bottom: 1.25rem; }
+.opp-impact {
+  display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem;
+  background: rgba(0,212,170,0.06); border-left: 3px solid var(--accent); border-radius: 4px;
+  font-size: 0.875rem; font-weight: 600; color: var(--deep);
+}
+.opp-impact svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--accent); }
+
+/* ─── Dashboard Demo ─── */
+.dash-section { background: var(--off-white); }
+.dash-container { margin-top: 3rem; }
+.dash-frame {
+  background: var(--dark); border-radius: 8px; padding: 3px; position: relative;
+  box-shadow: 0 8px 40px rgba(18,27,96,0.12);
+}
+.dash-topbar {
+  display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem;
+  background: #15171F; border-radius: 6px 6px 0 0;
+}
+.dash-dot { width: 10px; height: 10px; border-radius: 50%; }
+.dash-dot.r { background: #E8564F; }
+.dash-dot.y { background: #F5A623; }
+.dash-dot.g { background: var(--accent); }
+.dash-topbar-title { margin-left: 0.75rem; font-size: 0.75rem; color: rgba(255,255,255,0.5); font-weight: 500; }
+.dash-sample-badge {
+  margin-left: auto; padding: 0.1875rem 0.625rem; border-radius: 100px;
+  background: rgba(255,255,255,0.07); font-size: 0.625rem; font-weight: 600;
+  color: rgba(255,255,255,0.4); letter-spacing: 0.06em; text-transform: uppercase;
+}
+
+.dash-body { background: var(--off-white); padding: 1.5rem; border-radius: 0 0 6px 6px; }
+.dash-grid-top { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.25rem; }
+
+.dash-kpi { background: var(--white); border: 1px solid var(--gray-100); border-radius: 8px; padding: 1rem 1.125rem; }
+.dash-kpi-label { font-size: 0.6875rem; color: var(--gray-400); font-weight: 500; margin-bottom: 0.375rem; }
+.dash-kpi-val { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--deep); }
+.dash-kpi-change { font-size: 0.6875rem; font-weight: 600; margin-top: 0.25rem; }
+.dash-kpi-change.up { color: var(--accent); }
+.dash-kpi-change.down { color: #E8564F; }
+
+.dash-grid-mid { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
+.dash-chart-card { background: var(--white); border: 1px solid var(--gray-100); border-radius: 8px; padding: 1.25rem; }
+.dash-chart-title { font-size: 0.75rem; font-weight: 600; color: var(--gray-600); margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between; }
+.dash-chart-badge { font-size: 0.625rem; padding: 0.125rem 0.5rem; background: var(--off-white); border-radius: 4px; color: var(--gray-400); font-weight: 500; }
+
+/* SVG Charts */
+.chart-area { width: 100%; }
+
+/* Pipeline */
+.pipeline-bars { display: flex; flex-direction: column; gap: 0.5rem; }
+.pipe-row { display: flex; align-items: center; gap: 0.625rem; }
+.pipe-label { font-size: 0.6875rem; color: var(--gray-400); width: 80px; text-align: right; flex-shrink: 0; }
+.pipe-bar-bg { flex: 1; height: 20px; background: var(--off-white); border-radius: 4px; overflow: hidden; }
+.pipe-bar { height: 100%; border-radius: 4px; }
+.pipe-val { font-size: 0.6875rem; color: var(--gray-600); font-weight: 600; width: 36px; flex-shrink: 0; }
+
+.dash-grid-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+/* Alert panel */
+.alert-panel { background: var(--white); border: 1px solid var(--gray-100); border-radius: 8px; padding: 1.25rem; }
+.alert-item {
+  display: flex; align-items: center; gap: 0.625rem; padding: 0.625rem 0;
+  border-bottom: 1px solid var(--gray-100); font-size: 0.8125rem;
+}
+.alert-item:last-child { border-bottom: none; }
+.alert-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.alert-dot.warn { background: #F5A623; }
+.alert-dot.crit { background: #E8564F; }
+.alert-dot.info { background: var(--primary); }
+.alert-item-text { color: var(--gray-600); flex: 1; }
+.alert-item-time { font-size: 0.6875rem; color: var(--gray-400); white-space: nowrap; }
+
+/* Tasks */
+.task-list { list-style: none; }
+.task-item {
+  display: flex; align-items: center; gap: 0.625rem; padding: 0.625rem 0;
+  border-bottom: 1px solid var(--gray-100); font-size: 0.8125rem; color: var(--gray-600);
+}
+.task-item:last-child { border-bottom: none; }
+.task-check { width: 16px; height: 16px; border-radius: 4px; border: 1.5px solid var(--gray-200); flex-shrink: 0; }
+.task-check.done { background: var(--accent); border-color: var(--accent); position: relative; }
+.task-check.done::after { content: '✓'; position: absolute; top: -1px; left: 2px; font-size: 0.625rem; color: white; font-weight: 700; }
+.task-priority { font-size: 0.625rem; padding: 0.125rem 0.375rem; border-radius: 4px; font-weight: 600; margin-left: auto; }
+.task-priority.high { background: rgba(232,86,79,0.08); color: #E8564F; }
+.task-priority.med { background: rgba(245,166,35,0.08); color: #F5A623; }
+
+/* ─── Process ─── */
+.process-section { background: var(--gradient-dark); color: var(--white); }
+.process-section .section-label { color: var(--accent); }
+.process-section .section-title { color: var(--white); }
+.process-section .section-sub { color: rgba(255,255,255,0.7); }
+
+.process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3.5rem; }
+.process-card {
+  padding: 2rem 1.5rem; border-radius: 8px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  position: relative; transition: all 0.3s;
+}
+.process-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-4px); }
+.process-num {
+  font-family: var(--font-display); font-size: 2.2rem; font-weight: 700;
+  color: rgba(255,255,255,0.08); line-height: 1; margin-bottom: 1.25rem;
+}
+.process-icon {
+  width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem; font-size: 1rem;
+}
+.process-card:nth-child(1) .process-icon { background: rgba(55,83,229,0.2); color: #7D92F2; }
+.process-card:nth-child(2) .process-icon { background: rgba(245,166,35,0.15); color: #F5A623; }
+.process-card:nth-child(3) .process-icon { background: rgba(0,212,170,0.15); color: var(--accent); }
+.process-card:nth-child(4) .process-icon { background: rgba(255,255,255,0.1); color: var(--white); }
+
+.process-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.625rem; color: var(--white); }
+.process-desc { font-size: 0.9375rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
+/* ─── Outcomes ─── */
+.outcomes-section { background: var(--white); }
+.outcomes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.outcome-card {
+  padding: 2rem 1.5rem; border: 1px solid var(--gray-100); border-radius: 8px;
+  transition: all 0.3s;
+}
+.outcome-card:hover { border-color: var(--primary); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(18,27,96,0.1); }
+.outcome-icon {
+  width: 40px; height: 40px; border-radius: 8px; background: rgba(55,83,229,0.06);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
+  color: var(--primary);
+}
+.outcome-icon svg { stroke: var(--primary); }
+.outcome-title { font-size: 1rem; font-weight: 600; color: var(--deep); margin-bottom: 0.375rem; }
+.outcome-desc { font-size: 0.875rem; color: var(--gray-400); line-height: 1.6; }
+
+/* ─── Final CTA ─── */
+.final-cta {
+  background: var(--gradient-dark);
+  padding: 6rem 0; text-align: center; position: relative; overflow: hidden;
+}
+.final-cta::before {
+  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(55,83,229,0.15) 0%, transparent 70%);
+}
+.final-cta .section-label { color: var(--accent); }
+.final-cta .section-title { color: var(--white); max-width: 640px; margin: 0 auto 1rem; font-size: clamp(2rem, 4vw, 2.75rem); }
+.final-cta-sub { color: rgba(255,255,255,0.7); font-size: 1.125rem; max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.75; }
+.final-cta-buttons { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2; }
+.final-cta .btn-secondary { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.15); }
+.final-cta .btn-secondary:hover { color: var(--white); border-color: rgba(255,255,255,0.4); }
+
+.final-form {
+  max-width: 500px; margin: 3rem auto 0; padding: 2rem;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px; position: relative; z-index: 2;
+}
+.final-form-title { color: rgba(255,255,255,0.5); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+.form-input {
+  width: 100%; padding: 0.875rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px; color: var(--white); font-family: var(--font-body); font-size: 1rem;
+  outline: none; transition: all 0.2s;
+}
+.form-input::placeholder { color: rgba(255,255,255,0.25); }
+.form-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(55,83,229,0.15); }
+.form-input.full { grid-column: 1 / -1; }
+.form-submit { width: 100%; margin-top: 0.25rem; }
+
+/* ─── Footer ─── */
+.footer {
+  background: var(--dark); padding: 3rem 0 2rem; border-top: none;
+}
+.footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-brand { font-family: var(--font-display); font-weight: 700; color: var(--white); font-size: 1.125rem; }
+.footer-links { display: flex; gap: 1.25rem; align-items: center; }
+.footer-links a { color: rgba(255,255,255,0.7); font-size: 0.9375rem; text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--white); }
+.footer-legal { width: 100%; text-align: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.875rem; color: rgba(255,255,255,0.5); }
+
+/* ─── Sticky CTA ─── */
+.sticky-cta {
+  position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 99;
+  opacity: 0; transform: translateY(20px); pointer-events: none;
+  transition: all 0.35s var(--ease);
+}
+.sticky-cta.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.sticky-cta .btn-primary { box-shadow: 0 8px 24px rgba(55,83,229,0.3); padding: 0.75rem 1.25rem; font-size: 0.8125rem; }
+
+/* ─── Responsive ─── */
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-visual { max-width: 500px; }
+  .dash-grid-top { grid-template-columns: repeat(2, 1fr); }
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .section { padding: 4.5rem 0; }
+  .hero { padding: 7rem 0 3.5rem; min-height: auto; }
+  .what-grid, .ba-grid, .dash-grid-mid, .dash-grid-bottom { grid-template-columns: 1fr; }
+  .opps-grid, .outcomes-grid { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: 1fr; }
+  .flow-steps { flex-direction: column; gap: 4px; }
+  .flow-arrow-connector { transform: rotate(90deg); margin-bottom: 0; }
+  .form-row { grid-template-columns: 1fr; }
+  .dash-grid-top { grid-template-columns: 1fr 1fr; }
+  .topbar-badge { display: none; }
+}
+@media (max-width: 480px) {
+  .dash-grid-top { grid-template-columns: 1fr; }
+  .hero-ctas { flex-direction: column; }
+  .hero-ctas .btn-primary, .hero-ctas .btn-secondary { width: 100%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ TOP BAR ═══════ -->
+<nav class="topbar">
+  <div class="container topbar-inner">
+    <div class="topbar-left">
+      <span class="topbar-brand"><span class="topbar-logo-mark">A</span> Alma Intel</span>
+      <span class="topbar-badge"><span class="dot"></span> Prepared for ACME Inc.</span>
+    </div>
+    <div class="topbar-right">
+      <a href="https://almaintel.com" class="topbar-link">almaintel.com</a>
+      <a href="#book" class="btn-primary btn-sm">Book a 15-min call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="eyebrow fade-up fade-up-1">
+          <span class="eyebrow-line"></span>
+          A personalized demo for your business
+        </div>
+        <h1 class="fade-up fade-up-2">Prepared for<br><em>ACME Inc.</em></h1>
+        <p class="hero-sub fade-up fade-up-3">
+          We help SMEs cut manual work, remove operational bottlenecks, and get clear visibility across sales and operations — using AI, automation, and smart system design.
+        </p>
+        <div class="hero-ctas fade-up fade-up-4">
+          <a href="#book" class="btn-primary">
+            Book a 15-min call
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </a>
+          <a href="#system" class="btn-secondary">See how it works</a>
+        </div>
+        <p class="hero-micro fade-up fade-up-5">Sample demo with illustrative data, personalized for ACME Inc.</p>
+      </div>
+
+      <div class="hero-visual fade-up fade-up-3">
+        <div class="hv-stack">
+          <!-- Card 1: Metrics -->
+          <div class="hv-card">
+            <div class="hv-card-label"><span class="live-dot"></span> Your business at a glance</div>
+            <div class="mini-bars">
+              <div class="mini-bar"></div><div class="mini-bar"></div><div class="mini-bar"></div>
+              <div class="mini-bar"></div><div class="mini-bar"></div><div class="mini-bar"></div>
+              <div class="mini-bar"></div>
+            </div>
+            <div class="hv-metric-row">
+              <div class="hv-metric"><div class="hv-metric-val">$1.2M</div><div class="hv-metric-lbl">Pipeline value</div></div>
+              <div class="hv-metric"><div class="hv-metric-val">94%</div><div class="hv-metric-lbl">Data coverage</div></div>
+              <div class="hv-metric"><div class="hv-metric-val">2.4h</div><div class="hv-metric-lbl">Avg response</div></div>
+            </div>
+          </div>
+          <!-- Card 2: Workflow -->
+          <div class="hv-card">
+            <div class="hv-card-label">How tasks flow automatically</div>
+            <div class="hv-flow">
+              <span class="hv-flow-node">Lead Source</span>
+              <span class="hv-flow-arrow">→</span>
+              <span class="hv-flow-node active">CRM Sync</span>
+              <span class="hv-flow-arrow">→</span>
+              <span class="hv-flow-node">Auto-Task</span>
+              <span class="hv-flow-arrow">→</span>
+              <span class="hv-flow-node">Dashboard</span>
+            </div>
+            <div class="hv-alert">
+              <div class="hv-alert-icon">!</div>
+              <div class="hv-alert-text"><strong>3 proposals aging over 14 days</strong> — auto-reminder sent to your team</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ WHAT THIS IS ═══════ -->
+<section class="section what-section" id="system">
+  <div class="container">
+    <div class="section-label">How it works</div>
+    <div class="section-title">What we help businesses fix — and how</div>
+    <div class="section-sub">Real problems. Clear solutions. No jargon.</div>
+
+    <div class="what-grid">
+      <div class="what-col">
+        <h3><span class="icon-dot"></span> What we help businesses fix</h3>
+        <ul class="what-list">
+          <li>Too much manual work between teams</li>
+          <li>Information spread across different tools</li>
+          <li>Slow follow-up and missed tasks</li>
+          <li>Bottlenecks that slow down sales and operations</li>
+          <li>Reports that take hours to build</li>
+        </ul>
+      </div>
+      <div class="what-col">
+        <h3><span class="icon-dot"></span> What Alma Intel does</h3>
+        <ul class="what-list">
+          <li>Connects your tools so they work together</li>
+          <li>Uses AI and automation to eliminate repetitive steps</li>
+          <li>Identifies and removes bottlenecks in your processes</li>
+          <li>Organizes your data so it's actually usable</li>
+          <li>Builds dashboards and alerts for decision-making</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="standout">
+      "We don't start with dashboards —<br>we start by <em>fixing the process.</em>"
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ BEFORE / AFTER ═══════ -->
+<section class="section ba-section">
+  <div class="container">
+    <div class="section-label">The difference</div>
+    <div class="section-title">Before and after connecting your operations</div>
+    <div class="section-sub">Most SMEs don't lack ambition — they lack systems that keep up.</div>
+
+    <div class="ba-grid">
+      <div class="ba-card before">
+        <div class="ba-tag">Before — How it usually looks</div>
+        <ul class="ba-items">
+          <li class="ba-item">
+            <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 5l6 6M11 5l-6 6" stroke="currentColor" stroke-width="1.5"/></svg>
+            Leads in spreadsheets, inboxes, and sticky notes
+          </li>
+          <li class="ba-item">
+            <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 5l6 6M11 5l-6 6" stroke="currentColor" stroke-width="1.5"/></svg>
+            Follow-ups that depend on someone remembering
+          </li>
+          <li class="ba-item">
+            <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 5l6 6M11 5l-6 6" stroke="currentColor" stroke-width="1.5"/></svg>
+            Different tools that don't talk to each other
+          </li>
+          <li class="ba-item">
+            <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 5l6 6M11 5l-6 6" stroke="currentColor" stroke-width="1.5"/></svg>
+            Reports that take hours and are outdated by the time they're done
+          </li>
+          <li class="ba-item">
+            <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 5l6 6M11 5l-6 6" stroke="currentColor" stroke-width="1.5"/></svg>
+            No clear picture of what's working and what's not
+          </li>
+          <li class="ba-item">
+            <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 5l6 6M11 5l-6 6" stroke="currentColor" stroke-width="1.5"/></svg>
+            Bottlenecks that nobody sees until they cost money
+          </li>
+        </ul>
+      </div>
+
+      <div class="ba-card after">
+        <div class="ba-tag">After — With Alma Intel</div>
+        <ul class="ba-items">
+          <li class="ba-item">
+            <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5"/></svg>
+            All your tools connected in one place
+          </li>
+          <li class="ba-item">
+            <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5"/></svg>
+            Follow-ups, reminders, and tasks happen automatically
+          </li>
+          <li class="ba-item">
+            <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5"/></svg>
+            AI handles routing, classification, and repetitive decisions
+          </li>
+          <li class="ba-item">
+            <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5"/></svg>
+            Bottlenecks flagged and resolved before they pile up
+          </li>
+          <li class="ba-item">
+            <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5"/></svg>
+            A clear view of what's happening across your business
+          </li>
+          <li class="ba-item">
+            <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5"/></svg>
+            Faster, more confident decisions
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Flow Diagram - Enhanced -->
+    <div class="flow-diagram">
+      <div class="flow-diagram-title">How your operations change</div>
+      <div class="flow-diagram-sub">From scattered and manual → to connected, automated, and visible</div>
+
+      <div class="flow-lanes">
+        <!-- Lane 1: The chaos -->
+        <div class="flow-lane flow-lane-chaos">
+          <div class="flow-lane-header"><span class="lane-dot"></span> Today's reality</div>
+          <ul class="flow-lane-items">
+            <li class="flow-lane-item"><span class="item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M2 8h20"/></svg></span> Leads in email, forms, spreadsheets</li>
+            <li class="flow-lane-item"><span class="item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span> Manual copy-paste between tools</li>
+            <li class="flow-lane-item"><span class="item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span> Slow handoffs between teams</li>
+            <li class="flow-lane-item"><span class="item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8m8 4H8m2-8H8"/></svg></span> Reports built from scratch every week</li>
+            <li class="flow-lane-item"><span class="item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r=".5"/></svg></span> No way to spot problems early</li>
+          </ul>
+        </div>
+
+        <!-- Connector -->
+        <div class="flow-connector">
+          <svg width="32" height="24" fill="none"><path d="M4 12h20m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <!-- Lane 2: What Alma Intel does -->
+        <div class="flow-lane flow-lane-alma">
+          <div class="flow-lane-header"><span class="lane-dot"></span> What we build</div>
+          <ul class="flow-lane-items">
+            <li class="flow-lane-item"><span class="item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span> Tools connected and synced</li>
+            <li class="flow-lane-item"><span class="item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span> AI + automation for repetitive steps</li>
+            <li class="flow-lane-item"><span class="item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span> Bottlenecks identified and removed</li>
+            <li class="flow-lane-item"><span class="item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span> Live dashboards and reporting</li>
+            <li class="flow-lane-item"><span class="item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span> Smart alerts when something needs attention</li>
+          </ul>
+        </div>
+
+        <!-- Connector -->
+        <div class="flow-connector">
+          <svg width="32" height="24" fill="none"><path d="M4 12h20m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <!-- Lane 3: The outcome -->
+        <div class="flow-lane flow-lane-outcome">
+          <div class="flow-lane-header"><span class="lane-dot"></span> What you get</div>
+          <ul class="flow-lane-items">
+            <li class="flow-lane-item"><span class="item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span> Less manual work for your team</li>
+            <li class="flow-lane-item"><span class="item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span> Faster response times across the board</li>
+            <li class="flow-lane-item"><span class="item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span> Smoother operations, fewer delays</li>
+            <li class="flow-lane-item"><span class="item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span> Clear numbers for better decisions</li>
+            <li class="flow-lane-item"><span class="item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span> Problems caught before they cost money</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ OPPORTUNITIES ═══════ -->
+<section class="section opps-section">
+  <div class="container">
+    <div class="section-label">Common quick wins</div>
+    <div class="section-title">What companies like ACME Inc. usually fix first</div>
+    <div class="section-sub">Based on common problems in your industry. These are the areas where teams see the fastest improvement.</div>
+
+    <div class="opps-grid">
+      <div class="opp-card">
+        <div class="opp-num">01</div>
+        <div class="opp-bottleneck">Common problem</div>
+        <div class="opp-title">Follow-up depends on someone remembering</div>
+        <div class="opp-desc">New leads sit in inboxes or spreadsheets. Nobody follows up on time, and opportunities go cold before anyone notices.</div>
+        <div class="opp-impact">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M2 14l4-5 3 2 5-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Faster follow-up, fewer missed leads
+        </div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-num">02</div>
+        <div class="opp-bottleneck">Common problem</div>
+        <div class="opp-title">Operational bottlenecks that slow everything down</div>
+        <div class="opp-desc">Handoffs between teams get stuck. Approvals take days. Tasks pile up because nobody knows who's responsible. Small delays compound into big problems.</div>
+        <div class="opp-impact">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M2 14l4-5 3 2 5-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Smoother operations, faster execution
+        </div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-num">03</div>
+        <div class="opp-bottleneck">Common problem</div>
+        <div class="opp-title">Proposals go out but nobody tracks what happens next</div>
+        <div class="opp-desc">Quotes are sent and forgotten. Aging proposals pile up with no reminders, and revenue that was nearly closed slips away.</div>
+        <div class="opp-impact">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M2 14l4-5 3 2 5-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Less revenue lost to missed follow-ups
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ DASHBOARD DEMO ═══════ -->
+<section class="section dash-section">
+  <div class="container">
+    <div class="section-label">Sample output</div>
+    <div class="section-title">What your dashboard could look like</div>
+    <div class="section-sub">Dashboards are useful when the process and data behind them are clean. That's what we build first.</div>
+
+    <div class="dash-container">
+      <div class="dash-frame">
+        <div class="dash-topbar">
+          <span class="dash-dot r"></span><span class="dash-dot y"></span><span class="dash-dot g"></span>
+          <span class="dash-topbar-title">ACME Inc. — Sales & Operations Overview</span>
+          <span class="dash-sample-badge">Sample Data</span>
+        </div>
+        <div class="dash-body">
+          <!-- KPIs -->
+          <div class="dash-grid-top">
+            <div class="dash-kpi">
+              <div class="dash-kpi-label">Monthly Revenue</div>
+              <div class="dash-kpi-val">$287K</div>
+              <div class="dash-kpi-change up">↑ 12.4% vs prior month</div>
+            </div>
+            <div class="dash-kpi">
+              <div class="dash-kpi-label">Conversion Rate</div>
+              <div class="dash-kpi-val">18.2%</div>
+              <div class="dash-kpi-change up">↑ 3.1pp vs prior month</div>
+            </div>
+            <div class="dash-kpi">
+              <div class="dash-kpi-label">Avg. Lead Response</div>
+              <div class="dash-kpi-val">2.4h</div>
+              <div class="dash-kpi-change up">↓ 68% (improved)</div>
+            </div>
+            <div class="dash-kpi">
+              <div class="dash-kpi-label">Open Follow-ups</div>
+              <div class="dash-kpi-val">14</div>
+              <div class="dash-kpi-change down">↑ 3 vs last week</div>
+            </div>
+          </div>
+
+          <!-- Charts row -->
+          <div class="dash-grid-mid">
+            <!-- Revenue Trend -->
+            <div class="dash-chart-card">
+              <div class="dash-chart-title">Revenue Trend (6 months) <span class="dash-chart-badge">Sample Data</span></div>
+              <svg viewBox="0 0 500 140" class="chart-area" style="display:block;">
+                <!-- Grid lines -->
+                <line x1="40" y1="10" x2="40" y2="120" stroke="#E8EBF2" stroke-width="0.5"/>
+                <line x1="40" y1="120" x2="490" y2="120" stroke="#E8EBF2" stroke-width="0.5"/>
+                <line x1="40" y1="82" x2="490" y2="82" stroke="#E8EBF2" stroke-width="0.5" stroke-dasharray="4"/>
+                <line x1="40" y1="44" x2="490" y2="44" stroke="#E8EBF2" stroke-width="0.5" stroke-dasharray="4"/>
+                <!-- Area -->
+                <path d="M40,100 L115,88 L190,95 L265,72 L340,58 L415,42 L490,30 L490,120 L40,120 Z" fill="url(#areaGrad)" opacity="0.3"/>
+                <!-- Line -->
+                <polyline points="40,100 115,88 190,95 265,72 340,58 415,42 490,30" fill="none" stroke="#3753E5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Dots -->
+                <circle cx="40" cy="100" r="3" fill="#3753E5"/><circle cx="115" cy="88" r="3" fill="#3753E5"/>
+                <circle cx="190" cy="95" r="3" fill="#3753E5"/><circle cx="265" cy="72" r="3" fill="#3753E5"/>
+                <circle cx="340" cy="58" r="3" fill="#3753E5"/><circle cx="415" cy="42" r="3" fill="#3753E5"/>
+                <circle cx="490" cy="30" r="4" fill="#3753E5" stroke="#fff" stroke-width="2"/>
+                <!-- Labels -->
+                <text x="40" y="135" font-size="9" fill="#6B7280" font-family="Inter, sans-serif">Oct</text>
+                <text x="115" y="135" font-size="9" fill="#6B7280" font-family="Inter, sans-serif">Nov</text>
+                <text x="190" y="135" font-size="9" fill="#6B7280" font-family="Inter, sans-serif">Dec</text>
+                <text x="265" y="135" font-size="9" fill="#6B7280" font-family="Inter, sans-serif">Jan</text>
+                <text x="340" y="135" font-size="9" fill="#6B7280" font-family="Inter, sans-serif">Feb</text>
+                <text x="415" y="135" font-size="9" fill="#6B7280" font-family="Inter, sans-serif">Mar</text>
+                <!-- Y labels -->
+                <text x="32" y="124" font-size="8" fill="#6B7280" font-family="Inter, sans-serif" text-anchor="end">$200K</text>
+                <text x="32" y="86" font-size="8" fill="#6B7280" font-family="Inter, sans-serif" text-anchor="end">$250K</text>
+                <text x="32" y="48" font-size="8" fill="#6B7280" font-family="Inter, sans-serif" text-anchor="end">$300K</text>
+                <defs>
+                  <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#3753E5" stop-opacity="0.2"/>
+                    <stop offset="100%" stop-color="#3753E5" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+
+            <!-- Pipeline Stages -->
+            <div class="dash-chart-card">
+              <div class="dash-chart-title">Pipeline Stages</div>
+              <div class="pipeline-bars">
+                <div class="pipe-row">
+                  <span class="pipe-label">New</span>
+                  <div class="pipe-bar-bg"><div class="pipe-bar" style="width:90%; background:var(--blue);"></div></div>
+                  <span class="pipe-val">42</span>
+                </div>
+                <div class="pipe-row">
+                  <span class="pipe-label">Qualified</span>
+                  <div class="pipe-bar-bg"><div class="pipe-bar" style="width:65%; background:#5A72ED;"></div></div>
+                  <span class="pipe-val">28</span>
+                </div>
+                <div class="pipe-row">
+                  <span class="pipe-label">Proposal</span>
+                  <div class="pipe-bar-bg"><div class="pipe-bar" style="width:40%; background:#7D92F2;"></div></div>
+                  <span class="pipe-val">16</span>
+                </div>
+                <div class="pipe-row">
+                  <span class="pipe-label">Negotiation</span>
+                  <div class="pipe-bar-bg"><div class="pipe-bar" style="width:22%; background:var(--accent);"></div></div>
+                  <span class="pipe-val">9</span>
+                </div>
+                <div class="pipe-row">
+                  <span class="pipe-label">Closed</span>
+                  <div class="pipe-bar-bg"><div class="pipe-bar" style="width:15%; background:#1B8A65;"></div></div>
+                  <span class="pipe-val">7</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom row -->
+          <div class="dash-grid-bottom">
+            <!-- Alerts -->
+            <div class="alert-panel">
+              <div class="dash-chart-title">Active Alerts <span class="dash-chart-badge">3 unresolved</span></div>
+              <div class="alert-item">
+                <span class="alert-dot crit"></span>
+                <span class="alert-item-text">5 proposals sent over 21 days ago — no response yet</span>
+                <span class="alert-item-time">2h ago</span>
+              </div>
+              <div class="alert-item">
+                <span class="alert-dot warn"></span>
+                <span class="alert-item-text">3 new leads waiting over 24 hours for a reply</span>
+                <span class="alert-item-time">4h ago</span>
+              </div>
+              <div class="alert-item">
+                <span class="alert-dot info"></span>
+                <span class="alert-item-text">Weekly pipeline update done — 4 deals changed stage</span>
+                <span class="alert-item-time">Yesterday</span>
+              </div>
+            </div>
+
+            <!-- Open Tasks -->
+            <div class="dash-chart-card">
+              <div class="dash-chart-title">Open Follow-up Tasks <span class="dash-chart-badge">14 open</span></div>
+              <ul class="task-list">
+                <li class="task-item">
+                  <span class="task-check"></span>
+                  Follow up with MegaCorp on Q2 proposal
+                  <span class="task-priority high">High</span>
+                </li>
+                <li class="task-item">
+                  <span class="task-check"></span>
+                  Send revised pricing to Westfield Group
+                  <span class="task-priority high">High</span>
+                </li>
+                <li class="task-item">
+                  <span class="task-check done"></span>
+                  Schedule demo for NovaTech — confirmed
+                  <span class="task-priority med">Med</span>
+                </li>
+                <li class="task-item">
+                  <span class="task-check"></span>
+                  Re-engage 8 stale leads from January batch
+                  <span class="task-priority med">Med</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PROCESS ═══════ -->
+<section class="section process-section" id="process">
+  <div class="container">
+    <div class="section-label">Our approach</div>
+    <div class="section-title">How we work with you</div>
+    <div class="section-sub">Four steps. No unnecessary complexity.</div>
+
+    <div class="process-grid">
+      <div class="process-card">
+        <div class="process-num">01</div>
+        <div class="process-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </div>
+        <div class="process-title">Understand your process</div>
+        <div class="process-desc">We look at your current tools, how your team works, and where time gets wasted. No assumptions.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-num">02</div>
+        <div class="process-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
+        <div class="process-title">Design the solution</div>
+        <div class="process-desc">We plan how your tools should connect, what steps to automate, and how to organize your data.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-num">03</div>
+        <div class="process-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="process-title">Build with AI + automation</div>
+        <div class="process-desc">We set up AI-powered automations, connect your tools, and remove the bottlenecks. Repetitive steps start running on their own.</div>
+      </div>
+      <div class="process-card">
+        <div class="process-num">04</div>
+        <div class="process-icon">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        </div>
+        <div class="process-title">See what's happening</div>
+        <div class="process-desc">With clean data flowing, we build dashboards and alerts so you can see your numbers and act on them.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ OUTCOMES ═══════ -->
+<section class="section outcomes-section">
+  <div class="container">
+    <div class="section-label">Typical results</div>
+    <div class="section-title">What teams usually see after working with us</div>
+    <div class="section-sub">Results depend on your current tools, process consistency, and scope — but these are the patterns we see most often.</div>
+
+    <div class="outcomes-grid">
+      <div class="outcome-card">
+        <div class="outcome-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <div class="outcome-title">Less manual work</div>
+        <div class="outcome-desc">Stop copying data between tools, chasing updates, and reminding people about next steps. Let the system handle it.</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="outcome-title">Faster follow-up</div>
+        <div class="outcome-desc">Leads, quotes, and tasks get acted on quickly — because reminders and assignments happen automatically.</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <div class="outcome-title">Fewer bottlenecks</div>
+        <div class="outcome-desc">Handoffs between teams get faster. Delays get flagged early. Operations run smoother without constant firefighting.</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
+        <div class="outcome-title">Cleaner reporting</div>
+        <div class="outcome-desc">Reports build themselves from real data. No more spending hours pulling numbers from three different places.</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <div class="outcome-title">Better visibility for decisions</div>
+        <div class="outcome-desc">See what's working and what's not — without asking your team to compile a spreadsheet first.</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></div>
+        <div class="outcome-title">AI working in the background</div>
+        <div class="outcome-desc">AI handles classification, routing, and follow-up logic — so your team focuses on work that actually moves the needle.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FINAL CTA ═══════ -->
+<section class="final-cta" id="book">
+  <div class="container">
+    <div class="section-label">Next step</div>
+    <div class="section-title">Want to see what this looks like<br>with your real data?</div>
+    <p class="final-cta-sub">
+      Book a 15-minute call. We'll walk through how your team works today, where time is being lost, and what we can fix quickly.
+    </p>
+    <div class="final-cta-buttons">
+      <a href="#" class="btn-primary">
+        Book a 15-min call
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+      </a>
+      <a href="https://almaintel.com" class="btn-secondary">Visit Alma Intel</a>
+    </div>
+
+    <div class="final-form">
+      <div class="final-form-title">Or leave your details — we'll reach out</div>
+      <div class="form-row">
+        <input type="text" class="form-input" placeholder="Your name">
+        <input type="email" class="form-input" placeholder="Work email">
+      </div>
+      <input type="text" class="form-input full" placeholder="What's your biggest bottleneck right now?" style="margin-bottom: 16px;">
+      <button class="btn-primary form-submit" onclick="event.preventDefault()">
+        Request a call
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-brand">Alma Intel</span>
+      <div class="footer-links">
+        <a href="https://almaintel.com">Website</a>
+        <a href="mailto:hello@almaintel.com">hello@almaintel.com</a>
+        <a href="https://linkedin.com/company/almaintel">LinkedIn</a>
+      </div>
+      <div class="footer-legal">
+        This page is an illustrative outreach demo prepared by Alma Intel. All data shown is sample data for demonstration purposes only. © 2026 Alma Intel — a branch of Alma Partners.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════ STICKY CTA ═══════ -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="#book" class="btn-primary">
+    Book a 15-min Call
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+  </a>
+</div>
+
+<script>
+// Sticky CTA visibility
+const stickyCta = document.getElementById('stickyCta');
+const hero = document.querySelector('.hero');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const heroBottom = hero.offsetTop + hero.offsetHeight;
+  const docHeight = document.documentElement.scrollHeight;
+  const viewHeight = window.innerHeight;
+  const nearBottom = scrollY + viewHeight > docHeight - 400;
+  
+  if (scrollY > heroBottom && !nearBottom) {
+    stickyCta.classList.add('visible');
+  } else {
+    stickyCta.classList.remove('visible');
+  }
+  lastScroll = scrollY;
+}, { passive: true });
+
+// Smooth anchor scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+</script>
+
+</body>
+</html>
