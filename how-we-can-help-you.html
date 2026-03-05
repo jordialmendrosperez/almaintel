@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prepared for ACME Inc. — Alma Intel</title>
+<title id="pageTitle">Prepared for ACME Inc. — Alma Intel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -541,7 +541,6 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 600; line-he
 }
 </style>
 </head>
-
 <body>
 
 <!-- ═══════ TOP BAR ═══════ -->
@@ -549,10 +548,10 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 600; line-he
   <div class="container topbar-inner">
     <div class="topbar-left">
       <span class="topbar-brand"><span class="topbar-logo-mark">A</span> Alma Intel</span>
-      <span class="topbar-badge"><span class="dot"></span> Prepared for ACME Inc.</span>
+      <span class="topbar-badge"><span class="dot"></span> Prepared for <span id="companyNameTop">ACME Inc.</span></span>
     </div>
     <div class="topbar-right">
-      <a href="https://almaintel.com" class="topbar-link">almaintel.com</a>
+      <a id="siteLinkTop" href="https://almaintel.com" class="topbar-link">almaintel.com</a>
       <a href="#book" class="btn-primary btn-sm">Book a 15-min call</a>
     </div>
   </div>
@@ -567,7 +566,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 600; line-he
           <span class="eyebrow-line"></span>
           A personalized demo for your business
         </div>
-        <h1 class="fade-up fade-up-2">Prepared for<br><em>ACME Inc.</em></h1>
+        <h1 class="fade-up fade-up-2">Prepared for<br><em id="companyNameHero">ACME Inc.</em></h1>
         <p class="hero-sub fade-up fade-up-3">
           We help SMEs cut manual work, remove operational bottlenecks, and get clear visibility across sales and operations — using AI, automation, and smart system design.
         </p>
@@ -578,7 +577,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 600; line-he
           </a>
           <a href="#system" class="btn-secondary">See how it works</a>
         </div>
-        <p class="hero-micro fade-up fade-up-5">Sample demo with illustrative data, personalized for ACME Inc.</p>
+        <p class="hero-micro fade-up fade-up-5">Sample demo with illustrative data, personalized for <span id="companyNameMicro">ACME Inc.</span></p>
       </div>
 
       <div class="hero-visual fade-up fade-up-3">
@@ -834,7 +833,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 600; line-he
       <div class="dash-frame">
         <div class="dash-topbar">
           <span class="dash-dot r"></span><span class="dash-dot y"></span><span class="dash-dot g"></span>
-          <span class="dash-topbar-title">ACME Inc. — Sales & Operations Overview</span>
+          <span class="dash-topbar-title"><span id="companyNameDash">ACME Inc.</span> — Sales & Operations Overview</span>
           <span class="dash-sample-badge">Sample Data</span>
         </div>
         <div class="dash-body">
@@ -908,7 +907,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 600; line-he
               <div class="pipeline-bars">
                 <div class="pipe-row">
                   <span class="pipe-label">New</span>
-                  <div class="pipe-bar-bg"><div class="pipe-bar" style="width:90%; background:var(--blue);"></div></div>
+                  <div class="pipe-bar-bg"><div class="pipe-bar" style="width:90%; background:var(--primary);"></div></div>
                   <span class="pipe-val">42</span>
                 </div>
                 <div class="pipe-row">
@@ -1089,7 +1088,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 600; line-he
         Book a 15-min call
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
       </a>
-      <a href="https://almaintel.com" class="btn-secondary">Visit Alma Intel</a>
+      <a id="siteLinkFinal" href="https://almaintel.com" class="btn-secondary">Visit Alma Intel</a>
     </div>
 
     <div class="final-form">
@@ -1113,9 +1112,9 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 600; line-he
     <div class="footer-inner">
       <span class="footer-brand">Alma Intel</span>
       <div class="footer-links">
-        <a href="https://almaintel.com">Website</a>
-        <a href="mailto:hello@almaintel.com">hello@almaintel.com</a>
-        <a href="https://linkedin.com/company/almaintel">LinkedIn</a>
+        <a id="siteLinkFooter" href="https://almaintel.com">Website</a>
+        <a id="emailLinkFooter" href="mailto:hello@almaintel.com">hello@almaintel.com</a>
+        <a id="linkedinLinkFooter" href="https://linkedin.com/company/almaintel">LinkedIn</a>
       </div>
       <div class="footer-legal">
         This page is an illustrative outreach demo prepared by Alma Intel. All data shown is sample data for demonstration purposes only. © 2026 Alma Intel — a branch of Alma Partners.
@@ -1131,82 +1130,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 600; line-he
     <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
   </a>
 </div>
-<script>
-  // ---- URL params helper ----
-  const getParam = (key, fallback = null) => {
-    const v = new URLSearchParams(window.location.search).get(key);
-    if (!v) return fallback;
-    return v.trim();
-  };
 
-  // ---- Defaults (fallbacks) ----
-  const defaults = {
-    company: "ACME Inc.",
-    industry: "your industry",
-    siteText: "almaintel.ai",
-    siteHref: "https://almaintel.ai",
-    email: "hello@almaintel.ai",
-    linkedin: "https://linkedin.com/company/almaintel",
-    cta: "#book"
-  };
-
-  // ---- Read from URL ----
-  const company = getParam("company", defaults.company);
-  const industry = getParam("industry", defaults.industry);
-
-  // site param can be "almaintel.ai" or full URL
-  const siteParam = getParam("site", defaults.siteText);
-  const siteHref = siteParam.startsWith("http") ? siteParam : `https://${siteParam}`;
-  const siteText = siteParam.replace(/^https?:\/\//, "");
-
-  const email = getParam("email", defaults.email);
-  const linkedin = getParam("linkedin", defaults.linkedin);
-  const cta = getParam("cta", defaults.cta);
-
-  // ---- Set text helpers ----
-  const setText = (id, text) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = text;
-  };
-  const setHref = (id, href, text = null) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.setAttribute("href", href);
-    if (text !== null) el.textContent = text;
-  };
-
-  // ---- Apply company everywhere ----
-  setText("companyNameTop", company);
-  setText("companyNameHero", company);
-  setText("companyNameMicro", company);
-  setText("companyNameOpps", company);
-  setText("companyNameDash", company);
-
-  // Title tag
-  const pageTitle = document.getElementById("pageTitle");
-  if (pageTitle) pageTitle.textContent = `Prepared for ${company} — Alma Intel`;
-  else document.title = `Prepared for ${company} — Alma Intel`;
-
-  // ---- Apply industry (optional) ----
-  // If you want to inject industry into the subtext in Opportunities, add an element with id="industryText" and uncomment:
-  // setText("industryText", industry);
-
-  // ---- Apply links ----
-  setHref("siteLinkTop", siteHref, siteText);
-  setHref("siteLinkFinal", siteHref, "Visit Alma Intel");
-  setHref("siteLinkFooter", siteHref, "Website");
-
-  setHref("emailLinkFooter", `mailto:${email}`, email);
-  setHref("linkedinLinkFooter", linkedin, "LinkedIn");
-
-  // CTA buttons (hero already goes to #book; you can also make it external if you want)
-  setHref("ctaBookFinal", cta);
-  setHref("ctaBookSticky", cta);
-
-  // Optional: if you also want the topbar "Book" button to go to external CTA, give it an id and set it:
-  // setHref("ctaBookTop", cta);
-
-</script>
 <script>
 // Sticky CTA visibility
 const stickyCta = document.getElementById('stickyCta');
@@ -1234,6 +1158,78 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });
 });
+</script>
+
+
+<script>
+  // ---- URL params helper ----
+  const getParam = (key, fallback = null) => {
+    const v = new URLSearchParams(window.location.search).get(key);
+    if (!v) return fallback;
+    return v.trim();
+  };
+
+  // ---- Defaults (fallbacks) ----
+  const defaults = {
+    company: "ACME Inc.",
+    industry: "your industry",
+    siteText: "almaintel.ai",
+    siteHref: "https://almaintel.ai",
+    email: "hello@almaintel.ai",
+    linkedin: "https://linkedin.com/company/almaintel",
+    cta: "#book"
+  };
+
+  // ---- Read from URL ----
+  const company = getParam("company", defaults.company);
+  const industry = getParam("industry", defaults.industry);
+
+  const siteParam = getParam("site", defaults.siteText);
+  const siteHref = siteParam.startsWith("http") ? siteParam : `https://${siteParam}`;
+  const siteText = siteParam.replace(/^https?:\/\//, "");
+
+  const email = getParam("email", defaults.email);
+  const linkedin = getParam("linkedin", defaults.linkedin);
+  const cta = getParam("cta", defaults.cta);
+
+  // ---- Set helpers ----
+  const setText = (id, text) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+  };
+  const setHref = (id, href, text = null) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.setAttribute("href", href);
+    if (text !== null) el.textContent = text;
+  };
+
+  // ---- Apply company ----
+  setText("companyNameTop", company);
+  setText("companyNameHero", company);
+  setText("companyNameMicro", company);
+  setText("companyNameOpps", company);
+  setText("companyNameDash", company);
+
+  // ---- Title ----
+  const pageTitle = document.getElementById("pageTitle");
+  if (pageTitle) pageTitle.textContent = `Prepared for ${company} — Alma Intel`;
+  document.title = `Prepared for ${company} — Alma Intel`;
+
+  // ---- Apply links ----
+  setHref("siteLinkTop", siteHref, siteText);
+  setHref("siteLinkFinal", siteHref, "Visit Alma Intel");
+  setHref("siteLinkFooter", siteHref, "Website");
+  setHref("emailLinkFooter", `mailto:${email}`, email);
+  setHref("linkedinLinkFooter", linkedin, "LinkedIn");
+
+  // ---- CTA buttons ----
+  setHref("ctaBookFinal", cta);
+  setHref("ctaBookSticky", cta);
+  setHref("ctaBookTop", cta);
+
+  // ---- Optional: expose for debugging ----
+  window.__almaDemo = { company, industry, siteHref, email, linkedin, cta };
 </script>
 
 </body>
