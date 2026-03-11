@@ -1100,18 +1100,63 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 600; line-he
       <a id="siteLinkFinal" href="https://almaintel.com" class="btn-secondary">Visit Alma Intel</a>
     </div>
 
-    <div class="final-form">
-      <div class="final-form-title">Or leave your details — we'll reach out</div>
-      <div class="form-row">
-        <input type="text" class="form-input" placeholder="Your name">
-        <input type="email" class="form-input" placeholder="Work email">
+    <form class="final-form" id="contactForm" action="https://formspree.io/f/xbdalzld" method="POST">
+      <div class="form-success" id="formSuccess" style="display:none; background: rgba(0,212,170,0.12); border: 1px solid rgba(0,212,170,0.35); color: #fff; padding: 1rem; border-radius: 6px; margin-bottom: 1rem; text-align: center;">
+        ✓ Thanks! We'll email you within 24 hours.
       </div>
-      <input type="text" class="form-input full" placeholder="What's your biggest bottleneck right now?" style="margin-bottom: 16px;">
-      <button class="btn-primary form-submit" onclick="event.preventDefault()">
-        Request a call
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
-      </button>
-    </div>
+    
+      <div class="final-form-title">Book a free audit</div>
+    
+      <div class="form-row">
+        <input
+          class="form-input"
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Full name *"
+          required
+        >
+        <input
+          class="form-input"
+          type="text"
+          id="company"
+          name="company"
+          placeholder="Company *"
+          required
+        >
+      </div>
+    
+      <div class="form-row">
+        <input
+          class="form-input"
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Work email *"
+          required
+        >
+        <input
+          class="form-input"
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="Phone (optional)"
+        >
+      </div>
+    
+      <div class="form-row">
+        <textarea
+          class="form-input full"
+          id="challenge"
+          name="challenge"
+          placeholder="What's your biggest operational pain point right now? *"
+          rows="5"
+          required
+        ></textarea>
+      </div>
+    
+      <button type="submit" class="btn-primary form-submit">Book a Free Audit</button>
+    </form>
   </div>
 </section>
 
@@ -1240,6 +1285,38 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   // ---- Optional: expose for debugging ----
   window.__almaDemo = { company, industry, siteHref, email, linkedin, cta };
 </script>
+<script>
+  const contactForm = document.getElementById('contactForm');
+  const formSuccess = document.getElementById('formSuccess');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(contactForm);
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          formSuccess.style.display = 'block';
+          contactForm.reset();
+          formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          alert('There was an issue submitting the form. Please try emailing us directly at hello@almaintel.ai');
+        }
+      } catch (error) {
+        alert('There was an issue submitting the form. Please try emailing us directly at hello@almaintel.ai');
+      }
+    });
+  }
+</script>  
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/245179923.js"></script>
 <!-- End of HubSpot Embed Code -->
