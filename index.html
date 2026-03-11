@@ -2094,6 +2094,39 @@
             }
         });
     </script>
+    <script>
+    (function () {
+      const WEBHOOK = "https://theoptimizer.app.n8n.cloud/webhook/track";
+      const KEY = "alma_visitor_id";
+      let vid = localStorage.getItem(KEY);
+    
+      function uuid() {
+        if (crypto?.randomUUID) return crypto.randomUUID();
+        const b = crypto.getRandomValues(new Uint8Array(16));
+        b[6] = (b[6] & 0x0f) | 0x40;
+        b[8] = (b[8] & 0x3f) | 0x80;
+        const h = [...b].map(x => x.toString(16).padStart(2,"0")).join("");
+        return `${h.slice(0,8)}-${h.slice(8,12)}-${h.slice(12,16)}-${h.slice(16,20)}-${h.slice(20)}`;
+      }
+      if (!vid) { vid = uuid(); localStorage.setItem(KEY, vid); }
+    
+      const payload = {
+        ts: new Date().toISOString(),
+        visitor_id: vid,
+        page_type: "site",
+        company: "",
+        url: location.href,
+        referrer: document.referrer || null,
+        user_agent: navigator.userAgent
+      };
+    
+      try {
+        navigator.sendBeacon(WEBHOOK, new Blob([JSON.stringify(payload)], {type:"application/json"}));
+      } catch {
+        fetch(WEBHOOK, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload), keepalive:true}).catch(()=>{});
+      }
+    })();
+    </script>
     <!-- Start of HubSpot Embed Code -->
     <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/245179923.js"></script>
     <!-- End of HubSpot Embed Code -->
