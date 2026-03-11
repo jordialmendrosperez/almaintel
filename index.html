@@ -2108,23 +2108,30 @@
         const h = [...b].map(x => x.toString(16).padStart(2,"0")).join("");
         return `${h.slice(0,8)}-${h.slice(8,12)}-${h.slice(12,16)}-${h.slice(16,20)}-${h.slice(20)}`;
       }
+    
       if (!vid) { vid = uuid(); localStorage.setItem(KEY, vid); }
     
       const payload = {
         ts: new Date().toISOString(),
         visitor_id: vid,
         page_type: "site",
-        company: "",
+        company: "", // vacío en site
         url: location.href,
-        referrer: document.referrer || null,
+        referrer: document.referrer || "",
         user_agent: navigator.userAgent
       };
     
-      try {
-        navigator.sendBeacon(WEBHOOK, new Blob([JSON.stringify(payload)], {type:"application/json"}));
-      } catch {
-        fetch(WEBHOOK, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload), keepalive:true}).catch(()=>{});
-      }
+      // opcional debug
+      window.__almaSiteTrack = payload;
+    
+      // Enviar como "simple request" para evitar CORS preflight
+      fetch(WEBHOOK, {
+        method: "POST",
+        mode: "cors",
+        credentials: "omit",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify(payload)
+      }).catch(() => {});
     })();
     </script>
     <!-- Start of HubSpot Embed Code -->
