@@ -1342,15 +1342,21 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     page_type: "landing",
     company,
     url: location.href,
-    referrer: document.referrer || null,
+    referrer: document.referrer || "",
     user_agent: navigator.userAgent
   };
 
-  try {
-    navigator.sendBeacon(WEBHOOK, new Blob([JSON.stringify(payload)], {type:"application/json"}));
-  } catch {
-    fetch(WEBHOOK, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload), keepalive:true}).catch(()=>{});
-  }
+  // Debug
+  window.__almaTrack = payload;
+  console.log("TRACK ->", payload);
+
+  fetch(WEBHOOK, {
+    method: "POST",
+    mode: "cors",
+    credentials: "omit",                 // <-- CLAVE
+    headers: { "Content-Type": "text/plain" }, // <-- CLAVE (simple request)
+    body: JSON.stringify(payload),
+  }).catch(err => console.warn("TRACK FAILED", err));
 })();
 </script>
 <!-- Start of HubSpot Embed Code -->
