@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="pageTitle">Prepared for ACME Inc. — Alma Intel</title>
+<title id="pageTitle">Prepared for <span id="companyNameOpps">your company</span> — Alma Intel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -784,7 +784,7 @@ h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 600; line-he
 <section class="section opps-section">
   <div class="container">
     <div class="section-label">Common quick wins</div>
-    <div class="section-title">What companies like ACME Inc. usually fix first</div>
+    <div class="section-title">What companies like <span id="companyNameOpps">your company</span> usually fix first</div>
     <div class="section-sub">Based on common problems in your industry. These are the areas where teams see the fastest improvement.</div>
 
     <div class="opps-grid">
@@ -1171,7 +1171,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
   // ---- Defaults (fallbacks) ----
   const defaults = {
-    company: "ACME Inc.",
+    company: "your company",
     industry: "your industry",
     siteText: "almaintel.ai",
     siteHref: "https://almaintel.ai",
