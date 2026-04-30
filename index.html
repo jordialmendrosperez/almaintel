@@ -127,6 +127,33 @@
     }
     .logo-img { height:30px; width:auto; }
     .nav-links { display:flex; align-items:center; gap:2.25rem; }
+
+    /* ── LANG TOGGLE ── */
+    .lang-toggle {
+      background:none; border:1px solid var(--line); border-radius:100px;
+      padding:.3rem .75rem; cursor:pointer; font-family:inherit;
+      font-size:.78rem; font-weight:600; color:var(--ink-mute);
+      display:flex; align-items:center; gap:.35rem;
+      transition:border-color .2s; margin-left:.25rem;
+    }
+    .lang-toggle:hover { border-color:var(--accent); }
+    .lang-toggle:focus-visible { outline:2px solid var(--accent); outline-offset:2px; border-radius:100px; }
+    .lang-opt { transition:color .2s; color:var(--ink-mute); }
+    .lang-opt.active { color:var(--ink-soft); font-weight:700; }
+    .lang-sep { color:var(--ink-faint); font-weight:300; line-height:1; }
+    .mobile-lang {
+      display:flex; align-items:center; justify-content:center; gap:.75rem;
+      padding:.875rem 0; margin-top:.25rem;
+      border-top:1px solid var(--line); font-size:.9rem;
+    }
+    .mobile-lang button {
+      background:none; border:1px solid var(--line); border-radius:100px;
+      padding:.4rem .9rem; cursor:pointer; font-family:inherit;
+      font-size:.85rem; font-weight:600; color:var(--ink-mute);
+      transition:all .2s;
+    }
+    .mobile-lang button.active { background:var(--ink-soft); color:#fff; border-color:var(--ink-soft); }
+    .mobile-lang button:hover:not(.active) { border-color:var(--accent); color:var(--accent); }
     .nav-links a {
       color:var(--ink); font-size:.9375rem; font-weight:500;
       transition:color .2s; position:relative;
@@ -1016,10 +1043,15 @@
         <img src="logos/Alma Intel - Logo 02.svg" alt="Alma Intel" class="logo-img">
       </a>
       <div class="nav-links" role="navigation" aria-label="Main navigation">
-        <a href="#what-we-automate">What We Automate</a>
-        <a href="#process">Process</a>
-        <a href="#contact">Contact</a>
-        <a href="#contact" class="nav-cta">Free Consultation</a>
+        <a href="#what-we-automate" data-i18n="nav-what">What We Automate</a>
+        <a href="#process" data-i18n="nav-process">Process</a>
+        <a href="#contact" data-i18n="nav-contact">Contact</a>
+        <button class="lang-toggle" id="langToggle" aria-label="Switch to Spanish">
+          <span class="lang-opt active" data-lang="en">EN</span>
+          <span class="lang-sep">·</span>
+          <span class="lang-opt" data-lang="es">ES</span>
+        </button>
+        <a href="#contact" class="nav-cta" data-i18n="nav-cta">Free Consultation</a>
       </div>
       <button class="nav-toggle" id="navToggle"
         aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -1027,10 +1059,14 @@
       </button>
     </div>
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-      <a href="#what-we-automate">What We Automate</a>
-      <a href="#process">Process</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact" class="mobile-menu-cta">Free Consultation</a>
+      <a href="#what-we-automate" data-i18n="nav-what">What We Automate</a>
+      <a href="#process" data-i18n="nav-process">Process</a>
+      <a href="#contact" data-i18n="nav-contact">Contact</a>
+      <a href="#contact" class="mobile-menu-cta" data-i18n="nav-cta">Free Consultation</a>
+      <div class="mobile-lang">
+        <button data-lang="en" onclick="setLang('en')" class="active">EN</button>
+        <button data-lang="es" onclick="setLang('es')">ES</button>
+      </div>
     </div>
   </nav>
 
@@ -1040,17 +1076,17 @@
       <div class="hero-content">
         <span class="pill" data-reveal>
           <span class="pill-dot"></span>
-          AI Implementation &amp; Automation Consulting
+          <span data-i18n="hero-pill">AI Implementation &amp; Automation Consulting</span>
         </span>
         <h1 data-reveal data-d="1">
-          <span class="dt"><em>AI &amp; automation</em><br>that make your<br>business run better.</span>
-          <span class="mb"><em>AI &amp; automation</em> that make your business run better.</span>
+          <span class="dt" data-i18n="hero-h1-dt"><em>AI &amp; automation</em><br>that make your<br>business run better.</span>
+          <span class="mb" data-i18n="hero-h1-mb"><em>AI &amp; automation</em> that make your business run better.</span>
         </h1>
-        <p class="hero-sub" data-reveal data-d="2">We help small and mid-sized businesses connect their tools, automate repetitive workflows, and implement AI where it creates real operational value &mdash; built around sales, finance, and operations.</p>
+        <p class="hero-sub" data-reveal data-d="2" data-i18n="hero-sub">We help small and mid-sized businesses connect their tools, automate repetitive workflows, and implement AI where it creates real operational value &mdash; built around sales, finance, and operations.</p>
 
         <div class="hero-actions" data-reveal data-d="4">
-          <a href="#contact" class="btn btn-primary">Free Consultation <span class="btn-arrow">→</span></a>
-          <a href="#what-we-automate" class="btn btn-ghost">See what we automate</a>
+          <a href="#contact" class="btn btn-primary"><span data-i18n="cta-primary">Free Consultation</span> <span class="btn-arrow">→</span></a>
+          <a href="#what-we-automate" class="btn btn-ghost" data-i18n="hero-btn-ghost">See what we automate</a>
         </div>
       </div>
 
@@ -1155,7 +1191,7 @@
 
   <!-- ══ TOOLS — INFINITE MARQUEE ══ -->
   <section class="tools" aria-label="Tools we work with">
-    <p class="tools-heading">We connect the tools your business already uses</p>
+    <p class="tools-heading" data-i18n="tools-heading">We connect the tools your business already uses</p>
     <div class="marquee">
       <div class="marquee-track">
         <span class="tool-name">HubSpot</span>
@@ -1223,9 +1259,9 @@
   <section class="problem">
     <div class="wrap">
       <div class="problem-header" data-reveal>
-        <span class="label">Sound familiar?</span>
-        <h2>Most companies don't need more tools.<br><span class="fade">They need their tools to work together.</span></h2>
-        <p class="problem-intro">You probably don't search for "AI automation." You recognise the symptoms — and they keep showing up across sales, finance, and operations.</p>
+        <span class="label" data-i18n="problem-label">Sound familiar?</span>
+        <h2 data-i18n="problem-h2">Most companies don't need more tools.<br><span class="fade">They need their tools to work together.</span></h2>
+        <p class="problem-intro" data-i18n="problem-intro">You probably don't search for "AI automation." You recognise the symptoms — and they keep showing up across sales, finance, and operations.</p>
       </div>
 
       <div class="pain-grid">
@@ -1233,92 +1269,92 @@
           <div class="pain-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
           </div>
-          <h4 class="pain-title">Manual data entry</h4>
-          <p class="pain-text">Your team enters the same info into multiple tools every day.</p>
+          <h4 class="pain-title" data-i18n="pain1-t">Manual data entry</h4>
+          <p class="pain-text" data-i18n="pain1-d">Your team enters the same info into multiple tools every day.</p>
         </div>
 
         <div class="pain-item" data-reveal data-d="2">
           <div class="pain-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
           </div>
-          <h4 class="pain-title">Stale CRM</h4>
-          <p class="pain-text">Records aren't reliable. No one trusts what's in it.</p>
+          <h4 class="pain-title" data-i18n="pain2-t">Stale CRM</h4>
+          <p class="pain-text" data-i18n="pain2-d">Records aren't reliable. No one trusts what's in it.</p>
         </div>
 
         <div class="pain-item" data-reveal data-d="3">
           <div class="pain-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
           </div>
-          <h4 class="pain-title">Slow reports</h4>
-          <p class="pain-text">By the time they're ready, the numbers are already outdated.</p>
+          <h4 class="pain-title" data-i18n="pain3-t">Slow reports</h4>
+          <p class="pain-text" data-i18n="pain3-d">By the time they're ready, the numbers are already outdated.</p>
         </div>
 
         <div class="pain-item" data-reveal data-d="4">
           <div class="pain-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/><line x1="2" y1="2" x2="22" y2="22" stroke-width="1.5"/></svg>
           </div>
-          <h4 class="pain-title">Disconnected tools</h4>
-          <p class="pain-text">Accounting, e-commerce, and ERP don't speak to each other.</p>
+          <h4 class="pain-title" data-i18n="pain4-t">Disconnected tools</h4>
+          <p class="pain-text" data-i18n="pain4-d">Accounting, e-commerce, and ERP don't speak to each other.</p>
         </div>
 
         <div class="pain-item" data-reveal data-d="5">
           <div class="pain-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/><line x1="2" y1="2" x2="22" y2="22" stroke-width="1.5"/></svg>
           </div>
-          <h4 class="pain-title">Lost leads</h4>
-          <p class="pain-text">Follow-up depends on someone remembering. Some don't.</p>
+          <h4 class="pain-title" data-i18n="pain5-t">Lost leads</h4>
+          <p class="pain-text" data-i18n="pain5-d">Follow-up depends on someone remembering. Some don't.</p>
         </div>
 
         <div class="pain-item" data-reveal data-d="6">
           <div class="pain-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
           </div>
-          <h4 class="pain-title">Spreadsheet sprawl</h4>
-          <p class="pain-text">Critical workflows live in shared sheets that should be in a system.</p>
+          <h4 class="pain-title" data-i18n="pain6-t">Spreadsheet sprawl</h4>
+          <p class="pain-text" data-i18n="pain6-d">Critical workflows live in shared sheets that should be in a system.</p>
         </div>
 
         <div class="pain-item" data-reveal data-d="7">
           <div class="pain-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
           </div>
-          <h4 class="pain-title">Hours reconciling</h4>
-          <p class="pain-text">Teams cross-check the same numbers across multiple tools every week.</p>
+          <h4 class="pain-title" data-i18n="pain7-t">Hours reconciling</h4>
+          <p class="pain-text" data-i18n="pain7-d">Teams cross-check the same numbers across multiple tools every week.</p>
         </div>
 
         <div class="pain-item" data-reveal data-d="8">
           <div class="pain-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           </div>
-          <h4 class="pain-title">AI uncertainty</h4>
-          <p class="pain-text">You want to use AI, but you don't know where it actually makes sense.</p>
+          <h4 class="pain-title" data-i18n="pain8-t">AI uncertainty</h4>
+          <p class="pain-text" data-i18n="pain8-d">You want to use AI, but you don't know where it actually makes sense.</p>
         </div>
       </div>
 
       <div class="outcomes" data-reveal>
         <div class="outcomes-divider">
-          <span class="outcomes-label">Now imagine the alternative</span>
+          <span class="outcomes-label" data-i18n="outcomes-label">Now imagine the alternative</span>
         </div>
         <div class="outcomes-grid">
           <div class="outcome-card">
             <div class="outcome-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
             </div>
-            <h3>No manual entry</h3>
-            <p>Data flows between your tools automatically. Teams stop copying and pasting.</p>
+            <h3 data-i18n="oc1-t">No manual entry</h3>
+            <p data-i18n="oc1-d">Data flows between your tools automatically. Teams stop copying and pasting.</p>
           </div>
           <div class="outcome-card">
             <div class="outcome-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
             </div>
-            <h3>Live visibility</h3>
-            <p>Reports update themselves. Dashboards stay current. Leadership acts on real-time data.</p>
+            <h3 data-i18n="oc2-t">Live visibility</h3>
+            <p data-i18n="oc2-d">Reports update themselves. Dashboards stay current. Leadership acts on real-time data.</p>
           </div>
           <div class="outcome-card">
             <div class="outcome-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5L12 2z"/></svg>
             </div>
-            <h3>AI in the right places</h3>
-            <p>Embedded inside the workflows where it removes real work — not bolted on as a chatbot.</p>
+            <h3 data-i18n="oc3-t">AI in the right places</h3>
+            <p data-i18n="oc3-d">Embedded inside the workflows where it removes real work — not bolted on as a chatbot.</p>
           </div>
         </div>
       </div>
@@ -1329,32 +1365,32 @@
   <section class="explainer">
     <div class="wrap">
       <div class="explainer-header" data-reveal>
-        <span class="label">What Automation Means</span>
-        <h2><span class="fade">Connecting your tools</span> so your team doesn't have to.</h2>
-        <p class="explainer-intro">Automation means data, tasks, alerts, reports, and workflows move between systems automatically &mdash; instead of relying on someone to transfer them manually.</p>
+        <span class="label" data-i18n="exp-label">What Automation Means</span>
+        <h2 data-i18n="exp-h2"><span class="fade">Connecting your tools</span> so your team doesn't have to.</h2>
+        <p class="explainer-intro" data-i18n="exp-intro">Automation means data, tasks, alerts, reports, and workflows move between systems automatically &mdash; instead of relying on someone to transfer them manually.</p>
       </div>
       <div class="ba-wrap" data-reveal data-d="1">
         <div class="ba-panel ba-before">
-          <p class="ba-label">Before</p>
+          <p class="ba-label" data-i18n="ba-before">Before</p>
           <ul class="ba-items">
-            <li>Manual Amazon &rarr; QuickBooks copy every Monday.</li>
-            <li>Sales checks 3 platforms for new leads daily.</li>
-            <li>Finance builds the weekly report from 5 sources.</li>
-            <li>Late invoices go unnoticed. No reminders sent.</li>
-            <li>Leadership waits 2 days for pipeline data.</li>
+            <li data-i18n="b1">Manual Amazon &rarr; QuickBooks copy every Monday.</li>
+            <li data-i18n="b2">Sales checks 3 platforms for new leads daily.</li>
+            <li data-i18n="b3">Finance builds the weekly report from 5 sources.</li>
+            <li data-i18n="b4">Late invoices go unnoticed. No reminders sent.</li>
+            <li data-i18n="b5">Leadership waits 2 days for pipeline data.</li>
           </ul>
         </div>
         <div class="ba-mid" aria-hidden="true">
           <div class="ba-arrow">&rarr;</div>
         </div>
         <div class="ba-panel ba-after">
-          <p class="ba-label">After</p>
+          <p class="ba-label" data-i18n="ba-after">After</p>
           <ul class="ba-items">
-            <li>Amazon &rarr; QuickBooks syncs automatically every night.</li>
-            <li>New leads route to the right rep instantly, with a Slack alert.</li>
-            <li>The weekly report generates itself from live data.</li>
-            <li>Payment reminders trigger at 7, 14, and 30 days.</li>
-            <li>The pipeline dashboard is always live. Anyone can check.</li>
+            <li data-i18n="a1">Amazon &rarr; QuickBooks syncs automatically every night.</li>
+            <li data-i18n="a2">New leads route to the right rep instantly, with a Slack alert.</li>
+            <li data-i18n="a3">The weekly report generates itself from live data.</li>
+            <li data-i18n="a4">Payment reminders trigger at 7, 14, and 30 days.</li>
+            <li data-i18n="a5">The pipeline dashboard is always live. Anyone can check.</li>
           </ul>
         </div>
       </div>
@@ -1365,118 +1401,118 @@
   <section class="use-cases" id="what-we-automate">
     <div class="wrap">
       <div class="use-cases-header" data-reveal>
-        <span class="label">Automation &amp; AI Systems</span>
-        <h2>Practical systems, <span class="fade">built around your operations.</span></h2>
-        <p class="uc-intro">We build automation workflows, integrate business tools, and implement AI where it creates real operational value. Each example is a real type of system &mdash; not a concept.</p>
+        <span class="label" data-i18n="uc-label">Automation &amp; AI Systems</span>
+        <h2 data-i18n="uc-h2">Practical systems, <span class="fade">built around your operations.</span></h2>
+        <p class="uc-intro" data-i18n="uc-intro">We build automation workflows, integrate business tools, and implement AI where it creates real operational value. Each example is a real type of system &mdash; not a concept.</p>
       </div>
 
       <div class="uc-tabs" role="tablist" aria-label="Use case categories" data-reveal data-d="1">
-        <button class="uc-tab active" role="tab" aria-selected="true"  aria-controls="p-finance"    id="t-finance">Finance</button>
-        <button class="uc-tab"        role="tab" aria-selected="false" aria-controls="p-data"       id="t-data">AI &amp; Data</button>
-        <button class="uc-tab"        role="tab" aria-selected="false" aria-controls="p-sales"      id="t-sales">Sales</button>
-        <button class="uc-tab"        role="tab" aria-selected="false" aria-controls="p-operations" id="t-operations">Operations</button>
+        <button class="uc-tab active" role="tab" aria-selected="true"  aria-controls="p-finance"    id="t-finance" data-i18n="tab-finance">Finance</button>
+        <button class="uc-tab"        role="tab" aria-selected="false" aria-controls="p-data"       id="t-data"    data-i18n="tab-data">AI &amp; Data</button>
+        <button class="uc-tab"        role="tab" aria-selected="false" aria-controls="p-sales"      id="t-sales"   data-i18n="tab-sales">Sales</button>
+        <button class="uc-tab"        role="tab" aria-selected="false" aria-controls="p-operations" id="t-operations" data-i18n="tab-ops">Operations</button>
       </div>
 
       <div id="p-finance" class="uc-panel active" role="tabpanel" aria-labelledby="t-finance">
-        <p class="uc-note">Connect your financial tools so numbers are always accurate and current &mdash; without anyone manually transferring data.</p>
+        <p class="uc-note" data-i18n="fn-note">Connect your financial tools so numbers are always accurate and current &mdash; without anyone manually transferring data.</p>
         <div class="uc-grid">
           <div class="uc-card">
-            <p class="uc-card-title">Amazon → QuickBooks Sync</p>
-            <p class="uc-card-desc">Automatically push daily sales, fees, and refunds from Amazon Seller Central into QuickBooks. No manual export or copy-paste.</p>
-            <span class="uc-outcome">Finance gets accurate daily revenue with no manual entry</span>
+            <p class="uc-card-title" data-i18n="fn1-t">Amazon → QuickBooks Sync</p>
+            <p class="uc-card-desc"  data-i18n="fn1-d">Automatically push daily sales, fees, and refunds from Amazon Seller Central into QuickBooks. No manual export or copy-paste.</p>
+            <span class="uc-outcome" data-i18n="fn1-o">Finance gets accurate daily revenue with no manual entry</span>
           </div>
           <div class="uc-card">
-            <p class="uc-card-title">Invoice Tracking &amp; Reminders</p>
-            <p class="uc-card-desc">Trigger payment reminders at 7, 14, and 30 days overdue. Escalate to the right person. Log every action in your accounting system.</p>
-            <span class="uc-outcome">Fewer late payments, reduced AR backlog</span>
+            <p class="uc-card-title" data-i18n="fn2-t">Invoice Tracking &amp; Reminders</p>
+            <p class="uc-card-desc"  data-i18n="fn2-d">Trigger payment reminders at 7, 14, and 30 days overdue. Escalate to the right person. Log every action in your accounting system.</p>
+            <span class="uc-outcome" data-i18n="fn2-o">Fewer late payments, reduced AR backlog</span>
           </div>
           <div class="uc-card">
-            <p class="uc-card-title">Reconciliation Workflows</p>
-            <p class="uc-card-desc">Match transactions between your e-commerce platform, bank feed, and accounting software. Flag discrepancies automatically.</p>
-            <span class="uc-outcome">Month-end close takes hours instead of days</span>
+            <p class="uc-card-title" data-i18n="fn3-t">Reconciliation Workflows</p>
+            <p class="uc-card-desc"  data-i18n="fn3-d">Match transactions between your e-commerce platform, bank feed, and accounting software. Flag discrepancies automatically.</p>
+            <span class="uc-outcome" data-i18n="fn3-o">Month-end close takes hours instead of days</span>
           </div>
           <div class="uc-card">
-            <p class="uc-card-title">Automated Financial Reports</p>
-            <p class="uc-card-desc">Auto-generate weekly or monthly finance reports from live data. Deliver them directly to leadership at a scheduled time.</p>
-            <span class="uc-outcome">Real-time visibility without manual prep</span>
+            <p class="uc-card-title" data-i18n="fn4-t">Automated Financial Reports</p>
+            <p class="uc-card-desc"  data-i18n="fn4-d">Auto-generate weekly or monthly finance reports from live data. Deliver them directly to leadership at a scheduled time.</p>
+            <span class="uc-outcome" data-i18n="fn4-o">Real-time visibility without manual prep</span>
           </div>
         </div>
       </div>
 
       <div id="p-data" class="uc-panel" role="tabpanel" aria-labelledby="t-data">
-        <p class="uc-note">We implement AI where it creates real value &mdash; not as a trend, but as a working layer in your operations. Assistants, document analysis, data pipelines, and live dashboards built around your existing tools.</p>
+        <p class="uc-note" data-i18n="da-note">We implement AI where it creates real value &mdash; not as a trend, but as a working layer in your operations. Assistants, document analysis, data pipelines, and live dashboards built around your existing tools.</p>
         <div class="uc-grid">
           <div class="uc-card">
-            <p class="uc-card-title">AI Internal Assistant</p>
-            <p class="uc-card-desc">An AI assistant trained on your company's documents, records, and processes. Teams search for information and get accurate answers in seconds.</p>
-            <span class="uc-outcome">Teams find what they need in seconds, not hours</span>
+            <p class="uc-card-title" data-i18n="da1-t">AI Internal Assistant</p>
+            <p class="uc-card-desc"  data-i18n="da1-d">An AI assistant trained on your company's documents, records, and processes. Teams search for information and get accurate answers in seconds.</p>
+            <span class="uc-outcome" data-i18n="da1-o">Teams find what they need in seconds, not hours</span>
           </div>
           <div class="uc-card">
-            <p class="uc-card-title">Document Analysis &amp; Drafting</p>
-            <p class="uc-card-desc">Use AI to review contracts, invoices, or records, extract key information, and draft structured summaries or responses.</p>
-            <span class="uc-outcome">Less time on document-heavy review workflows</span>
+            <p class="uc-card-title" data-i18n="da2-t">Document Analysis &amp; Drafting</p>
+            <p class="uc-card-desc"  data-i18n="da2-d">Use AI to review contracts, invoices, or records, extract key information, and draft structured summaries or responses.</p>
+            <span class="uc-outcome" data-i18n="da2-o">Less time on document-heavy review workflows</span>
           </div>
           <div class="uc-card">
-            <p class="uc-card-title">Operations Dashboard</p>
-            <p class="uc-card-desc">One live view combining sales, finance, inventory, and operations data. Pulled automatically from your existing tools. No manual assembly.</p>
-            <span class="uc-outcome">Leadership gets one clear picture, always live</span>
+            <p class="uc-card-title" data-i18n="da3-t">Operations Dashboard</p>
+            <p class="uc-card-desc"  data-i18n="da3-d">One live view combining sales, finance, inventory, and operations data. Pulled automatically from your existing tools. No manual assembly.</p>
+            <span class="uc-outcome" data-i18n="da3-o">Leadership gets one clear picture, always live</span>
           </div>
           <div class="uc-card">
-            <p class="uc-card-title">CRM &amp; Data Cleanup</p>
-            <p class="uc-card-desc">Deduplicate contact records, standardize field formats, and fill in missing information using automated rules and AI matching.</p>
-            <span class="uc-outcome">Cleaner data, more reliable reporting, fewer errors</span>
+            <p class="uc-card-title" data-i18n="da4-t">CRM &amp; Data Cleanup</p>
+            <p class="uc-card-desc"  data-i18n="da4-d">Deduplicate contact records, standardize field formats, and fill in missing information using automated rules and AI matching.</p>
+            <span class="uc-outcome" data-i18n="da4-o">Cleaner data, more reliable reporting, fewer errors</span>
           </div>
         </div>
       </div>
 
       <div id="p-sales" class="uc-panel" role="tabpanel" aria-labelledby="t-sales">
-        <p class="uc-note">Make your sales process run on systems, not memory. Keep the CRM current, follow up reliably, and give leadership a live view of the pipeline.</p>
+        <p class="uc-note" data-i18n="sa-note">Make your sales process run on systems, not memory. Keep the CRM current, follow up reliably, and give leadership a live view of the pipeline.</p>
         <div class="uc-grid">
           <div class="uc-card">
-            <p class="uc-card-title">CRM Automation</p>
-            <p class="uc-card-desc">Auto-update contacts, deal stages, and activity logs from email, calendar, and form submissions. CRM stays current without manual input.</p>
-            <span class="uc-outcome">Sales stops logging manually and starts trusting the data</span>
+            <p class="uc-card-title" data-i18n="sa1-t">CRM Automation</p>
+            <p class="uc-card-desc"  data-i18n="sa1-d">Auto-update contacts, deal stages, and activity logs from email, calendar, and form submissions. CRM stays current without manual input.</p>
+            <span class="uc-outcome" data-i18n="sa1-o">Sales stops logging manually and starts trusting the data</span>
           </div>
           <div class="uc-card">
-            <p class="uc-card-title">Lead Routing &amp; Assignment</p>
-            <p class="uc-card-desc">Route new leads to the right rep based on territory, deal size, or source. Send a Slack alert and create the CRM record automatically.</p>
-            <span class="uc-outcome">Leads reach the right person in minutes, not hours</span>
+            <p class="uc-card-title" data-i18n="sa2-t">Lead Routing &amp; Assignment</p>
+            <p class="uc-card-desc"  data-i18n="sa2-d">Route new leads to the right rep based on territory, deal size, or source. Send a Slack alert and create the CRM record automatically.</p>
+            <span class="uc-outcome" data-i18n="sa2-o">Leads reach the right person in minutes, not hours</span>
           </div>
           <div class="uc-card">
-            <p class="uc-card-title">Follow-up Sequences</p>
-            <p class="uc-card-desc">Trigger timed follow-up tasks and emails when a deal stage changes or a lead goes cold. Every prospect gets consistent attention.</p>
-            <span class="uc-outcome">No leads slip through because of a missed manual follow-up</span>
+            <p class="uc-card-title" data-i18n="sa3-t">Follow-up Sequences</p>
+            <p class="uc-card-desc"  data-i18n="sa3-d">Trigger timed follow-up tasks and emails when a deal stage changes or a lead goes cold. Every prospect gets consistent attention.</p>
+            <span class="uc-outcome" data-i18n="sa3-o">No leads slip through because of a missed manual follow-up</span>
           </div>
           <div class="uc-card">
-            <p class="uc-card-title">Sales Pipeline Dashboard</p>
-            <p class="uc-card-desc">A live view of deals by stage, value, rep, and velocity &mdash; pulled directly from your CRM and updated in real time.</p>
-            <span class="uc-outcome">Sales leadership sees what's moving and what needs attention</span>
+            <p class="uc-card-title" data-i18n="sa4-t">Sales Pipeline Dashboard</p>
+            <p class="uc-card-desc"  data-i18n="sa4-d">A live view of deals by stage, value, rep, and velocity &mdash; pulled directly from your CRM and updated in real time.</p>
+            <span class="uc-outcome" data-i18n="sa4-o">Sales leadership sees what's moving and what needs attention</span>
           </div>
         </div>
       </div>
 
       <div id="p-operations" class="uc-panel" role="tabpanel" aria-labelledby="t-operations">
-        <p class="uc-note">Connect the systems your operations run on so data flows where it needs to go &mdash; without manual transfers, spreadsheets, or reconciliation sessions.</p>
+        <p class="uc-note" data-i18n="op-note">Connect the systems your operations run on so data flows where it needs to go &mdash; without manual transfers, spreadsheets, or reconciliation sessions.</p>
         <div class="uc-grid">
           <div class="uc-card">
-            <p class="uc-card-title">ERP &amp; Accounting Integration</p>
-            <p class="uc-card-desc">Sync purchase orders, inventory changes, and billing between your ERP and accounting platform. Finance and operations work from the same data.</p>
-            <span class="uc-outcome">One source of truth across finance and operations</span>
+            <p class="uc-card-title" data-i18n="op1-t">ERP &amp; Accounting Integration</p>
+            <p class="uc-card-desc"  data-i18n="op1-d">Sync purchase orders, inventory changes, and billing between your ERP and accounting platform. Finance and operations work from the same data.</p>
+            <span class="uc-outcome" data-i18n="op1-o">One source of truth across finance and operations</span>
           </div>
           <div class="uc-card">
-            <p class="uc-card-title">Multi-System Data Sync</p>
-            <p class="uc-card-desc">Keep your CRM, ERP, e-commerce platform, and support tools in sync. Customer records, order history, and status stay consistent everywhere.</p>
-            <span class="uc-outcome">Teams stop wasting time reconciling conflicting data</span>
+            <p class="uc-card-title" data-i18n="op2-t">Multi-System Data Sync</p>
+            <p class="uc-card-desc"  data-i18n="op2-d">Keep your CRM, ERP, e-commerce platform, and support tools in sync. Customer records, order history, and status stay consistent everywhere.</p>
+            <span class="uc-outcome" data-i18n="op2-o">Teams stop wasting time reconciling conflicting data</span>
           </div>
           <div class="uc-card">
-            <p class="uc-card-title">Workflow Alerts &amp; Triggers</p>
-            <p class="uc-card-desc">Send internal alerts when orders, tickets, or requests meet specific conditions &mdash; low stock, overdue task, new escalation. Right person, right time.</p>
-            <span class="uc-outcome">Issues caught immediately, not discovered days later</span>
+            <p class="uc-card-title" data-i18n="op3-t">Workflow Alerts &amp; Triggers</p>
+            <p class="uc-card-desc"  data-i18n="op3-d">Send internal alerts when orders, tickets, or requests meet specific conditions &mdash; low stock, overdue task, new escalation. Right person, right time.</p>
+            <span class="uc-outcome" data-i18n="op3-o">Issues caught immediately, not discovered days later</span>
           </div>
           <div class="uc-card">
-            <p class="uc-card-title">Internal Process Automation</p>
-            <p class="uc-card-desc">Replace spreadsheet-driven approvals, onboarding checklists, and task handoffs with structured workflows that run automatically.</p>
-            <span class="uc-outcome">Processes run on systems, not email chains</span>
+            <p class="uc-card-title" data-i18n="op4-t">Internal Process Automation</p>
+            <p class="uc-card-desc"  data-i18n="op4-d">Replace spreadsheet-driven approvals, onboarding checklists, and task handoffs with structured workflows that run automatically.</p>
+            <span class="uc-outcome" data-i18n="op4-o">Processes run on systems, not email chains</span>
           </div>
         </div>
       </div>
@@ -1487,34 +1523,34 @@
   <section class="process" id="process">
     <div class="wrap">
       <div class="process-header" data-reveal>
-        <span class="label">Our Approach</span>
-        <h2>Four phases. <span class="fade">One practical system.</span></h2>
-        <p class="process-intro">Every engagement follows the same structure. Each phase produces something concrete &mdash; not slides, but working systems.</p>
+        <span class="label" data-i18n="proc-label">Our Approach</span>
+        <h2 data-i18n="proc-h2">Four phases. <span class="fade">One practical system.</span></h2>
+        <p class="process-intro" data-i18n="proc-intro">Every engagement follows the same structure. Each phase produces something concrete &mdash; not slides, but working systems.</p>
       </div>
       <div class="process-grid">
         <div class="process-card" data-reveal data-d="1">
           <span class="process-dec" aria-hidden="true">1</span>
-          <span class="step-pill">Phase 01</span>
-          <h3>Audit</h3>
-          <p>We review your tools, workflows, pain points, and manual work. We map where time is lost and where data breaks down.</p>
+          <span class="step-pill" data-i18n="ph01">Phase 01</span>
+          <h3 data-i18n="ph1-t">Audit</h3>
+          <p data-i18n="ph1-d">We review your tools, workflows, pain points, and manual work. We map where time is lost and where data breaks down.</p>
         </div>
         <div class="process-card" data-reveal data-d="2">
           <span class="process-dec" aria-hidden="true">2</span>
-          <span class="step-pill">Phase 02</span>
-          <h3>Design</h3>
-          <p>We define the right system based on your existing operations. No rip-and-replace. Solutions layer into what you already use.</p>
+          <span class="step-pill" data-i18n="ph02">Phase 02</span>
+          <h3 data-i18n="ph2-t">Design</h3>
+          <p data-i18n="ph2-d">We define the right system based on your existing operations. No rip-and-replace. Solutions layer into what you already use.</p>
         </div>
         <div class="process-card" data-reveal data-d="3">
           <span class="process-dec" aria-hidden="true">3</span>
-          <span class="step-pill">Phase 03</span>
-          <h3>Build</h3>
-          <p>We implement the automation, integration, dashboard, or AI workflow. You review and approve before anything goes live.</p>
+          <span class="step-pill" data-i18n="ph03">Phase 03</span>
+          <h3 data-i18n="ph3-t">Build</h3>
+          <p data-i18n="ph3-d">We implement the automation, integration, dashboard, or AI workflow. You review and approve before anything goes live.</p>
         </div>
         <div class="process-card" data-reveal data-d="4">
           <span class="process-dec" aria-hidden="true">4</span>
-          <span class="step-pill">Phase 04</span>
-          <h3>Evolve</h3>
-          <p>We improve the system as your business grows. Weekly check-ins, visible backlog, and continuous optimization.</p>
+          <span class="step-pill" data-i18n="ph04">Phase 04</span>
+          <h3 data-i18n="ph4-t">Evolve</h3>
+          <p data-i18n="ph4-d">We improve the system as your business grows. Weekly check-ins, visible backlog, and continuous optimization.</p>
         </div>
       </div>
     </div>
@@ -1524,55 +1560,55 @@
   <section class="benefits">
     <div class="wrap">
       <div class="benefits-header" data-reveal>
-        <span class="label">Business Outcomes</span>
-        <h2>What changes <span class="fade">when operations run on systems.</span></h2>
-        <p class="benefits-intro">These are the practical outcomes when manual work gets replaced by connected workflows, integrated systems, and AI implemented where it actually makes sense.</p>
+        <span class="label" data-i18n="ben-label">Business Outcomes</span>
+        <h2 data-i18n="ben-h2">What changes <span class="fade">when operations run on systems.</span></h2>
+        <p class="benefits-intro" data-i18n="ben-intro">These are the practical outcomes when manual work gets replaced by connected workflows, integrated systems, and AI implemented where it actually makes sense.</p>
       </div>
       <div class="benefits-grid">
         <div class="benefit-item" data-reveal data-d="1">
           <div class="benefit-check">✓</div>
-          <p class="benefit-title">Less manual data entry</p>
-          <p class="benefit-desc">Data moves between systems automatically. Teams stop copying and pasting.</p>
+          <p class="benefit-title" data-i18n="be1-t">Less manual data entry</p>
+          <p class="benefit-desc"  data-i18n="be1-d">Data moves between systems automatically. Teams stop copying and pasting.</p>
         </div>
         <div class="benefit-item" data-reveal data-d="2">
           <div class="benefit-check">✓</div>
-          <p class="benefit-title">Fewer reporting errors</p>
-          <p class="benefit-desc">Reports built from live data, not manually assembled spreadsheets.</p>
+          <p class="benefit-title" data-i18n="be2-t">Fewer reporting errors</p>
+          <p class="benefit-desc"  data-i18n="be2-d">Reports built from live data, not manually assembled spreadsheets.</p>
         </div>
         <div class="benefit-item" data-reveal data-d="3">
           <div class="benefit-check">✓</div>
-          <p class="benefit-title">Faster lead response</p>
-          <p class="benefit-desc">Leads are routed and followed up automatically. No one falls through the cracks.</p>
+          <p class="benefit-title" data-i18n="be3-t">Faster lead response</p>
+          <p class="benefit-desc"  data-i18n="be3-d">Leads are routed and followed up automatically. No one falls through the cracks.</p>
         </div>
         <div class="benefit-item" data-reveal data-d="4">
           <div class="benefit-check">✓</div>
-          <p class="benefit-title">Real-time financial visibility</p>
-          <p class="benefit-desc">Finance data stays current without waiting for someone to compile it.</p>
+          <p class="benefit-title" data-i18n="be4-t">Real-time financial visibility</p>
+          <p class="benefit-desc"  data-i18n="be4-d">Finance data stays current without waiting for someone to compile it.</p>
         </div>
         <div class="benefit-item" data-reveal data-d="5">
           <div class="benefit-check">✓</div>
-          <p class="benefit-title">Cleaner, consistent data</p>
-          <p class="benefit-desc">One version of truth across CRM, ERP, and accounting. Teams trust what they see.</p>
+          <p class="benefit-title" data-i18n="be5-t">Cleaner, consistent data</p>
+          <p class="benefit-desc"  data-i18n="be5-d">One version of truth across CRM, ERP, and accounting. Teams trust what they see.</p>
         </div>
         <div class="benefit-item" data-reveal data-d="6">
           <div class="benefit-check">✓</div>
-          <p class="benefit-title">Reliable follow-up</p>
-          <p class="benefit-desc">Payment reminders, task alerts, and customer touchpoints run on schedule.</p>
+          <p class="benefit-title" data-i18n="be6-t">Reliable follow-up</p>
+          <p class="benefit-desc"  data-i18n="be6-d">Payment reminders, task alerts, and customer touchpoints run on schedule.</p>
         </div>
         <div class="benefit-item" data-reveal data-d="7">
           <div class="benefit-check">✓</div>
-          <p class="benefit-title">Faster month-end close</p>
-          <p class="benefit-desc">Reconciliation workflows that used to take days run in hours.</p>
+          <p class="benefit-title" data-i18n="be7-t">Faster month-end close</p>
+          <p class="benefit-desc"  data-i18n="be7-d">Reconciliation workflows that used to take days run in hours.</p>
         </div>
         <div class="benefit-item" data-reveal data-d="8">
           <div class="benefit-check">✓</div>
-          <p class="benefit-title">AI working inside your operations</p>
-          <p class="benefit-desc">Not a chatbot bolted on. AI embedded in the workflows where it removes real work.</p>
+          <p class="benefit-title" data-i18n="be8-t">AI working inside your operations</p>
+          <p class="benefit-desc"  data-i18n="be8-d">Not a chatbot bolted on. AI embedded in the workflows where it removes real work.</p>
         </div>
         <div class="benefit-item" data-reveal data-d="8">
           <div class="benefit-check">✓</div>
-          <p class="benefit-title">More scalable processes</p>
-          <p class="benefit-desc">Systems that grow with the business without requiring proportionally more headcount.</p>
+          <p class="benefit-title" data-i18n="be9-t">More scalable processes</p>
+          <p class="benefit-desc"  data-i18n="be9-d">Systems that grow with the business without requiring proportionally more headcount.</p>
         </div>
       </div>
     </div>
@@ -1582,52 +1618,34 @@
   <section class="why">
     <div class="why-inner">
       <div class="why-left" data-reveal>
-        <span class="label">Why Alma Intel</span>
-        <h2>We build around your business.<br><span class="fade">Not the other way around.</span></h2>
-        <p>Most companies come to us after trying to make a generic tool work for a specific problem. We do it differently.</p>
+        <span class="label" data-i18n="why-label">Why Alma Intel</span>
+        <h2 data-i18n="why-h2">We build around your business.<br><span class="fade">Not the other way around.</span></h2>
+        <p data-i18n="why-p">Most companies come to us after trying to make a generic tool work for a specific problem. We do it differently.</p>
       </div>
       <div class="why-items">
         <div class="why-item" data-reveal data-d="1">
           <span class="why-num" aria-hidden="true">1</span>
-          <div class="why-text">
-            <strong>We start with the business problem, not the technology.</strong>
-            The tool choice follows the process design — never the other way around.
-          </div>
+          <div class="why-text" data-i18n="w1"><strong>We start with the business problem, not the technology.</strong> The tool choice follows the process design — never the other way around.</div>
         </div>
         <div class="why-item" data-reveal data-d="2">
           <span class="why-num" aria-hidden="true">2</span>
-          <div class="why-text">
-            <strong>We work around your existing systems.</strong>
-            No platform replacements, no expensive migrations. We connect and automate what you already have.
-          </div>
+          <div class="why-text" data-i18n="w2"><strong>We work around your existing systems.</strong> No platform replacements, no expensive migrations. We connect and automate what you already have.</div>
         </div>
         <div class="why-item" data-reveal data-d="3">
           <span class="why-num" aria-hidden="true">3</span>
-          <div class="why-text">
-            <strong>We build systems teams can actually use.</strong>
-            Not complex platforms that require a full-time admin. Practical and operational from day one.
-          </div>
+          <div class="why-text" data-i18n="w3"><strong>We build systems teams can actually use.</strong> Not complex platforms that require a full-time admin. Practical and operational from day one.</div>
         </div>
         <div class="why-item" data-reveal data-d="4">
           <span class="why-num" aria-hidden="true">4</span>
-          <div class="why-text">
-            <strong>We focus on visibility, efficiency, and control.</strong>
-            Every system we build gives leadership clearer information and teams fewer manual tasks.
-          </div>
+          <div class="why-text" data-i18n="w4"><strong>We focus on visibility, efficiency, and control.</strong> Every system we build gives leadership clearer information and teams fewer manual tasks.</div>
         </div>
         <div class="why-item" data-reveal data-d="5">
           <span class="why-num" aria-hidden="true">5</span>
-          <div class="why-text">
-            <strong>We implement AI, not just automate.</strong>
-            AI agents, internal assistants, document analysis, and intelligent workflows — built into real operations.
-          </div>
+          <div class="why-text" data-i18n="w5"><strong>We implement AI, not just automate.</strong> AI agents, internal assistants, document analysis, and intelligent workflows — built into real operations.</div>
         </div>
         <div class="why-item" data-reveal data-d="6">
           <span class="why-num" aria-hidden="true">6</span>
-          <div class="why-text">
-            <strong>Every system is built specifically for you.</strong>
-            Scoped around your workflows, your tools, and your processes — not a template deployed across clients.
-          </div>
+          <div class="why-text" data-i18n="w6"><strong>Every system is built specifically for you.</strong> Scoped around your workflows, your tools, and your processes — not a template deployed across clients.</div>
         </div>
       </div>
     </div>
@@ -1637,48 +1655,49 @@
   <section class="contact" id="contact">
     <div class="contact-inner">
       <div class="contact-left" data-reveal>
-        <span class="label">Get Started</span>
-        <h2>Start with one process.<br><span class="fade">Build the system around it.</span></h2>
-        <p>Tell us where the manual work is. We'll identify where automation and AI create practical business value &mdash; and what it would actually look like in your operations.</p>
+        <span class="label" data-i18n="ct-label">Get Started</span>
+        <h2 data-i18n="ct-h2">Start with one process.<br><span class="fade">Build the system around it.</span></h2>
+        <p data-i18n="ct-p">Tell us where the manual work is. We'll identify where automation and AI create practical business value &mdash; and what it would actually look like in your operations.</p>
         <div class="contact-trust">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;flex-shrink:0;color:var(--accent);margin-top:.05rem;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-          <span><strong>No pitch.</strong> We'll map the process and show you what's possible before you commit to anything.</span>
+          <span data-i18n="ct-trust"><strong>No pitch.</strong> We'll map the process and show you what's possible before you commit to anything.</span>
         </div>
-        <p class="contact-email">Prefer email? <a href="mailto:hello@almaintel.com">hello@almaintel.com</a></p>
+        <p class="contact-email" data-i18n="ct-email">Prefer email? <a href="mailto:hello@almaintel.com">hello@almaintel.com</a></p>
       </div>
 
       <form class="contact-form" id="contactForm"
         action="https://formspree.io/f/xbdalzld" method="POST" novalidate data-reveal data-d="1">
-        <div class="form-success" id="formSuccess" role="status" aria-live="polite">
+        <div class="form-success" id="formSuccess" role="status" aria-live="polite" data-i18n="form-success">
           ✓ Message received. We'll be in touch within 24 hours.
         </div>
         <div class="form-row">
           <div class="form-field">
-            <label for="name">Full Name *</label>
+            <label for="name" data-i18n="fl-name">Full Name *</label>
             <input type="text" id="name" name="name" autocomplete="name" required>
           </div>
           <div class="form-field">
-            <label for="company">Company *</label>
+            <label for="company" data-i18n="fl-company">Company *</label>
             <input type="text" id="company" name="company" autocomplete="organization" required>
           </div>
         </div>
         <div class="form-row">
           <div class="form-field">
-            <label for="email">Email *</label>
+            <label for="email" data-i18n="fl-email">Email *</label>
             <input type="email" id="email" name="email" autocomplete="email" required>
           </div>
           <div class="form-field">
-            <label for="phone">Phone (optional)</label>
+            <label for="phone" data-i18n="fl-phone">Phone (optional)</label>
             <input type="tel" id="phone" name="phone" autocomplete="tel">
           </div>
         </div>
         <div class="form-field ff">
-          <label for="challenge">What process do you want to improve? *</label>
+          <label for="challenge" data-i18n="fl-challenge">What process do you want to improve? *</label>
           <textarea id="challenge" name="challenge"
+            data-i18n-placeholder="form-placeholder"
             placeholder="e.g. Invoices get lost, leads fall through, team spends hours on manual reports every week." required></textarea>
         </div>
-        <button type="submit" class="btn-submit">Book a consultation →</button>
-        <p class="form-note">We'll reply within 24 hours with two or three time slots for a 30-minute call.</p>
+        <button type="submit" class="btn-submit" data-i18n="form-submit">Book a consultation →</button>
+        <p class="form-note" data-i18n="form-note">We'll reply within 24 hours with two or three time slots for a 30-minute call.</p>
       </form>
     </div>
   </section>
@@ -1688,31 +1707,31 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <img src="logos/Alma Intel - Logo 01.svg" alt="Alma Intel" class="footer-logo">
-        <p>AI implementation and automation consulting for small and mid-sized businesses. We connect tools, automate workflows, and implement AI where it creates real operational value.</p>
+        <p data-i18n="footer-desc">AI implementation and automation consulting for small and mid-sized businesses. We connect tools, automate workflows, and implement AI where it creates real operational value.</p>
       </div>
       <div class="footer-col">
-        <h4>What We Do</h4>
+        <h4 data-i18n="fc1-h">What We Do</h4>
         <ul>
-          <li><a href="#what-we-automate">Finance Automation</a></li>
-          <li><a href="#what-we-automate">AI &amp; Data</a></li>
-          <li><a href="#what-we-automate">Sales Automation</a></li>
-          <li><a href="#what-we-automate">Operations</a></li>
+          <li><a href="#what-we-automate" data-i18n="fc1-l1">Finance Automation</a></li>
+          <li><a href="#what-we-automate" data-i18n="fc1-l2">AI &amp; Data</a></li>
+          <li><a href="#what-we-automate" data-i18n="fc1-l3">Sales Automation</a></li>
+          <li><a href="#what-we-automate" data-i18n="fc1-l4">Operations</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Company</h4>
+        <h4 data-i18n="fc2-h">Company</h4>
         <ul>
-          <li><a href="#process">Our Process</a></li>
-          <li><a href="consulting.html">Consulting</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#process"         data-i18n="fc2-l1">Our Process</a></li>
+          <li><a href="consulting.html"  data-i18n="fc2-l2">Consulting</a></li>
+          <li><a href="products.html"    data-i18n="fc2-l3">Products</a></li>
+          <li><a href="#contact"         data-i18n="fc2-l4">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Legal</h4>
+        <h4 data-i18n="fc3-h">Legal</h4>
         <ul>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="privacy.html" data-i18n="fc3-l1">Privacy Policy</a></li>
+          <li><a href="terms.html"   data-i18n="fc3-l2">Terms of Use</a></li>
         </ul>
       </div>
     </div>
@@ -1724,7 +1743,7 @@
 
   <!-- ══ FLOATING CTA ══ -->
   <a href="#contact" class="fab" id="fab" aria-label="Book a free consultation">
-    Free Consultation <span class="fab-arrow">→</span>
+    <span data-i18n="cta-primary">Free Consultation</span> <span class="fab-arrow">→</span>
   </a>
 
   <!-- ══ SCRIPTS ══ -->
@@ -1804,6 +1823,282 @@
         alert('Something went wrong. Please email us at hello@almaintel.com');
       }
     });
+  </script>
+
+  <!-- ══ TRANSLATIONS ══ -->
+  <script>
+  const translations = {
+    en: {
+      _title: 'Alma Intel | AI Implementation & Automation Consulting for Business Efficiency',
+      _meta:  'Alma Intel helps small and mid-sized businesses implement AI, connect tools, automate workflows, build dashboards, and turn AI into practical business efficiency.',
+      // Nav
+      'nav-what':'What We Automate','nav-process':'Process','nav-contact':'Contact','nav-cta':'Free Consultation',
+      // Hero
+      'hero-pill':'AI Implementation &amp; Automation Consulting',
+      'hero-h1-dt':'<em>AI &amp; automation</em><br>that make your<br>business run better.',
+      'hero-h1-mb':'<em>AI &amp; automation</em> that make your business run better.',
+      'hero-sub':'We help small and mid-sized businesses connect their tools, automate repetitive workflows, and implement AI where it creates real operational value &mdash; built around sales, finance, and operations.',
+      'cta-primary':'Free Consultation','hero-btn-ghost':'See what we automate',
+      // Tools
+      'tools-heading':'We connect the tools your business already uses',
+      // Problem
+      'problem-label':'Sound familiar?',
+      'problem-h2':'Most companies don\'t need more tools.<br><span class="fade">They need their tools to work together.</span>',
+      'problem-intro':'You probably don\'t search for "AI automation." You recognise the symptoms — and they keep showing up across sales, finance, and operations.',
+      'pain1-t':'Manual data entry','pain1-d':'Your team enters the same info into multiple tools every day.',
+      'pain2-t':'Stale CRM','pain2-d':'Records aren\'t reliable. No one trusts what\'s in it.',
+      'pain3-t':'Slow reports','pain3-d':'By the time they\'re ready, the numbers are already outdated.',
+      'pain4-t':'Disconnected tools','pain4-d':'Accounting, e-commerce, and ERP don\'t speak to each other.',
+      'pain5-t':'Lost leads','pain5-d':'Follow-up depends on someone remembering. Some don\'t.',
+      'pain6-t':'Spreadsheet sprawl','pain6-d':'Critical workflows live in shared sheets that should be in a system.',
+      'pain7-t':'Hours reconciling','pain7-d':'Teams cross-check the same numbers across multiple tools every week.',
+      'pain8-t':'AI uncertainty','pain8-d':'You want to use AI, but you don\'t know where it actually makes sense.',
+      'outcomes-label':'Now imagine the alternative',
+      'oc1-t':'No manual entry','oc1-d':'Data flows between your tools automatically. Teams stop copying and pasting.',
+      'oc2-t':'Live visibility','oc2-d':'Reports update themselves. Dashboards stay current. Leadership acts on real-time data.',
+      'oc3-t':'AI in the right places','oc3-d':'Embedded inside the workflows where it removes real work — not bolted on as a chatbot.',
+      // Explainer
+      'exp-label':'What Automation Means',
+      'exp-h2':'<span class="fade">Connecting your tools</span> so your team doesn\'t have to.',
+      'exp-intro':'Automation means data, tasks, alerts, reports, and workflows move between systems automatically &mdash; instead of relying on someone to transfer them manually.',
+      'ba-before':'Before','ba-after':'After',
+      'b1':'Manual Amazon &rarr; QuickBooks copy every Monday.','b2':'Sales checks 3 platforms for new leads daily.',
+      'b3':'Finance builds the weekly report from 5 sources.','b4':'Late invoices go unnoticed. No reminders sent.',
+      'b5':'Leadership waits 2 days for pipeline data.',
+      'a1':'Amazon &rarr; QuickBooks syncs automatically every night.',
+      'a2':'New leads route to the right rep instantly, with a Slack alert.',
+      'a3':'The weekly report generates itself from live data.',
+      'a4':'Payment reminders trigger at 7, 14, and 30 days.',
+      'a5':'The pipeline dashboard is always live. Anyone can check.',
+      // Use cases
+      'uc-label':'Automation &amp; AI Systems',
+      'uc-h2':'Practical systems, <span class="fade">built around your operations.</span>',
+      'uc-intro':'We build automation workflows, integrate business tools, and implement AI where it creates real operational value. Each example is a real type of system &mdash; not a concept.',
+      'tab-finance':'Finance','tab-data':'AI &amp; Data','tab-sales':'Sales','tab-ops':'Operations',
+      'fn-note':'Connect your financial tools so numbers are always accurate and current &mdash; without anyone manually transferring data.',
+      'fn1-t':'Amazon → QuickBooks Sync','fn1-d':'Automatically push daily sales, fees, and refunds from Amazon Seller Central into QuickBooks. No manual export or copy-paste.','fn1-o':'Finance gets accurate daily revenue with no manual entry',
+      'fn2-t':'Invoice Tracking &amp; Reminders','fn2-d':'Trigger payment reminders at 7, 14, and 30 days overdue. Escalate to the right person. Log every action in your accounting system.','fn2-o':'Fewer late payments, reduced AR backlog',
+      'fn3-t':'Reconciliation Workflows','fn3-d':'Match transactions between your e-commerce platform, bank feed, and accounting software. Flag discrepancies automatically.','fn3-o':'Month-end close takes hours instead of days',
+      'fn4-t':'Automated Financial Reports','fn4-d':'Auto-generate weekly or monthly finance reports from live data. Deliver them directly to leadership at a scheduled time.','fn4-o':'Real-time visibility without manual prep',
+      'da-note':'We implement AI where it creates real value &mdash; not as a trend, but as a working layer in your operations. Assistants, document analysis, data pipelines, and live dashboards built around your existing tools.',
+      'da1-t':'AI Internal Assistant','da1-d':'An AI assistant trained on your company\'s documents, records, and processes. Teams search for information and get accurate answers in seconds.','da1-o':'Teams find what they need in seconds, not hours',
+      'da2-t':'Document Analysis &amp; Drafting','da2-d':'Use AI to review contracts, invoices, or records, extract key information, and draft structured summaries or responses.','da2-o':'Less time on document-heavy review workflows',
+      'da3-t':'Operations Dashboard','da3-d':'One live view combining sales, finance, inventory, and operations data. Pulled automatically from your existing tools. No manual assembly.','da3-o':'Leadership gets one clear picture, always live',
+      'da4-t':'CRM &amp; Data Cleanup','da4-d':'Deduplicate contact records, standardize field formats, and fill in missing information using automated rules and AI matching.','da4-o':'Cleaner data, more reliable reporting, fewer errors',
+      'sa-note':'Make your sales process run on systems, not memory. Keep the CRM current, follow up reliably, and give leadership a live view of the pipeline.',
+      'sa1-t':'CRM Automation','sa1-d':'Auto-update contacts, deal stages, and activity logs from email, calendar, and form submissions. CRM stays current without manual input.','sa1-o':'Sales stops logging manually and starts trusting the data',
+      'sa2-t':'Lead Routing &amp; Assignment','sa2-d':'Route new leads to the right rep based on territory, deal size, or source. Send a Slack alert and create the CRM record automatically.','sa2-o':'Leads reach the right person in minutes, not hours',
+      'sa3-t':'Follow-up Sequences','sa3-d':'Trigger timed follow-up tasks and emails when a deal stage changes or a lead goes cold. Every prospect gets consistent attention.','sa3-o':'No leads slip through because of a missed manual follow-up',
+      'sa4-t':'Sales Pipeline Dashboard','sa4-d':'A live view of deals by stage, value, rep, and velocity &mdash; pulled directly from your CRM and updated in real time.','sa4-o':'Sales leadership sees what\'s moving and what needs attention',
+      'op-note':'Connect the systems your operations run on so data flows where it needs to go &mdash; without manual transfers, spreadsheets, or reconciliation sessions.',
+      'op1-t':'ERP &amp; Accounting Integration','op1-d':'Sync purchase orders, inventory changes, and billing between your ERP and accounting platform. Finance and operations work from the same data.','op1-o':'One source of truth across finance and operations',
+      'op2-t':'Multi-System Data Sync','op2-d':'Keep your CRM, ERP, e-commerce platform, and support tools in sync. Customer records, order history, and status stay consistent everywhere.','op2-o':'Teams stop wasting time reconciling conflicting data',
+      'op3-t':'Workflow Alerts &amp; Triggers','op3-d':'Send internal alerts when orders, tickets, or requests meet specific conditions &mdash; low stock, overdue task, new escalation. Right person, right time.','op3-o':'Issues caught immediately, not discovered days later',
+      'op4-t':'Internal Process Automation','op4-d':'Replace spreadsheet-driven approvals, onboarding checklists, and task handoffs with structured workflows that run automatically.','op4-o':'Processes run on systems, not email chains',
+      // Process
+      'proc-label':'Our Approach',
+      'proc-h2':'Four phases. <span class="fade">One practical system.</span>',
+      'proc-intro':'Every engagement follows the same structure. Each phase produces something concrete &mdash; not slides, but working systems.',
+      'ph01':'Phase 01','ph1-t':'Audit','ph1-d':'We review your tools, workflows, pain points, and manual work. We map where time is lost and where data breaks down.',
+      'ph02':'Phase 02','ph2-t':'Design','ph2-d':'We define the right system based on your existing operations. No rip-and-replace. Solutions layer into what you already use.',
+      'ph03':'Phase 03','ph3-t':'Build','ph3-d':'We implement the automation, integration, dashboard, or AI workflow. You review and approve before anything goes live.',
+      'ph04':'Phase 04','ph4-t':'Evolve','ph4-d':'We improve the system as your business grows. Weekly check-ins, visible backlog, and continuous optimization.',
+      // Benefits
+      'ben-label':'Business Outcomes',
+      'ben-h2':'What changes <span class="fade">when operations run on systems.</span>',
+      'ben-intro':'These are the practical outcomes when manual work gets replaced by connected workflows, integrated systems, and AI implemented where it actually makes sense.',
+      'be1-t':'Less manual data entry','be1-d':'Data moves between systems automatically. Teams stop copying and pasting.',
+      'be2-t':'Fewer reporting errors','be2-d':'Reports built from live data, not manually assembled spreadsheets.',
+      'be3-t':'Faster lead response','be3-d':'Leads are routed and followed up automatically. No one falls through the cracks.',
+      'be4-t':'Real-time financial visibility','be4-d':'Finance data stays current without waiting for someone to compile it.',
+      'be5-t':'Cleaner, consistent data','be5-d':'One version of truth across CRM, ERP, and accounting. Teams trust what they see.',
+      'be6-t':'Reliable follow-up','be6-d':'Payment reminders, task alerts, and customer touchpoints run on schedule.',
+      'be7-t':'Faster month-end close','be7-d':'Reconciliation workflows that used to take days run in hours.',
+      'be8-t':'AI working inside your operations','be8-d':'Not a chatbot bolted on. AI embedded in the workflows where it removes real work.',
+      'be9-t':'More scalable processes','be9-d':'Systems that grow with the business without requiring proportionally more headcount.',
+      // Why
+      'why-label':'Why Alma Intel',
+      'why-h2':'We build around your business.<br><span class="fade">Not the other way around.</span>',
+      'why-p':'Most companies come to us after trying to make a generic tool work for a specific problem. We do it differently.',
+      'w1':'<strong>We start with the business problem, not the technology.</strong> The tool choice follows the process design — never the other way around.',
+      'w2':'<strong>We work around your existing systems.</strong> No platform replacements, no expensive migrations. We connect and automate what you already have.',
+      'w3':'<strong>We build systems teams can actually use.</strong> Not complex platforms that require a full-time admin. Practical and operational from day one.',
+      'w4':'<strong>We focus on visibility, efficiency, and control.</strong> Every system we build gives leadership clearer information and teams fewer manual tasks.',
+      'w5':'<strong>We implement AI, not just automate.</strong> AI agents, internal assistants, document analysis, and intelligent workflows — built into real operations.',
+      'w6':'<strong>Every system is built specifically for you.</strong> Scoped around your workflows, your tools, and your processes — not a template deployed across clients.',
+      // Contact
+      'ct-label':'Get Started',
+      'ct-h2':'Start with one process.<br><span class="fade">Build the system around it.</span>',
+      'ct-p':'Tell us where the manual work is. We\'ll identify where automation and AI create practical business value &mdash; and what it would actually look like in your operations.',
+      'ct-trust':'<strong>No pitch.</strong> We\'ll map the process and show you what\'s possible before you commit to anything.',
+      'ct-email':'Prefer email? <a href="mailto:hello@almaintel.com">hello@almaintel.com</a>',
+      'form-success':'✓ Message received. We\'ll be in touch within 24 hours.',
+      'fl-name':'Full Name *','fl-company':'Company *','fl-email':'Email *','fl-phone':'Phone (optional)',
+      'fl-challenge':'What process do you want to improve? *',
+      'form-placeholder':'e.g. Invoices get lost, leads fall through, team spends hours on manual reports every week.',
+      'form-submit':'Book a consultation →',
+      'form-note':'We\'ll reply within 24 hours with two or three time slots for a 30-minute call.',
+      // Footer
+      'footer-desc':'AI implementation and automation consulting for small and mid-sized businesses. We connect tools, automate workflows, and implement AI where it creates real operational value.',
+      'fc1-h':'What We Do','fc1-l1':'Finance Automation','fc1-l2':'AI &amp; Data','fc1-l3':'Sales Automation','fc1-l4':'Operations',
+      'fc2-h':'Company','fc2-l1':'Our Process','fc2-l2':'Consulting','fc2-l3':'Products','fc2-l4':'Contact',
+      'fc3-h':'Legal','fc3-l1':'Privacy Policy','fc3-l2':'Terms of Use',
+    },
+    es: {
+      _title: 'Alma Intel | Consultoría de IA y Automatización para Eficiencia Empresarial',
+      _meta:  'Alma Intel ayuda a pequeñas y medianas empresas a implementar IA, conectar herramientas, automatizar flujos de trabajo y convertir la IA en eficiencia operativa real.',
+      // Nav
+      'nav-what':'Qué Automatizamos','nav-process':'Proceso','nav-contact':'Contacto','nav-cta':'Consulta Gratuita',
+      // Hero
+      'hero-pill':'Consultoría de Implementación de IA y Automatización',
+      'hero-h1-dt':'<em>IA y automatización</em><br>que hacen que tu<br>empresa funcione mejor.',
+      'hero-h1-mb':'<em>IA y automatización</em> que hacen que tu empresa funcione mejor.',
+      'hero-sub':'Ayudamos a pequeñas y medianas empresas a conectar sus herramientas, automatizar flujos de trabajo repetitivos e implementar IA donde crea valor operativo real &mdash; diseñado en torno a ventas, finanzas y operaciones.',
+      'cta-primary':'Consulta Gratuita','hero-btn-ghost':'Ver qué automatizamos',
+      // Tools
+      'tools-heading':'Conectamos las herramientas que ya usa tu empresa',
+      // Problem
+      'problem-label':'¿Te suena familiar?',
+      'problem-h2':'La mayoría de empresas no necesitan más herramientas.<br><span class="fade">Necesitan que sus herramientas trabajen juntas.</span>',
+      'problem-intro':'Probablemente no buscas "automatización con IA". Reconoces los síntomas — y siguen apareciendo en ventas, finanzas y operaciones.',
+      'pain1-t':'Introducción manual de datos','pain1-d':'Tu equipo introduce la misma información en varias herramientas cada día.',
+      'pain2-t':'CRM desactualizado','pain2-d':'Los registros no son fiables. Nadie confía en lo que hay.',
+      'pain3-t':'Informes lentos','pain3-d':'Cuando están listos, los datos ya están desactualizados.',
+      'pain4-t':'Herramientas desconectadas','pain4-d':'Contabilidad, e-commerce y ERP no se comunican entre sí.',
+      'pain5-t':'Oportunidades perdidas','pain5-d':'El seguimiento depende de que alguien lo recuerde. No siempre ocurre.',
+      'pain6-t':'Excel por todas partes','pain6-d':'Procesos clave viven en hojas compartidas que deberían estar en un sistema.',
+      'pain7-t':'Horas conciliando datos','pain7-d':'Los equipos verifican los mismos números en varias herramientas cada semana.',
+      'pain8-t':'Incertidumbre con la IA','pain8-d':'Quieres usar IA, pero no sabes dónde tiene sentido aplicarla.',
+      'outcomes-label':'Ahora imagina la alternativa',
+      'oc1-t':'Sin introducción manual','oc1-d':'Los datos fluyen entre herramientas automáticamente. Los equipos dejan de copiar y pegar.',
+      'oc2-t':'Visibilidad en tiempo real','oc2-d':'Los informes se actualizan solos. Los dashboards siempre están al día. La dirección actúa con datos en tiempo real.',
+      'oc3-t':'IA donde tiene sentido','oc3-d':'Integrada en los flujos de trabajo donde elimina trabajo real — no como un chatbot añadido.',
+      // Explainer
+      'exp-label':'Qué Significa la Automatización',
+      'exp-h2':'<span class="fade">Conectando tus herramientas</span> para que tu equipo no tenga que hacerlo.',
+      'exp-intro':'La automatización significa que los datos, tareas, alertas, informes y flujos de trabajo se mueven entre sistemas automáticamente &mdash; en lugar de depender de que alguien los transfiera manualmente.',
+      'ba-before':'Antes','ba-after':'Después',
+      'b1':'Copia manual de Amazon &rarr; QuickBooks cada lunes.','b2':'Ventas revisa 3 plataformas para buscar nuevos contactos cada día.',
+      'b3':'Finanzas construye el informe semanal desde 5 fuentes.','b4':'Las facturas vencidas pasan desapercibidas. Nadie envía recordatorios.',
+      'b5':'La dirección espera 2 días para obtener datos del pipeline.',
+      'a1':'Amazon &rarr; QuickBooks sincroniza automáticamente cada noche.',
+      'a2':'Los nuevos contactos se asignan al representante correcto al instante, con alerta en Slack.',
+      'a3':'El informe semanal se genera solo a partir de datos en tiempo real.',
+      'a4':'Los recordatorios de pago se activan a los 7, 14 y 30 días.',
+      'a5':'El dashboard del pipeline siempre está actualizado. Cualquiera puede consultarlo.',
+      // Use cases
+      'uc-label':'Sistemas de Automatización e IA',
+      'uc-h2':'Sistemas prácticos, <span class="fade">diseñados para tus operaciones.</span>',
+      'uc-intro':'Construimos flujos de automatización, integramos herramientas empresariales e implementamos IA donde crea valor operativo real. Cada ejemplo es un sistema real — no un concepto.',
+      'tab-finance':'Finanzas','tab-data':'IA y Datos','tab-sales':'Ventas','tab-ops':'Operaciones',
+      'fn-note':'Conecta tus herramientas financieras para que los números siempre sean precisos y estén actualizados &mdash; sin que nadie tenga que transferir datos manualmente.',
+      'fn1-t':'Sincronización Amazon → QuickBooks','fn1-d':'Transfiere automáticamente ventas diarias, comisiones y reembolsos de Amazon Seller Central a QuickBooks. Sin exportar ni copiar manualmente.','fn1-o':'Finanzas obtiene ingresos diarios precisos sin introducción manual',
+      'fn2-t':'Seguimiento de Facturas y Recordatorios','fn2-d':'Activa recordatorios de pago a los 7, 14 y 30 días de vencimiento. Escala al responsable. Registra cada acción en tu sistema contable.','fn2-o':'Menos pagos tardíos, reducción de cuentas por cobrar',
+      'fn3-t':'Flujos de Conciliación','fn3-d':'Concilia transacciones entre tu plataforma de e-commerce, el banco y el software contable. Marca discrepancias automáticamente.','fn3-o':'El cierre mensual tarda horas en lugar de días',
+      'fn4-t':'Informes Financieros Automatizados','fn4-d':'Genera automáticamente informes financieros semanales o mensuales desde datos en tiempo real. Envíalos a la dirección en el momento programado.','fn4-o':'Visibilidad en tiempo real sin preparación manual',
+      'da-note':'Implementamos IA donde crea valor real &mdash; no como tendencia, sino como capa funcional en tus operaciones. Asistentes, análisis de documentos, pipelines de datos y dashboards en tiempo real diseñados con tus herramientas actuales.',
+      'da1-t':'Asistente Interno de IA','da1-d':'Un asistente de IA entrenado con los documentos, registros y procesos de tu empresa. Los equipos buscan información y obtienen respuestas precisas en segundos.','da1-o':'Los equipos encuentran lo que necesitan en segundos, no en horas',
+      'da2-t':'Análisis y Redacción de Documentos','da2-d':'Usa IA para revisar contratos, facturas o registros, extraer información clave y redactar resúmenes o respuestas estructuradas.','da2-o':'Menos tiempo en flujos de trabajo con muchos documentos',
+      'da3-t':'Dashboard Operacional','da3-d':'Una vista en tiempo real que combina ventas, finanzas, inventario y operaciones. Extraída automáticamente de tus herramientas actuales. Sin montaje manual.','da3-o':'La dirección tiene una imagen clara, siempre actualizada',
+      'da4-t':'Limpieza de CRM y Datos','da4-d':'Elimina duplicados, estandariza formatos y completa información faltante con reglas automáticas y coincidencia por IA.','da4-o':'Datos más limpios, informes más fiables, menos errores',
+      'sa-note':'Haz que tu proceso de ventas funcione con sistemas, no con memoria. Mantén el CRM actualizado, da seguimiento de forma consistente y ofrece a la dirección una vista en tiempo real del pipeline.',
+      'sa1-t':'Automatización del CRM','sa1-d':'Actualiza automáticamente contactos, etapas de negociación y registros de actividad desde correo, calendario y formularios. El CRM se mantiene al día sin entrada manual.','sa1-o':'Ventas deja de registrar manualmente y empieza a confiar en los datos',
+      'sa2-t':'Asignación y Distribución de Leads','sa2-d':'Dirige nuevos leads al representante correcto según territorio, tamaño del negocio o fuente. Envía una alerta en Slack y crea el registro en el CRM automáticamente.','sa2-o':'Los leads llegan a la persona correcta en minutos, no en horas',
+      'sa3-t':'Secuencias de Seguimiento','sa3-d':'Activa tareas y correos de seguimiento programados cuando cambia una etapa de negociación o un lead se enfría. Cada prospecto recibe atención constante.','sa3-o':'Ningún lead se pierde por un seguimiento manual olvidado',
+      'sa4-t':'Dashboard del Pipeline de Ventas','sa4-d':'Una vista en tiempo real de negociaciones por etapa, valor, representante y velocidad &mdash; extraída directamente de tu CRM y actualizada en tiempo real.','sa4-o':'La dirección de ventas ve qué avanza y qué necesita atención',
+      'op-note':'Conecta los sistemas en los que se apoya tu operación para que los datos fluyan donde deben &mdash; sin transferencias manuales, hojas de cálculo ni sesiones de conciliación.',
+      'op1-t':'Integración ERP y Contabilidad','op1-d':'Sincroniza órdenes de compra, cambios de inventario y facturación entre tu ERP y plataforma contable. Finanzas y operaciones trabajan con los mismos datos.','op1-o':'Una única fuente de verdad para finanzas y operaciones',
+      'op2-t':'Sincronización entre Sistemas','op2-d':'Mantén sincronizados tu CRM, ERP, plataforma de e-commerce y herramientas de soporte. Registros de clientes, historial de pedidos y estados consistentes en todos lados.','op2-o':'Los equipos dejan de perder tiempo conciliando datos contradictorios',
+      'op3-t':'Alertas y Disparadores de Flujo','op3-d':'Envía alertas internas cuando pedidos, tickets o solicitudes cumplen condiciones específicas &mdash; bajo stock, tarea vencida, nueva escalada. La persona correcta, en el momento correcto.','op3-o':'Los problemas se detectan de inmediato, no días después',
+      'op4-t':'Automatización de Procesos Internos','op4-d':'Reemplaza aprobaciones en Excel, checklists de incorporación y traspasos de tareas con flujos de trabajo estructurados que se ejecutan automáticamente.','op4-o':'Los procesos funcionan con sistemas, no con cadenas de correos',
+      // Process
+      'proc-label':'Nuestro Enfoque',
+      'proc-h2':'Cuatro fases. <span class="fade">Un sistema práctico.</span>',
+      'proc-intro':'Cada proyecto sigue la misma estructura. Cada fase produce algo concreto &mdash; no diapositivas, sino sistemas funcionales.',
+      'ph01':'Fase 01','ph1-t':'Diagnóstico','ph1-d':'Revisamos tus herramientas, flujos de trabajo, puntos de dolor y trabajo manual. Mapeamos dónde se pierde tiempo y dónde se rompen los datos.',
+      'ph02':'Fase 02','ph2-t':'Diseño','ph2-d':'Definimos el sistema adecuado basado en tus operaciones actuales. Sin reemplazos traumáticos. Las soluciones se integran en lo que ya usas.',
+      'ph03':'Fase 03','ph3-t':'Construcción','ph3-d':'Implementamos la automatización, integración, dashboard o flujo de IA. Revisas y apruebas antes de que nada entre en producción.',
+      'ph04':'Fase 04','ph4-t':'Evolución','ph4-d':'Mejoramos el sistema a medida que crece tu empresa. Check-ins semanales, backlog visible y optimización continua.',
+      // Benefits
+      'ben-label':'Resultados de Negocio',
+      'ben-h2':'Qué cambia <span class="fade">cuando las operaciones funcionan con sistemas.</span>',
+      'ben-intro':'Estos son los resultados prácticos cuando el trabajo manual es reemplazado por flujos de trabajo conectados, sistemas integrados e IA implementada donde realmente tiene sentido.',
+      'be1-t':'Menos introducción manual de datos','be1-d':'Los datos se mueven entre sistemas automáticamente. Los equipos dejan de copiar y pegar.',
+      'be2-t':'Menos errores en informes','be2-d':'Informes construidos con datos en tiempo real, no con hojas de cálculo ensambladas manualmente.',
+      'be3-t':'Respuesta más rápida a leads','be3-d':'Los leads se asignan y se les da seguimiento automáticamente. Ninguno se pierde.',
+      'be4-t':'Visibilidad financiera en tiempo real','be4-d':'Los datos financieros se mantienen actualizados sin esperar a que alguien los compile.',
+      'be5-t':'Datos más limpios y consistentes','be5-d':'Una única versión de los datos en CRM, ERP y contabilidad. Los equipos confían en lo que ven.',
+      'be6-t':'Seguimiento fiable','be6-d':'Recordatorios de pago, alertas de tareas y contactos con clientes se ejecutan puntualmente.',
+      'be7-t':'Cierre mensual más rápido','be7-d':'Flujos de conciliación que tardaban días se completan en horas.',
+      'be8-t':'IA integrada en tus operaciones','be8-d':'No es un chatbot añadido. IA integrada en los flujos donde elimina trabajo real.',
+      'be9-t':'Procesos más escalables','be9-d':'Sistemas que crecen con la empresa sin necesitar proporcionalmente más personal.',
+      // Why
+      'why-label':'Por qué Alma Intel',
+      'why-h2':'Construimos en torno a tu negocio.<br><span class="fade">No al revés.</span>',
+      'why-p':'La mayoría de empresas llegan a nosotros después de intentar que una herramienta genérica funcione para un problema concreto. Nosotros lo hacemos diferente.',
+      'w1':'<strong>Empezamos con el problema de negocio, no con la tecnología.</strong> La elección de la herramienta sigue al diseño del proceso — nunca al revés.',
+      'w2':'<strong>Trabajamos con tus sistemas actuales.</strong> Sin reemplazos de plataforma ni migraciones costosas. Conectamos y automatizamos lo que ya tienes.',
+      'w3':'<strong>Construimos sistemas que los equipos realmente pueden usar.</strong> No plataformas complejas que necesitan un administrador a tiempo completo. Práctico y operativo desde el primer día.',
+      'w4':'<strong>Nos enfocamos en visibilidad, eficiencia y control.</strong> Cada sistema que construimos da a la dirección información más clara y a los equipos menos tareas manuales.',
+      'w5':'<strong>Implementamos IA, no solo automatizamos.</strong> Agentes de IA, asistentes internos, análisis de documentos y flujos inteligentes — integrados en operaciones reales.',
+      'w6':'<strong>Cada sistema se construye específicamente para ti.</strong> Diseñado en torno a tus flujos, tus herramientas y tus procesos — no una plantilla desplegada para distintos clientes.',
+      // Contact
+      'ct-label':'Empezar',
+      'ct-h2':'Empieza con un proceso.<br><span class="fade">Construye el sistema a su alrededor.</span>',
+      'ct-p':'Cuéntanos dónde está el trabajo manual. Identificaremos dónde la automatización y la IA crean valor práctico &mdash; y cómo se vería en tus operaciones.',
+      'ct-trust':'<strong>Sin ventas.</strong> Mapearemos el proceso y te mostraremos qué es posible antes de que te comprometas a nada.',
+      'ct-email':'¿Prefieres email? <a href="mailto:hello@almaintel.com">hello@almaintel.com</a>',
+      'form-success':'✓ Mensaje recibido. Nos pondremos en contacto en 24 horas.',
+      'fl-name':'Nombre completo *','fl-company':'Empresa *','fl-email':'Email *','fl-phone':'Teléfono (opcional)',
+      'fl-challenge':'¿Qué proceso quieres mejorar? *',
+      'form-placeholder':'Ej. Las facturas se pierden, los leads se escapan, el equipo pasa horas haciendo informes manuales cada semana.',
+      'form-submit':'Reservar una consulta →',
+      'form-note':'Responderemos en 24 horas con dos o tres horarios disponibles para una llamada de 30 minutos.',
+      // Footer
+      'footer-desc':'Consultoría de implementación de IA y automatización para pequeñas y medianas empresas. Conectamos herramientas, automatizamos flujos de trabajo e implementamos IA donde crea valor operativo real.',
+      'fc1-h':'Qué Hacemos','fc1-l1':'Automatización Financiera','fc1-l2':'IA y Datos','fc1-l3':'Automatización de Ventas','fc1-l4':'Operaciones',
+      'fc2-h':'Empresa','fc2-l1':'Nuestro Proceso','fc2-l2':'Consultoría','fc2-l3':'Productos','fc2-l4':'Contacto',
+      'fc3-h':'Legal','fc3-l1':'Política de Privacidad','fc3-l2':'Términos de Uso',
+    }
+  };
+
+  function applyLang(lang) {
+    const t = translations[lang];
+    document.documentElement.lang = lang;
+    document.title = t._title;
+    document.querySelector('meta[name="description"]').setAttribute('content', t._meta);
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (t[key] !== undefined) el.placeholder = t[key];
+    });
+
+    // Update toggle active state (desktop + mobile)
+    document.querySelectorAll('.lang-opt, .mobile-lang button').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    const lt = document.getElementById('langToggle');
+    if (lt) lt.setAttribute('aria-label', lang === 'en' ? 'Switch to Spanish' : 'Cambiar a inglés');
+
+    localStorage.setItem('alma_lang', lang);
+  }
+
+  function setLang(lang) { applyLang(lang); }
+
+  // Init: restore saved language
+  document.getElementById('langToggle').addEventListener('click', () => {
+    const current = localStorage.getItem('alma_lang') || 'en';
+    setLang(current === 'en' ? 'es' : 'en');
+  });
+
+  const savedLang = localStorage.getItem('alma_lang');
+  if (savedLang && savedLang !== 'en') applyLang(savedLang);
   </script>
 
   <script>
