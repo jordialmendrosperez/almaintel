@@ -91,11 +91,7 @@
       font-weight:600; font-size:1.05rem; letter-spacing:-.02em;
     }
     .nav-brand-iso {
-      width:28px; height:28px;
-      background:var(--accent); border-radius:50%;
-      display:grid; place-items:center;
-      color:var(--white); font-weight:800; font-size:.85rem;
-      letter-spacing:-.04em;
+      height:26px; width:auto; display:block;
     }
     .nav-back {
       font-size:.85rem; color:var(--ink-mute);
@@ -238,10 +234,10 @@
       width:44px; height:44px; border-radius:50%;
       background:var(--almaintel-gradient);
       display:grid; place-items:center;
-      color:var(--white); font-weight:700; font-size:1.1rem;
-      letter-spacing:-.04em;
       box-shadow:0 4px 14px rgba(107,115,238,.5);
+      overflow:hidden;
     }
+    .chat-avatar img { width:60%; height:60%; object-fit:contain; }
     .chat-name { font-weight:600; font-size:1rem; color:var(--white); }
     .chat-status { font-size:.78rem; color:#25D366; display:flex; align-items:center; gap:.35rem; }
     .chat-status::before { content:''; width:6px; height:6px; border-radius:50%; background:#25D366; }
@@ -500,7 +496,7 @@
   <!-- NAV -->
   <nav class="nav">
     <a href="alma.html" class="nav-brand" aria-label="Alma">
-      <span class="nav-brand-iso">ai</span>
+      <img src="logos/almaintel-iso.svg" alt="" class="nav-brand-iso">
       <span>Alma</span>
     </a>
     <a href="index.html" class="nav-back"><span>← Almaintel</span></a>
@@ -539,7 +535,7 @@
       <!-- CHAT MOCKUP -->
       <div class="chat-mock" data-reveal data-d="2" aria-hidden="true">
         <div class="chat-header">
-          <div class="chat-avatar">ai</div>
+          <div class="chat-avatar"><img src="logos/almaintel-iso-white.svg" alt=""></div>
           <div>
             <div class="chat-name">Alma</div>
             <div class="chat-status">online</div>
