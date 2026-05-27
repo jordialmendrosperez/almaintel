@@ -199,6 +199,20 @@
     }
     .btn-ghost:hover { color:var(--white); border-color:var(--white); }
 
+    .btn-primary {
+      display:inline-flex; align-items:center; gap:.65rem;
+      padding:1.1rem 1.75rem; border-radius:100px;
+      background:var(--white); color:var(--navy);
+      font-weight:600; font-size:1rem; letter-spacing:-.005em;
+      box-shadow:0 12px 32px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.6);
+      transition:transform .25s var(--ease-out), box-shadow .25s var(--ease-out);
+      cursor:pointer;
+    }
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 18px 42px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.6); }
+    .btn-primary .arrow { transition:transform .25s var(--ease-out); }
+    .btn-primary:hover .arrow { transform:translateX(4px); }
+    .btn-block { width:100%; justify-content:center; }
+
     .hero-trust {
       margin-top:2rem; display:flex; align-items:center; gap:.6rem;
       font-size:.85rem; color:var(--ink-faint);
@@ -387,9 +401,62 @@
       padding:1.25rem 2rem; font-size:1.08rem;
     }
     .try-aside {
-      margin-top:1.5rem; font-size:.88rem; color:rgba(255,255,255,.7);
+      margin-top:1.5rem; font-size:.88rem; color:rgba(255,255,255,.78);
       display:flex; align-items:center; gap:.5rem;
     }
+    .try-grid {
+      display:grid; grid-template-columns:1.1fr 1fr; gap:4rem; align-items:center;
+    }
+    .try-copy h2 { margin-bottom:1.25rem; }
+    .try-copy p { margin-bottom:0; }
+
+    /* ── BETA FORM ── */
+    .beta-form {
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:24px;
+      padding:1.75rem;
+      backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+      box-shadow:0 30px 80px rgba(0,0,0,.25);
+      position:relative;
+    }
+    .beta-field { margin-bottom:1rem; }
+    .beta-field label {
+      display:block; font-size:.82rem; font-weight:500;
+      color:rgba(255,255,255,.85); margin-bottom:.4rem; letter-spacing:.01em;
+    }
+    .beta-field label .opt { color:rgba(255,255,255,.5); font-weight:400; }
+    .beta-field input,
+    .beta-field textarea {
+      width:100%; padding:.85rem 1rem;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:12px;
+      color:var(--white); font-family:inherit; font-size:.95rem;
+      transition:border-color .2s, background .2s, box-shadow .2s;
+    }
+    .beta-field input::placeholder,
+    .beta-field textarea::placeholder { color:rgba(255,255,255,.4); }
+    .beta-field input:focus,
+    .beta-field textarea:focus {
+      outline:none;
+      background:rgba(255,255,255,.12);
+      border-color:rgba(255,255,255,.55);
+      box-shadow:0 0 0 4px rgba(255,255,255,.08);
+    }
+    .beta-field textarea { resize:vertical; min-height:88px; line-height:1.5; }
+    .beta-note {
+      font-size:.78rem; color:rgba(255,255,255,.6); text-align:center;
+      margin-top:.9rem; line-height:1.4;
+    }
+    .beta-success {
+      display:none;
+      position:absolute; inset:1.75rem; padding:1.5rem;
+      background:rgba(255,255,255,.95); color:var(--navy);
+      border-radius:20px; align-items:center; justify-content:center;
+      font-weight:500; text-align:center; line-height:1.55;
+    }
+    .beta-form.sent .beta-success { display:flex; }
 
     /* ── FOOTER ── */
     .footer {
@@ -412,6 +479,7 @@
       .chat-mock { margin:0 auto; max-width:340px; }
       .cap-grid { grid-template-columns:repeat(2, 1fr); }
       .steps { grid-template-columns:1fr; }
+      .try-grid { grid-template-columns:1fr; gap:2.5rem; }
     }
     @media (max-width:600px) {
       .hero { padding:7rem 1.25rem 4rem; }
@@ -455,9 +523,8 @@
         </p>
 
         <div class="cta-row" data-reveal data-d="3">
-          <a class="btn-wa" id="waMain" href="https://wa.me/34600000000?text=Hi%20Alma" target="_blank" rel="noopener" aria-label="Talk to Alma on WhatsApp">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.3A8 8 0 0 0 4.2 16.1L3 21l5-1.3a8 8 0 0 0 12.1-6.8 8 8 0 0 0-2.5-6.6Zm-5.6 12.3a6.6 6.6 0 0 1-3.4-.9l-.2-.2-3 .8.8-2.9-.2-.3a6.6 6.6 0 1 1 6 3.5Zm3.6-5c-.2 0-1.2-.5-1.4-.6-.2-.1-.3-.1-.5.1-.1.2-.5.6-.6.8-.1.1-.2.1-.4 0a5.4 5.4 0 0 1-1.6-1 6 6 0 0 1-1.1-1.4c-.1-.2 0-.3.1-.4l.3-.4.2-.3v-.3l-.5-1.3c-.2-.3-.3-.3-.4-.3h-.4a.8.8 0 0 0-.6.3 2.4 2.4 0 0 0-.7 1.7 4.2 4.2 0 0 0 .9 2.2 9.6 9.6 0 0 0 3.7 3.2c.5.2.9.4 1.2.5a3 3 0 0 0 1.3.1 2 2 0 0 0 1.4-1 1.7 1.7 0 0 0 .1-1l-.4-.2Z"/></svg>
-            <span>Talk to Alma</span>
+          <a class="btn-primary" href="#request" aria-label="Request beta access">
+            <span>Request beta access</span>
             <span class="arrow">→</span>
           </a>
           <a href="#how" class="btn-ghost">How it works</a>
@@ -465,7 +532,7 @@
 
         <div class="hero-trust" data-reveal data-d="4">
           <span class="dot"></span>
-          <span>No downloads. Just WhatsApp.</span>
+          <span>Private beta · invite-only · WhatsApp-native</span>
         </div>
       </div>
 
@@ -558,21 +625,55 @@
     </div>
   </section>
 
-  <!-- TRY IT — CTA FINAL -->
-  <section class="try">
+  <!-- REQUEST BETA ACCESS — CTA FINAL -->
+  <section class="try" id="request">
     <span class="arc try-arc-tl" aria-hidden="true"></span>
     <span class="arc try-arc-br" aria-hidden="true"></span>
 
     <div class="try-inner">
-      <h2 data-reveal>Try it.<br>It takes one message.</h2>
-      <p data-reveal data-d="1">No forms. No demos. Open WhatsApp, say hi, and see what it's like to run your business in a conversation.</p>
-      <a class="btn-wa" href="https://wa.me/34600000000?text=Hi%20Alma" target="_blank" rel="noopener" data-reveal data-d="2">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.3A8 8 0 0 0 4.2 16.1L3 21l5-1.3a8 8 0 0 0 12.1-6.8 8 8 0 0 0-2.5-6.6Zm-5.6 12.3a6.6 6.6 0 0 1-3.4-.9l-.2-.2-3 .8.8-2.9-.2-.3a6.6 6.6 0 1 1 6 3.5Zm3.6-5c-.2 0-1.2-.5-1.4-.6-.2-.1-.3-.1-.5.1-.1.2-.5.6-.6.8-.1.1-.2.1-.4 0a5.4 5.4 0 0 1-1.6-1 6 6 0 0 1-1.1-1.4c-.1-.2 0-.3.1-.4l.3-.4.2-.3v-.3l-.5-1.3c-.2-.3-.3-.3-.4-.3h-.4a.8.8 0 0 0-.6.3 2.4 2.4 0 0 0-.7 1.7 4.2 4.2 0 0 0 .9 2.2 9.6 9.6 0 0 0 3.7 3.2c.5.2.9.4 1.2.5a3 3 0 0 0 1.3.1 2 2 0 0 0 1.4-1 1.7 1.7 0 0 0 .1-1l-.4-.2Z"/></svg>
-        <span>Start on WhatsApp</span>
-        <span class="arrow">→</span>
-      </a>
-      <div class="try-aside" data-reveal data-d="3">
-        <span>🔒</span><span>Private beta · invite-only</span>
+      <div class="try-grid">
+        <div class="try-copy">
+          <h2 data-reveal>Get on the<br>beta list.</h2>
+          <p data-reveal data-d="1">Alma is in private beta with a small group of operators. Tell us a bit about your work and we'll send you a WhatsApp invite when there's a spot.</p>
+          <div class="try-aside" data-reveal data-d="2">
+            <span>🔒</span><span>Invite-only · we review every request</span>
+          </div>
+        </div>
+
+        <form class="beta-form" id="betaForm"
+              action="https://formspree.io/f/xbdalzld" method="POST" novalidate
+              data-reveal data-d="2">
+          <input type="hidden" name="_subject" value="Alma beta access request">
+          <input type="hidden" name="source" value="alma-landing">
+
+          <div class="beta-field">
+            <label for="b-name">Name</label>
+            <input type="text" id="b-name" name="name" autocomplete="name" required>
+          </div>
+          <div class="beta-field">
+            <label for="b-email">Email</label>
+            <input type="email" id="b-email" name="email" autocomplete="email" required>
+          </div>
+          <div class="beta-field">
+            <label for="b-company">Company <span class="opt">(optional)</span></label>
+            <input type="text" id="b-company" name="company" autocomplete="organization">
+          </div>
+          <div class="beta-field">
+            <label for="b-use">What would you use Alma for?</label>
+            <textarea id="b-use" name="use_case" rows="3" required
+              placeholder="e.g. managing my Notion tasks and CRM from WhatsApp"></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary btn-block">
+            <span>Request access</span>
+            <span class="arrow">→</span>
+          </button>
+          <p class="beta-note">We'll only reach out if you're a fit. No newsletter, no spam.</p>
+
+          <div class="beta-success" id="betaSuccess" role="status" aria-live="polite">
+            ✓ Got it. We'll review your request and reach out by email if there's a spot.
+          </div>
+        </form>
       </div>
     </div>
   </section>
@@ -595,6 +696,33 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold:.12, rootMargin:'0px 0px -40px 0px' });
     document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+    // Beta form — async submit to Formspree, swap to success state
+    const betaForm = document.getElementById('betaForm');
+    if (betaForm) {
+      betaForm.addEventListener('submit', async (ev) => {
+        ev.preventDefault();
+        const submitBtn = betaForm.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        try {
+          const res = await fetch(betaForm.action, {
+            method:'POST',
+            body:new FormData(betaForm),
+            headers:{ 'Accept':'application/json' }
+          });
+          if (res.ok) {
+            betaForm.classList.add('sent');
+            betaForm.reset();
+          } else {
+            submitBtn.disabled = false;
+            alert("Couldn't send the request. Please try again or email hello@almaintel.com.");
+          }
+        } catch (err) {
+          submitBtn.disabled = false;
+          alert("Network error. Please try again or email hello@almaintel.com.");
+        }
+      });
+    }
   </script>
 </body>
 </html>
