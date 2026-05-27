@@ -256,20 +256,20 @@
       background:rgba(255,255,255,.07);
       border-bottom-left-radius:5px;
       color:var(--white);
-      animation-delay:.3s;
+      animation-delay:.9s;
     }
     .bubble.me {
       background:linear-gradient(135deg, var(--accent) 0%, #5a62d6 100%);
       color:var(--white); margin-left:auto;
       border-bottom-right-radius:5px;
-      animation-delay:.9s;
+      animation-delay:.3s;
     }
-    .bubble.them.delay-2 { animation-delay:1.6s; }
+    .bubble.delay-2 { animation-delay:1.6s; }
     .typing {
       display:inline-flex; gap:4px; padding:.85rem 1rem;
       background:rgba(255,255,255,.07); border-radius:18px;
       border-bottom-left-radius:5px;
-      animation:bubble-in .55s var(--ease-out) 1.3s backwards;
+      animation:bubble-in .55s var(--ease-out) 2.3s backwards;
     }
     .typing span {
       width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.6);
@@ -545,9 +545,9 @@
             <div class="chat-status">online</div>
           </div>
         </div>
-        <div class="bubble them">How many leads haven't I replied to today?</div>
-        <div class="bubble me">3 in HubSpot. Hottest: <strong>Acme Corp</strong>. Want me to draft a follow-up?</div>
-        <div class="bubble them delay-2">Yes, and log it in my Notion.</div>
+        <div class="bubble me">How many leads haven't I replied to today?</div>
+        <div class="bubble them">3 in HubSpot. Hottest: <strong>Acme Corp</strong>. Want me to draft a follow-up?</div>
+        <div class="bubble me delay-2">Yes, and log it in my Notion.</div>
         <div class="typing" aria-label="Alma typing">
           <span></span><span></span><span></span>
         </div>
