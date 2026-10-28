@@ -1,0 +1,15 @@
+{
+  "name": "almaintel-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "python3 tools/build_pages.py && python3 tools/i18n.py build && python3 tools/finalize.py",
+    "dev": "wrangler pages dev --port 8788"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "1.3.0"
+  },
+  "devDependencies": {
+    "wrangler": "4.154.0"
+  }
+}

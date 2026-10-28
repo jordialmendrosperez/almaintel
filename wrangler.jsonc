@@ -1,0 +1,15 @@
+// Cloudflare Pages configuration for almaintel.ai (source of truth for this project).
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "almaintel",
+  "pages_build_output_dir": "site",
+  "compatibility_date": "2026-10-15",
+  "kv_namespaces": [
+    // "Built for you" pages (90 days) and usage limits
+    { "binding": "ASK_KV", "id": "8bb639b0b17c48baa8a6a23840303009" }
+  ],
+  "vars": {
+    "ASK_MODEL": "claude-haiku-5-5",
+    "ASK_DAILY_CAP": "300"
+  }
+}

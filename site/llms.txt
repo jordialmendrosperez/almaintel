@@ -1,0 +1,21 @@
+# Alma Intel
+
+> Alma Intel is an applied AI firm for mid-market companies (20 to 500 people), based in Miami and Barcelona. We work inside the business, learn how it really runs and build AI systems that read, check and prepare the work teams do by hand: in the tools they already use (QuickBooks, HubSpot, Salesforce, Monday.com, Shopify, Amazon, Microsoft 365, Google Workspace, WhatsApp), with people approving what goes out. Engagements start with one process and continue as a monthly partnership. Founders: Sergio Miró (CEO) and Jordi Almendros (Operations and Engineering). Contact: hello@almaintel.ai.
+
+## What we build
+- [Solutions](https://almaintel.ai/en/solutions/): AI assistants that answer from company data, process automation with human approval, and integrations so CRM, accounting and operations share one version of the numbers.
+- [How we work](https://almaintel.ai/en/how-we-work/): understand and measure the process, design, build and test with the team, then put it to use and keep improving it monthly.
+
+## Client work (names withheld)
+- [Construction, Miami](https://almaintel.ai/en/clients/construction/): project and bid system plus an AI assistant for a luxury general contractor; quotes read by AI, crew hours by voice, open-book client portal.
+- [Consumer goods, Amazon and retail](https://almaintel.ai/en/clients/consumer-goods/): Amazon to QuickBooks accounting pipeline with fee and refund reconciliation; EDI with a grocery chain.
+- [Public sector, trade and investment](https://almaintel.ai/en/clients/public-agency/): one shared CRM on Monday.com for offices across the US; 14,684 contacts and 12,020 companies.
+- [Hospitality, multi-site](https://almaintel.ai/en/clients/hospitality/): booking-system reporting, reconciliation with the CRM, hourly checks and staff onboarding.
+- [Manufacturing, commercial equipment](https://almaintel.ai/en/clients/manufacturing/): monthly operations support and a lead engine that reads public records.
+
+## More
+- [Team](https://almaintel.ai/en/team/)
+- [Working notes](https://almaintel.ai/en/working-notes/): short notes on data, automation and AI.
+- [Lab](https://almaintel.ai/en/lab/): solutions in pilot or in development.
+- [Book a 30-minute call](https://almaintel.ai/en/contact/)
+- Spanish version: [https://almaintel.ai/es/](https://almaintel.ai/es/)

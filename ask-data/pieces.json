@@ -1,0 +1,261 @@
+[
+ {
+  "id": "case-construction",
+  "kind": "Client case",
+  "title": "An AI assistant and project system for a luxury builder in Miami.",
+  "summary": "A general contractor building luxury homes and office fit-outs needed one place for budgets, quotes, crew hours and client payments. We built a project system and an AI assistant the team talks to by voice or chat.",
+  "tags": "Construction Custom app + AI assistant Project and bid system AI quote reader Operations assistant Subcontractor finder WhatsApp Gmail QuickBooks Excel Claude"
+ },
+ {
+  "id": "parts-construction",
+  "kind": "What we built (components)",
+  "title": "What we built for the construction client",
+  "summary": "Project and bid system; AI quote reader; Operations assistant; Subcontractor finder",
+  "tags": "Construction Custom app + AI assistant Project and bid system AI quote reader Operations assistant Subcontractor finder WhatsApp Gmail QuickBooks Excel Claude"
+ },
+ {
+  "id": "day-construction",
+  "kind": "A normal day with the system",
+  "title": "How the construction client works now",
+  "summary": "A foreman sends a voice note with the crew’s hours and the job number. The assistant matches people, job and cost code, and asks for a quick yes. The job budget updates. If a line runs over, the project manager gets an alert. The client opens their link and sees the same numbers the builder sees.",
+  "tags": "Construction Custom app + AI assistant Project and bid system AI quote reader Operations assistant Subcontractor finder WhatsApp Gmail QuickBooks Excel Claude"
+ },
+ {
+  "id": "nums-construction",
+  "kind": "Figures from a live system",
+  "title": "Numbers from the construction client",
+  "summary": "52 actions the assistant can take on a job; 4 people on the team using it; 0 records saved without a person’s OK",
+  "tags": "Construction Custom app + AI assistant Project and bid system AI quote reader Operations assistant Subcontractor finder WhatsApp Gmail QuickBooks Excel Claude"
+ },
+ {
+  "id": "case-consumer-goods",
+  "kind": "Client case",
+  "title": "Amazon and wholesale accounting, connected to QuickBooks.",
+  "summary": "A consumer-goods brand sells by the case to grocery chains and by the unit on Amazon. We connected Amazon to QuickBooks so every order, fee and refund is recorded, and the books can be explained down to the order.",
+  "tags": "Consumer goods Integration + database Order pipeline Case-to-unit conversion Refund and fee reconciliation Daily exception check Amazon QuickBooks n8n PostgreSQL Telegram"
+ },
+ {
+  "id": "parts-consumer-goods",
+  "kind": "What we built (components)",
+  "title": "What we built for the consumer goods client",
+  "summary": "Order pipeline; Case-to-unit conversion; Refund and fee reconciliation; Daily exception check",
+  "tags": "Consumer goods Integration + database Order pipeline Case-to-unit conversion Refund and fee reconciliation Daily exception check Amazon QuickBooks n8n PostgreSQL Telegram"
+ },
+ {
+  "id": "day-consumer-goods",
+  "kind": "A normal day with the system",
+  "title": "How the consumer goods client works now",
+  "summary": "Overnight, new orders, fees and refunds are pulled from Amazon. They are recorded in QuickBooks and matched to the payout. In the morning the team gets a short summary of anything that does not match. The accountant starts the month from books that already tie to Amazon.",
+  "tags": "Consumer goods Integration + database Order pipeline Case-to-unit conversion Refund and fee reconciliation Daily exception check Amazon QuickBooks n8n PostgreSQL Telegram"
+ },
+ {
+  "id": "nums-consumer-goods",
+  "kind": "Figures from a live system",
+  "title": "Numbers from the consumer goods client",
+  "summary": "577 historical orders replayed to test the books; 5 automated workflows running every day; Feb 2026 in production since",
+  "tags": "Consumer goods Integration + database Order pipeline Case-to-unit conversion Refund and fee reconciliation Daily exception check Amazon QuickBooks n8n PostgreSQL Telegram"
+ },
+ {
+  "id": "case-public-agency",
+  "kind": "Client case",
+  "title": "One CRM for a trade and investment agency with offices across the US.",
+  "summary": "Each office kept its own lists. We turned the project tool the agency already paid for into a shared CRM, cleaned and merged the data, and trained the team in three languages.",
+  "tags": "Public sector CRM build + data pipeline Shared master records Import and clean-up service Automatic project boards Training and manual Monday.com PostgreSQL n8n Excel"
+ },
+ {
+  "id": "parts-public-agency",
+  "kind": "What we built (components)",
+  "title": "What we built for the public sector client",
+  "summary": "Shared master records; Import and clean-up service; Automatic project boards; Training and manual",
+  "tags": "Public sector CRM build + data pipeline Shared master records Import and clean-up service Automatic project boards Training and manual Monday.com PostgreSQL n8n Excel"
+ },
+ {
+  "id": "day-public-agency",
+  "kind": "A normal day with the system",
+  "title": "How the public sector client works now",
+  "summary": "A list of 1,500 trade-fair visitors arrives. The import service matches each person and company to existing records. New contacts land in the right project; duplicates are merged instead of added. Leadership reads progress on the plan from the same data the offices use.",
+  "tags": "Public sector CRM build + data pipeline Shared master records Import and clean-up service Automatic project boards Training and manual Monday.com PostgreSQL n8n Excel"
+ },
+ {
+  "id": "nums-public-agency",
+  "kind": "Figures from a live system",
+  "title": "Numbers from the public sector client",
+  "summary": "14,684 contacts in one CRM; 12,020 companies, each with one record; 243 duplicate records merged",
+  "tags": "Public sector CRM build + data pipeline Shared master records Import and clean-up service Automatic project boards Training and manual Monday.com PostgreSQL n8n Excel"
+ },
+ {
+  "id": "case-hospitality",
+  "kind": "Client case",
+  "title": "Reporting and operations for a co-living operator with sites in Europe.",
+  "summary": "A co-living and retreat operator needed numbers it could trust and an operation that did not depend on a few people’s memory. We connected its booking system to reporting, reconciled bookings with the CRM and documented how each house runs.",
+  "tags": "Hospitality Reporting + integrations + documentation Revenue reporting Booking and CRM reconciliation Hourly reviewer Knowledge base n8n Supabase ClickUp Telegram WhatsApp"
+ },
+ {
+  "id": "parts-hospitality",
+  "kind": "What we built (components)",
+  "title": "What we built for the hospitality client",
+  "summary": "Revenue reporting; Booking and CRM reconciliation; Hourly reviewer; Knowledge base",
+  "tags": "Hospitality Reporting + integrations + documentation Revenue reporting Booking and CRM reconciliation Hourly reviewer Knowledge base n8n Supabase ClickUp Telegram WhatsApp"
+ },
+ {
+  "id": "day-hospitality",
+  "kind": "A normal day with the system",
+  "title": "How the hospitality client works now",
+  "summary": "Every hour, new bookings and payments sync from the booking system. Early in the morning, bookings are reconciled with the CRM. The reviewer runs its checks and flags anything unusual on Telegram. Management opens a dashboard whose numbers match the bookings.",
+  "tags": "Hospitality Reporting + integrations + documentation Revenue reporting Booking and CRM reconciliation Hourly reviewer Knowledge base n8n Supabase ClickUp Telegram WhatsApp"
+ },
+ {
+  "id": "nums-hospitality",
+  "kind": "Figures from a live system",
+  "title": "Numbers from the hospitality client",
+  "summary": "547 bookings reconciled since July 2025; 270 checks every hour; 22 units across the sites",
+  "tags": "Hospitality Reporting + integrations + documentation Revenue reporting Booking and CRM reconciliation Hourly reviewer Knowledge base n8n Supabase ClickUp Telegram WhatsApp"
+ },
+ {
+  "id": "case-manufacturing",
+  "kind": "Client case",
+  "title": "Earlier project leads and monthly support for a manufacturer’s US team.",
+  "summary": "A European maker of commercial washroom equipment sells in the US through architects and designers. We support its US team every month and are testing a lead engine that reads public records to find projects before they are specified.",
+  "tags": "Manufacturing Lead engine (pilot) + monthly support Lead engine Monthly operations support Information-security review "
+ },
+ {
+  "id": "parts-manufacturing",
+  "kind": "What we built (components)",
+  "title": "What we built for the manufacturing client",
+  "summary": "Lead engine; Monthly operations support; Information-security review",
+  "tags": "Manufacturing Lead engine (pilot) + monthly support Lead engine Monthly operations support Information-security review "
+ },
+ {
+  "id": "day-manufacturing",
+  "kind": "A normal day with the system",
+  "title": "How the manufacturing client works now",
+  "summary": "A city publishes its meeting agenda. The engine extracts each project and the firm designing it. Every project is scored for fit with the product line. Sales gets a short list with who to call.",
+  "tags": "Manufacturing Lead engine (pilot) + monthly support Lead engine Monthly operations support Information-security review "
+ },
+ {
+  "id": "nums-manufacturing",
+  "kind": "Figures from a live system",
+  "title": "Numbers from the manufacturing client",
+  "summary": "5 jurisdictions covered in the pilot; 335 projects analysed; 240 signals found before the permit stage",
+  "tags": "Manufacturing Lead engine (pilot) + monthly support Lead engine Monthly operations support Information-security review "
+ },
+ {
+  "id": "why",
+  "kind": "Why Alma Intel",
+  "title": "The AI team model for mid-market companies",
+  "summary": "Large companies embed AI engineers in their operations; we bring that model to companies with 20 to 500 people. We start inside the operation, build and run the system, and measure what changed.",
+  "tags": "why model team embedded engineers value difference"
+ },
+ {
+  "id": "build",
+  "kind": "What we build",
+  "title": "AI assistants, process automation, integrations and data",
+  "summary": "Assistants that answer from your own data; automation of documents and requests with human approval; integrations so CRM, accounting and operations share one version of the numbers.",
+  "tags": "solutions services assistants automation integrations crm accounting reporting data"
+ },
+ {
+  "id": "sol-assistants",
+  "kind": "Solution",
+  "title": "AI assistants: your information, accessible to the team",
+  "summary": "Assistants connected to your documents and processes, with the context and permissions each question needs: internal questions, visible sources, drafted responses.",
+  "tags": "assistant knowledge documents answers search internal questions chat voice"
+ },
+ {
+  "id": "sol-automation",
+  "kind": "Solution",
+  "title": "Process automation: from an input to the next step",
+  "summary": "Workflows that interpret information, apply rules and prepare actions across your tools, with review where it is needed: documents and requests, approvals, tasks and follow-up.",
+  "tags": "automation automate workflow invoices documents requests approvals tasks follow-up manual work"
+ },
+ {
+  "id": "sol-integrations",
+  "kind": "Solution",
+  "title": "Integrations and data: your tools, working together",
+  "summary": "We connect CRM, operations and financial systems so data reaches the right place and keeps its meaning: CRM and internal systems, synchronisation, reporting.",
+  "tags": "integration connect sync crm accounting erp reporting dashboards data quickbooks hubspot salesforce"
+ },
+ {
+  "id": "process",
+  "kind": "How we work (four steps)",
+  "title": "Understand, design, implement, put to use",
+  "summary": "We follow a real process with your team and measure it; agree inputs, rules and controls before building; build and test the exceptions with you; then roll it out, document it and support it.",
+  "tags": "process method steps how we work start diagnostic implementation rollout"
+ },
+ {
+  "id": "engage",
+  "kind": "How to work with us",
+  "title": "One project, or ongoing development",
+  "summary": "Implement one process with defined objectives and tests, or keep improving it with agreed priorities and ongoing support.",
+  "tags": "engagement pricing project monthly partnership retainer start cost"
+ },
+ {
+  "id": "faq",
+  "kind": "Questions before starting",
+  "title": "Tools, price and timing, control, support",
+  "summary": "We start from the tools you already use; price and timing are defined around the process; you decide which actions need a person to confirm; we document and support after delivery.",
+  "tags": "faq replace tools price timing security control approval support after delivery"
+ },
+ {
+  "id": "team",
+  "kind": "Team",
+  "title": "The partners lead every engagement",
+  "summary": "Sergio Miró (two decades between Europe and the US) and Jordi Almendros (builds the systems). You talk to the people doing the work.",
+  "tags": "team people founders partners who experience trust"
+ },
+ {
+  "id": "tools",
+  "kind": "Tools we work with",
+  "title": "The tools we connect",
+  "summary": "QuickBooks, Xero, Salesforce, HubSpot, Monday.com, Shopify, Amazon, Stripe, Microsoft 365, Excel, Google Workspace, Slack, WhatsApp, SAP, ClickUp, Notion.",
+  "tags": "tools integrations software quickbooks hubspot salesforce shopify amazon"
+ },
+ {
+  "id": "note-payment-or-revenue",
+  "kind": "Working note",
+  "title": "Is a September payment September revenue?",
+  "summary": "Follow one stay across two months. The money is the same; the question the report answers changes.",
+  "tags": "Demonstration · Finance"
+ },
+ {
+  "id": "note-merging-contacts",
+  "kind": "Working note",
+  "title": "Would you merge these two contacts?",
+  "summary": "A match helps you find a record. Deciding what to do with it needs more context.",
+  "tags": "Decision note · Data"
+ },
+ {
+  "id": "note-reading-is-not-recording",
+  "kind": "Working note",
+  "title": "Reading a receipt is not recording an expense.",
+  "summary": "What should happen between AI reading a value and a change in your books.",
+  "tags": "Working note · Applied AI"
+ },
+ {
+  "id": "lab-signals",
+  "kind": "Lab solution (Pilot)",
+  "title": "Signal engine",
+  "summary": "Flags the moment a design firm is tied to a public project, months before it goes out to bid.",
+  "tags": "leads construction public sector tenders architects permits"
+ },
+ {
+  "id": "lab-assistant",
+  "kind": "Lab solution (Pilot)",
+  "title": "Operations assistant",
+  "summary": "Your team talks to it by voice or WhatsApp. It logs hours, updates job costs and answers from your own data.",
+  "tags": "assistant voice whatsapp hours field"
+ },
+ {
+  "id": "lab-control",
+  "kind": "Lab solution (Building)",
+  "title": "Control room",
+  "summary": "One place to see every system we run for you: what it did, what it flagged and what is waiting for a person.",
+  "tags": "monitoring dashboard control visibility"
+ },
+ {
+  "id": "lab-opportunities",
+  "kind": "Lab solution (Building)",
+  "title": "Opportunity graph",
+  "summary": "Tenders and grants from the World Bank, the EU, the US, the UK and Canada, matched against a portfolio of companies.",
+  "tags": "tenders grants international export agency"
+ }
+]
