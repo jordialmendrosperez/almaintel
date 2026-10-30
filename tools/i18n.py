@@ -16,7 +16,8 @@ SITE = os.path.join(HERE, '..', 'site')
 MAP_FILE = os.path.join(HERE, 'i18n', 'es.json')
 ATTRS = ('alt', 'aria-label', 'placeholder', 'title', 'content', 'data-fy-open')
 SKIP_TAGS = {'script', 'style'}
-SKIP_PAGES = {'/en/ask/'}  # redirect to "Built for you", English only
+SKIP_PAGES = {'/en/ask/',  # redirect to "Built for you", English only
+              '/en/working-notes/order-entry-simulator/'}  # English only for now; /es/ redirects to it
 
 # Spanish paths and anchors, so links and sources read in Spanish
 SLUGS = {'clients': 'clientes', 'construction': 'construccion', 'consumer-goods': 'gran-consumo', 'public-agency': 'sector-publico',

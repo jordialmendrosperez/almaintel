@@ -230,22 +230,24 @@ for i, c in enumerate(CASES):
 
 # ------------------------------------------------------------------ working notes
 THUMBS = {
+    'order-entry-simulator': '<div class="th-bars"><div>By hand<i style="--w:100%"></i><b>12 min</b></div><div>Exceptions only<i style="--w:17%"></i><b>2 min</b></div></div>',
     'payment-or-revenue': '<div class="th-bars"><div>September<i style="--w:30%"></i><b>$360</b></div><div>October<i style="--w:70%"></i><b>$840</b></div></div>',
     'merging-contacts': '<div class="th-contacts"><div><b>J. Smith</b>Acme Corp<br>j.smith@acme.test</div><span>?</span><div><b>John Smith</b>ACME Inc.<br>john@acme.test</div></div>',
     'reading-is-not-recording': '<div class="th-receipt"><i></i><i></i><i></i><b>$184.20</b></div><span class="th-arrow">→</span><span class="th-ledger">Record?</span>',
 }
 NOTES = [
+    ('order-entry-simulator', 'Demonstration · Operations', 'From inbox to ERP. Review only what fails.', 'Put in your order volume and see how much time comes back when people review only the orders that fail a check.', '3 min'),
     ('payment-or-revenue', 'Demonstration · Finance', 'Is a September payment September revenue?', 'Follow one stay across two months. The money is the same; the question the report answers changes.', '4 min'),
     ('merging-contacts', 'Decision note · Data', 'Would you merge these two contacts?', 'A match helps you find a record. Deciding what to do with it needs more context.', '4 min'),
     ('reading-is-not-recording', 'Working note · Applied AI', 'Reading a receipt is not recording an expense.', 'What should happen between AI reading a value and a change in your books.', '3 min'),
 ]
 
 
-def note_cards(heading='h3'):
+def note_cards(heading='h3', count=None):
     return '<div class="note-cards">' + ''.join(
         f'<a class="note-card" href="/en/working-notes/{k}/"><div class="note-thumb" aria-hidden="true">{THUMBS[k]}</div>'
         f'<div class="note-body"><p class="eyebrow">{tag}</p><{heading}>{t}</{heading}><p>{d}</p><span class="note-meta">{mins} read</span>'
-        f'<span class="read">Read the note<span aria-hidden="true">→</span></span></div></a>' for k, tag, t, d, mins in NOTES) + '</div>'
+        f'<span class="read">Read the note<span aria-hidden="true">→</span></span></div></a>' for k, tag, t, d, mins in NOTES[:count]) + '</div>'
 
 
 page('/en/working-notes/', 'Working notes | Alma Intel', 'Notes on data, automation and AI from the work we do with clients.',
@@ -260,7 +262,7 @@ cards = ''.join(
     f'<a class="client-card" href="/en/clients/{c["key"]}/"><p class="eyebrow">{c["sector"]}</p><h3>{c["card"]}</h3>'
     f'{flow(c)}<span class="more">Read the case{ARROW}</span></a>' for c in CASES[:3])
 home = re.sub(r'<div class="client-cards">.*?</div></div></section>', f'<div class="client-cards">{cards}</div></div></section>', home, count=1, flags=re.S)
-home = re.sub(r'<div class="(journal-short-list|note-cards)">.*?</section>', note_cards() + '</section>', home, count=1, flags=re.S)
+home = re.sub(r'<div class="(journal-short-list|note-cards)">.*?</section>', note_cards(count=3) + '</section>', home, count=1, flags=re.S)
 open(os.path.join(ROOT, 'en/index.html'), 'w').write(home)
 
 # ------------------------------------------------------------------ the old search prototype now points to "Built for you"

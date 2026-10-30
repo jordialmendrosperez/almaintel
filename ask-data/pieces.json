@@ -210,6 +210,13 @@
   "tags": "tools integrations software quickbooks hubspot salesforce shopify amazon"
  },
  {
+  "id": "note-order-entry-simulator",
+  "kind": "Working note",
+  "title": "From inbox to ERP. Review only what fails.",
+  "summary": "Put in your order volume and see how much time comes back when people review only the orders that fail a check.",
+  "tags": "Demonstration · Operations"
+ },
+ {
   "id": "note-payment-or-revenue",
   "kind": "Working note",
   "title": "Is a September payment September revenue?",
